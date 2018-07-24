@@ -20,9 +20,7 @@ public class BeadRoadTilePane extends TilePane {
     public void fillArea() {
         int maxSize = super.getPrefColumns() * super.getPrefRows();
         while(super.getChildren().size() < maxSize) {
-            BeadRoadLabel temp = new BeadRoadLabel();
-            temp.getStyleClass().clear();
-            temp.getStyleClass().add("BeadRoadLabel");
+            BeadRoadLabel temp = new BeadRoadLabel(BeadRoadResult.EMPTY);
             super.getChildren().add(temp);
         }
     }
