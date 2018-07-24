@@ -5,7 +5,11 @@
      	-style1-color: rgb(0,0,0);
      	-style2-color: lightblue;
 	-fx-pref-width:1920;
-	-fx-pref-height:1080;	
+	-fx-pref-height:1080;
+	-fx-min-width:1920;
+    -fx-min-height:1080;
+    -fx-max-width:1920;
+    -fx-max-height:1080;
 }
 
 
@@ -13,7 +17,11 @@
      	-fx-background-color: lightskyblue;
 	-fx-spacing:5;
 	-fx-pref-width:1920;
-	-fx-pref-height:432; 
+	-fx-pref-height:432;
+			-fx-min-width:1920;
+        	-fx-min-height:432;
+        		-fx-max-width:1920;
+            	-fx-max-height:432;
 }
 
 .history {
@@ -21,6 +29,10 @@
 	-fx-background-radius:0,0,0,0;
 	-fx-pref-width:840;
 	-fx-pref-height:432;
+			-fx-min-width:840;
+        	-fx-min-height:432;
+        		-fx-max-width:840;
+            	-fx-max-height:432;
 }
 
 
@@ -30,8 +42,12 @@
 	-fx-border-color:rgb(108,116,118);
 	-fx-border-width:0,0,0,0;
 	-fx-border-radius: 0,0,0,0;
-	-fx-pref-height:400;
-	-fx-pref-width:1070;	
+	-fx-pref-height:432;
+	-fx-pref-width:1070;
+				-fx-min-width:1070;
+            	-fx-min-height:432;
+            		-fx-max-width:1070;
+                	-fx-max-height:432;
 }
 
 .BeadRoadTilePane {

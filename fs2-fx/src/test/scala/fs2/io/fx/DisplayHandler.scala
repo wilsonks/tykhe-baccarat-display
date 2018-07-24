@@ -4,6 +4,7 @@ import customjavafx.scene.control.{BeadRoadLabel, BeadRoadResult}
 import customjavafx.scene.layout.BeadRoadTilePane
 import fs2.io.fx.syntax._
 import javafx.scene.control.Label
+import javafx.scene.input.{KeyCode, KeyEvent}
 import javafx.scene.layout.TilePane
 import scalafxml.core.macros.sfxml
 

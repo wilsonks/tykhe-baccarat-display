@@ -1,14 +1,23 @@
 .topmost {
-     	-fx-background-color: white;
+     -fx-background-color: white;
 	-fx-spacing:0;
 	-fx-pref-width:1920;
-	-fx-pref-height:150; 
+	-fx-pref-height:150;
+		-fx-min-width:1920;
+        -fx-min-height:150;
+        -fx-max-width:1920;
+        -fx-max-height:150;
 	theme-color: burlywood;
 
 }
 
 .pane1 {
 	-fx-pref-width:1920;
+		-fx-pref-height:150;
+    		-fx-min-width:1920;
+            -fx-min-height:150;
+            -fx-max-width:1920;
+            -fx-max-height:150;
 }
 
 .nameLabel {
