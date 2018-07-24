@@ -1,0 +1,183 @@
+.topmost {
+     	-fx-background-color: white;
+	-fx-spacing:0;
+	-fx-pref-width:1920;
+	-fx-pref-height:150; 
+	theme-color: burlywood;
+
+}
+
+.pane1 {
+	-fx-pref-width:1920;
+}
+
+.nameLabel {
+	-fx-text-fill: theme-color;
+	-fx-translate-x:0;
+	-fx-translate-y:0;
+	-fx-pref-width:300;
+	-fx-pref-height:78;
+	-fx-alignment:top-left;
+	-fx-font-family: BASKVILL;
+	-fx-font-size: 60;
+	-fx-font-style:normal;
+	-fx-font-weight:900;
+}
+
+.sideBetLabel {
+	-fx-text-fill: theme-color;
+	-fx-translate-x: 0;
+	-fx-translate-y:100;
+	-fx-pref-width:450;
+	-fx-pref-height:35;
+	-fx-alignment:bottom-left;
+	-fx-font-family: BASKVILL;
+	-fx-font-size: 40;
+	-fx-font-style:normal;
+	-fx-font-weight:200;
+}
+
+.minBetLabel {
+	-fx-text-fill: theme-color;
+	-fx-translate-x: 900;
+	-fx-translate-y:45;
+	-fx-pref-width:150;
+	-fx-pref-height:30;
+	-fx-alignment:center-right;
+	-fx-font-family: BASKVILL;
+	-fx-font-size: 40;
+	-fx-font-style:normal;
+	-fx-font-weight:200;
+}
+
+.maxBetLabel {
+	-fx-text-fill: theme-color;
+	-fx-translate-x: 900;
+	-fx-translate-y:90;
+	-fx-pref-width:150;
+	-fx-pref-height:30;
+	-fx-alignment:center-right;
+	-fx-font-family: BASKVILL;
+	-fx-font-size: 40;
+	-fx-font-style:normal;
+	-fx-font-weight:200;
+}
+
+.handLabel {
+	-fx-text-fill: theme-color;
+	-fx-translate-x: 1100;
+	-fx-translate-y:0;
+	-fx-pref-width:200;
+	-fx-pref-height:35;
+	-fx-alignment:center-left;
+	-fx-font-family: BASKVILL;
+	-fx-font-size: 40;
+	-fx-font-style:normal;
+	-fx-font-weight:200;
+}
+
+.pairLabel {
+	-fx-text-fill: theme-color;
+	-fx-translate-x: 1400;
+	-fx-translate-y:0;
+	-fx-pref-width:200;
+	-fx-pref-height:35;
+	-fx-alignment:center-left;
+	-fx-font-family: BASKVILL;
+	-fx-font-size: 40;
+	-fx-font-style:normal;
+	-fx-font-weight:200;
+}
+
+.tieLabel {
+	-fx-text-fill: theme-color;
+	-fx-translate-x: 1700;
+	-fx-translate-y:0;
+	-fx-pref-width:200;
+	-fx-pref-height:35;
+	-fx-alignment:center-left;
+	-fx-font-family: BASKVILL;
+	-fx-font-size: 40;
+	-fx-font-style:normal;
+	-fx-font-weight:200;
+}
+
+
+.handMinLabel {
+	-fx-text-fill: theme-color;
+	-fx-translate-x: 1100;
+	-fx-translate-y:45;
+	-fx-pref-width:200;
+	-fx-pref-height:35;
+	-fx-alignment:center-left;
+	-fx-font-family: BASKVILL;
+	-fx-font-size: 40;
+	-fx-font-style:normal;
+	-fx-font-weight:500;
+}
+
+.pairMinLabel {
+	-fx-text-fill: theme-color;
+	-fx-translate-x: 1400;
+	-fx-translate-y:45;
+	-fx-pref-width:200;
+	-fx-pref-height:35;
+	-fx-alignment:center-left;
+	-fx-font-family: BASKVILL;
+	-fx-font-size: 40;
+	-fx-font-style:normal;
+	-fx-font-weight:500;
+}
+
+.tieMinLabel {
+	-fx-text-fill: theme-color;
+	-fx-translate-x: 1700;
+	-fx-translate-y:45;
+	-fx-pref-width:200;
+	-fx-pref-height:35;
+	-fx-alignment:center-left;
+	-fx-font-family: BASKVILL;
+	-fx-font-size: 40;
+	-fx-font-style:normal;
+	-fx-font-weight:500;
+}
+
+.handMaxLabel {
+	-fx-text-fill: theme-color;
+	-fx-translate-x: 1100;
+	-fx-translate-y:90;
+	-fx-pref-width:200;
+	-fx-pref-height:35;
+	-fx-alignment:center-left;
+	-fx-font-family: BASKVILL;
+	-fx-font-size: 40;
+	-fx-font-style:normal;
+	-fx-font-weight:500;
+}
+
+.pairMaxLabel {
+	-fx-text-fill: theme-color;
+	-fx-translate-x: 1400;
+	-fx-translate-y:90;
+	-fx-pref-width:200;
+	-fx-pref-height:35;
+	-fx-alignment:center-left;
+	-fx-font-family: BASKVILL;
+	-fx-font-size: 40;
+	-fx-font-style:normal;
+	-fx-font-weight:500;
+}
+
+.tieMaxLabel {
+	-fx-text-fill: theme-color;
+	-fx-translate-x: 1700;
+	-fx-translate-y:90;
+	-fx-pref-width:200;
+	-fx-pref-height:35;
+	-fx-alignment:center-left;
+	-fx-font-family: BASKVILL;
+	-fx-font-size: 40;
+	-fx-font-style:normal;
+	-fx-font-weight:500;
+}
+
