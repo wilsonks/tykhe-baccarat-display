@@ -15,11 +15,7 @@ public class BeadRoadTilePane extends TilePane {
         setPrefColumns(20);
         setPrefRows(8);
     }
-
-    public BeadRoadLabel getTail() {
-        return (BeadRoadLabel)super.getChildren().get(0);
-    }
-
+    
     public void Add(BeadRoadLabel r) {
         int maxSize = super.getPrefColumns() * super.getPrefRows();
         if (super.getChildren().size() >= maxSize) {
