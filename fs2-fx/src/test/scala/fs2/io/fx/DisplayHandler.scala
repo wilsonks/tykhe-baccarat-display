@@ -22,6 +22,8 @@ class DisplayHandler(val handBetMin: Label, val beadRoad: BeadRoadTilePane, val 
   }
   beadRoad.fillArea()
 
+  for (i <- 1 to 3) beadRoad.Remove()
+
   display.root.iconifiedProperty().values.subscribe(i => if (i) echo.cancel() else echo.restart())
   display.root.setOnCloseRequest(_ => {
     echo.cancel() // stop service

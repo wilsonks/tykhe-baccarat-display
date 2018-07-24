@@ -24,6 +24,11 @@ public class BeadRoadTilePane extends TilePane {
             super.getChildren().add(temp);
         }
     }
+
+    public void Remove() {
+        
+    }
+
     public void Add(BeadRoadLabel r) {
         int maxSize = super.getPrefColumns() * super.getPrefRows();
         if (super.getChildren().size() >= maxSize) {
