@@ -4,7 +4,6 @@ package customjavafx.scene.layout;
 import customjavafx.scene.control.BeadRoadLabel;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.layout.TilePane;
 
 public class BeadRoadTilePane extends TilePane {
