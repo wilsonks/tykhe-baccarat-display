@@ -7,6 +7,16 @@ import javafx.scene.control.Label;
 
 public class BeadRoadLabel extends Label {
 
+    public BeadRoadLabel() {
+        this.getStyleClass().add("BeadRoadLabel");
+    }
+
+    public BeadRoadLabel(BeadRoadResult result) {
+        this.setResult(result);
+        this.getStyleClass().add("BeadRoadLabel");
+
+    }
+
     //Add the Individual States
     private static final PseudoClass PSEUDO_CLASS_BANKER_WIN = PseudoClass.getPseudoClass("bankerWin");
     private static final PseudoClass PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR = PseudoClass.getPseudoClass("bankerWinBankerPair");

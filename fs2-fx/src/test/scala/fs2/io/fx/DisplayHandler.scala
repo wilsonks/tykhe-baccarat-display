@@ -15,14 +15,12 @@ class DisplayHandler(val handBetMin: Label, val beadRoad: BeadRoadTilePane, val 
   //BeadRoad
   beadRoad.getChildren.clear()
   for (r <- 1 to 8) {
-    for (c <- 1 to 21) {
-      val bead11: BeadRoadLabel = new BeadRoadLabel
-      bead11.getStyleClass.clear()
-      bead11.getStyleClass.add("BeadRoadLabel")
-      bead11.setResult(BeadRoadResult.values().apply(scala.util.Random.nextInt(10)))
+    for (c <- 1 to 19) {
+      val bead11: BeadRoadLabel = new BeadRoadLabel(BeadRoadResult.values().apply(scala.util.Random.nextInt(10)))
       beadRoad.Add(bead11)
     }
   }
+  beadRoad.fillArea()
 
   display.root.iconifiedProperty().values.subscribe(i => if (i) echo.cancel() else echo.restart())
   display.root.setOnCloseRequest(_ => {
