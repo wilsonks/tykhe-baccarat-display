@@ -51,9 +51,7 @@
 }
 
 .BeadRoadTilePane {
-        -fx-padding:5,0,0,0;
-	-fx-orientation: vertical;
-	-fx-alignment: top-left;
+    -fx-padding:5,0,0,0;
 	-fx-tile-alignment: top-left;
 	-fx-pref-rows: 8;
 	-fx-pref-columns: 20;

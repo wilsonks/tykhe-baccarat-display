@@ -11,11 +11,11 @@ public class BeadRoadTilePane extends TilePane {
 
     private int column = 0;
     private int row = -1;
-    
+
     public BeadRoadTilePane() {
         super();
-        setOrientation(Orientation.VERTICAL);
-        setAlignment(Pos.TOP_LEFT);
+        super.setOrientation(Orientation.VERTICAL);
+        super.setAlignment(Pos.TOP_LEFT);
     }
 
     private int sizeLimit() {
