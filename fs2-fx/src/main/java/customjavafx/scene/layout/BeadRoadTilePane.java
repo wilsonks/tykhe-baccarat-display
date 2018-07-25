@@ -5,44 +5,79 @@ import customjavafx.scene.control.BeadRoadLabel;
 import customjavafx.scene.control.BeadRoadResult;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.layout.TilePane;
 
 public class BeadRoadTilePane extends TilePane {
 
     private int column = 0;
     private int row = -1;
-
+    
     public BeadRoadTilePane() {
         super();
         setOrientation(Orientation.VERTICAL);
         setAlignment(Pos.TOP_LEFT);
-        setPrefColumns(20);
-        setPrefRows(8);
     }
 
-    public void fillArea() {
-        int maxSize = super.getPrefColumns() * super.getPrefRows();
-        while(super.getChildren().size() < maxSize) {
-            BeadRoadLabel temp = new BeadRoadLabel(BeadRoadResult.EMPTY);
-            super.getChildren().add(temp);
+    private int sizeLimit() {
+        return (getPrefColumns() * getPrefRows());
+    }
+
+    private boolean childrenLimitReached() {
+        return (super.getChildren().size() == sizeLimit()) ;
+    }
+
+
+    private void RemoveLast(){
+        super.getChildren().remove(0);
+        MovePostionBack();
+    }
+
+    private void Update(BeadRoadResult res) {
+        MovePositionFront();
+        ((BeadRoadLabel)super.getChildren().get(getPosition())).setResult(res);
+    }
+
+    private void Insert() {
+        BeadRoadLabel temp = new BeadRoadLabel(BeadRoadResult.EMPTY);
+        temp.setResult(BeadRoadResult.EMPTY);
+        super.getChildren().add(temp);
+    }
+
+    public void Add(BeadRoadResult res) {
+        if (getSize() == sizeLimit()) {
+            RemoveLast();
+            Insert();
+        }
+        Update(res);
+    }
+
+    public void Initialize() {
+        while(!childrenLimitReached()) {
+            Insert();
+        }
+    }
+
+    public void Initialize(int row, int column) {
+        setPrefRows(row);
+        setPrefColumns(column);
+        while(!childrenLimitReached()) {
+            Insert();
         }
     }
 
     public void Remove() {
-        BeadRoadLabel e = (BeadRoadLabel)super.getChildren().get((column*8)+row);
-        e.setResult(BeadRoadResult.EMPTY);
-        DeleteElement();
+        if(getPosition() >= 0) {
+            ((BeadRoadLabel)super.getChildren().get(getPosition())).setResult(BeadRoadResult.EMPTY);
+            MovePostionBack();
+        }
     }
 
-    public void Add(BeadRoadLabel r) {
-        int maxSize = super.getPrefColumns() * super.getPrefRows();
-        if (super.getChildren().size() >= maxSize) {
-            super.getChildren().remove(0);
-            DeleteElement();
-        }
-        super.getChildren().add(r);
-        AddElement();
+    public int getSize(){
+        return getPosition() + 1;
+    }
+
+    public int getPosition(){
+        return (column*8)+row;
     }
 
     @Override
@@ -50,7 +85,7 @@ public class BeadRoadTilePane extends TilePane {
         super.layoutChildren();
     }
 
-    protected void AddElement(){
+    private void MovePositionFront(){
         if(row == (getPrefRows()-1)) {
             column++;
             row = 0;
@@ -60,7 +95,7 @@ public class BeadRoadTilePane extends TilePane {
         }
     }
 
-    protected void DeleteElement(){
+    private void MovePostionBack(){
         if(row == 0) {
             column--;
             row = 7;

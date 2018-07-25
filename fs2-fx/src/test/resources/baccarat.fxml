@@ -50,7 +50,7 @@
                   </Label>
                   <Label styleClass="tieMinLabel" text="100">
                   </Label>
-                  <Label styleClass="handMaxLabel" text="10000">
+                  <Label fx:id="handBetMax" styleClass="handMaxLabel" text="10000">
                   </Label>
                   <Label styleClass="pairMaxLabel" text="1000">
                   </Label>

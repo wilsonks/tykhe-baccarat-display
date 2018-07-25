@@ -8,13 +8,12 @@ import org.scalatest.testng.TestNGSuiteLike
 
 import scala.concurrent.ExecutionContextExecutor
 
-class PublisherSpec
-  extends PublisherVerification[Int](new TestEnvironment(1000L))
-    with TestNGSuiteLike {
+class PublisherSpec extends PublisherVerification[Int](new TestEnvironment(1000L)) with TestNGSuiteLike {
 
   implicit val context: ExecutionContextExecutor = scala.concurrent.ExecutionContext.global
 
   def createFailedPublisher(): Publisher[Int] = new Publisher[Int] {
+
     def subscribe(s: Subscriber[_ >: Int]): Unit = {
       s.onSubscribe(new Subscription {
         def request(n: Long): Unit = ()

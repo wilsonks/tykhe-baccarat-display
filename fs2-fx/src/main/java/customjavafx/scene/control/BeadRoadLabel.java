@@ -12,8 +12,8 @@ public class BeadRoadLabel extends Label {
     }
 
     public BeadRoadLabel(BeadRoadResult result) {
-        this.setResult(result);
         this.getStyleClass().add("BeadRoadLabel");
+        this.setResult(result);
 
     }
 

@@ -13,8 +13,7 @@ import scala.concurrent.ExecutionContext
 import scala.concurrent.duration._
 
 class SubscriberWhiteboxSpec
-  extends SubscriberWhiteboxVerification[Int](new TestEnvironment(1000L))
-    with TestNGSuiteLike {
+    extends SubscriberWhiteboxVerification[Int](new TestEnvironment(1000L)) with TestNGSuiteLike {
   implicit val ec: ExecutionContext = ExecutionContext.global
   private val counter = new AtomicInteger()
 
@@ -23,15 +22,13 @@ class SubscriberWhiteboxSpec
   def createSubscriber(
     p: SubscriberWhiteboxVerification.WhiteboxSubscriberProbe[Int]
   ): Subscriber[Int] =
-    StreamSubscriber[IO, Int]
-      .map { s =>
-        new WhiteboxSubscriber(s, p)
-      }
-      .unsafeRunSync()
+    StreamSubscriber[IO, Int].map { s =>
+      new WhiteboxSubscriber(s, p)
+    }.unsafeRunSync()
 }
 
 final class WhiteboxSubscriber[A](sub: StreamSubscriber[IO, A], probe: WhiteboxSubscriberProbe[A])
-  extends Subscriber[A] {
+    extends Subscriber[A] {
 
   def onComplete(): Unit = {
     sub.onComplete()
@@ -65,8 +62,7 @@ final class WhiteboxSubscriber[A](sub: StreamSubscriber[IO, A], probe: WhiteboxS
 }
 
 class SubscriberBlackboxSpec
-  extends SubscriberBlackboxVerification[Int](new TestEnvironment(1000L))
-    with TestNGSuiteLike {
+    extends SubscriberBlackboxVerification[Int](new TestEnvironment(1000L)) with TestNGSuiteLike {
   implicit val ec: ExecutionContext = ExecutionContext.global
 
   val (scheduler: Scheduler, _) =

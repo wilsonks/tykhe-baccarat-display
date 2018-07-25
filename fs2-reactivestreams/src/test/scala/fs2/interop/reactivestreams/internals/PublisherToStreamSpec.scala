@@ -14,25 +14,42 @@ class PublisherToStreamSpec extends FlatSpec with Matchers with PropertyChecks {
 
   it should "propagate values downstream" in {
     forAll { xs: Seq[Int] =>
-      Stream.emits(xs).covary[IO]
+      Stream
+        .emits(xs)
+        .covary[IO]
         .toPublisher
-        .toStream[IO].compile.toVector.unsafeRunSync() shouldEqual xs.toVector
+        .toStream[IO]
+        .compile
+        .toVector
+        .unsafeRunSync() shouldEqual xs.toVector
     }
   }
 
   object Boom extends Exception("BOOM")
 
   it should "propagate error downstream" in {
-    Stream(1, 2, 3).covary[IO].onComplete(Stream.raiseError(Boom))
+    Stream(1, 2, 3)
+      .covary[IO]
+      .onComplete(Stream.raiseError(Boom))
       .toPublisher
-      .toStream[IO].compile.drain.attempt.unsafeRunSync() shouldEqual Left(Boom)
+      .toStream[IO]
+      .compile
+      .drain
+      .attempt
+      .unsafeRunSync() shouldEqual Left(Boom)
   }
 
   it should "propagate cancellation upstream" in {
     forAll { (as: Seq[Int], bs: Seq[Int]) =>
-      Stream.emits(as ++ bs).covary[IO]
+      Stream
+        .emits(as ++ bs)
+        .covary[IO]
         .toPublisher
-        .toStream[IO].take(as.size).compile.toVector.unsafeRunSync() shouldEqual as.toVector
+        .toStream[IO]
+        .take(as.size)
+        .compile
+        .toVector
+        .unsafeRunSync() shouldEqual as.toVector
     }
   }
 }
