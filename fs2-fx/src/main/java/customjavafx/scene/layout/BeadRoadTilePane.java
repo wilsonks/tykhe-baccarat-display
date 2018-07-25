@@ -3,6 +3,8 @@ package customjavafx.scene.layout;
 
 import customjavafx.scene.control.BeadRoadLabel;
 import customjavafx.scene.control.BeadRoadResult;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.layout.TilePane;
@@ -11,6 +13,7 @@ public class BeadRoadTilePane extends TilePane {
 
     private int column = 0;
     private int row = -1;
+    public IntegerProperty count = new SimpleIntegerProperty(0);
 
     public BeadRoadTilePane() {
         super();
@@ -43,14 +46,6 @@ public class BeadRoadTilePane extends TilePane {
         super.getChildren().add(temp);
     }
 
-    public void Add(BeadRoadResult res) {
-        if (getSize() == sizeLimit()) {
-            RemoveLast();
-            Insert();
-        }
-        Update(res);
-    }
-
     public void Initialize() {
         while (!childrenLimitReached()) {
             Insert();
@@ -65,18 +60,26 @@ public class BeadRoadTilePane extends TilePane {
         }
     }
 
-    public void Remove() {
+    public void RemoveElement() {
         if (getPosition() >= 0) {
             ((BeadRoadLabel) super.getChildren().get(getPosition())).setResult(BeadRoadResult.EMPTY);
             MovePostionBack();
         }
     }
 
-    public int getSize() {
+    public void AddElement(BeadRoadResult res) {
+        if (getSize() == sizeLimit()) {
+            RemoveLast();
+            Insert();
+        }
+        Update(res);
+    }
+
+    private int getSize() {
         return getPosition() + 1;
     }
 
-    public int getPosition() {
+    private int getPosition() {
         return (column * 8) + row;
     }
 
@@ -92,6 +95,7 @@ public class BeadRoadTilePane extends TilePane {
         } else {
             row++;
         }
+        count.setValue(getSize());
     }
 
     private void MovePostionBack() {
@@ -101,6 +105,7 @@ public class BeadRoadTilePane extends TilePane {
         } else {
             row--;
         }
+        count.setValue(getSize());
     }
 
 }
