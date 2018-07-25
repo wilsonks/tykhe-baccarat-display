@@ -14,14 +14,14 @@ public class SmallRoadLabel extends Label {
     private ObjectProperty<SmallRoadResult> result = new ObjectPropertyBase<SmallRoadResult>() {
         @Override
         protected void invalidated() {
-            switch(get()) {
+            switch (get()) {
                 case RED:
-                    pseudoClassStateChanged(PSEUDO_CLASS_RED,true);
-                    pseudoClassStateChanged(PSEUDO_CLASS_BLUE,false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_RED, true);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BLUE, false);
                     break;
                 case BLUE:
-                    pseudoClassStateChanged(PSEUDO_CLASS_RED,false);
-                    pseudoClassStateChanged(PSEUDO_CLASS_BLUE,true);
+                    pseudoClassStateChanged(PSEUDO_CLASS_RED, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BLUE, true);
                     break;
                 default:
             }

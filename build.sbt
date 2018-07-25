@@ -1,4 +1,4 @@
-lazy val `tykhe-fs2` = project.in(file("."))
+lazy val `tykhe-baccarat-display` = project.in(file("."))
   .settings(sharedSettings)
   .settings(doNotPublishArtifact)
   .aggregate(`fs2-console`, `fs2-patterns`, `fs2-codecs`, `fs2-reactivestreams`, `fs2-actor`, `fs2-store`, `fs2-fx`, `fs2-usb`)

@@ -1,7 +1,6 @@
 package customjavafx.scene.control;
 
 
-
 public enum BeadRoadResult {
     BANKER_WIN,
     BANKER_WIN_BANKER_PAIR,

@@ -23,18 +23,18 @@ public class BeadRoadTilePane extends TilePane {
     }
 
     private boolean childrenLimitReached() {
-        return (super.getChildren().size() == sizeLimit()) ;
+        return (super.getChildren().size() == sizeLimit());
     }
 
 
-    private void RemoveLast(){
+    private void RemoveLast() {
         super.getChildren().remove(0);
         MovePostionBack();
     }
 
     private void Update(BeadRoadResult res) {
         MovePositionFront();
-        ((BeadRoadLabel)super.getChildren().get(getPosition())).setResult(res);
+        ((BeadRoadLabel) super.getChildren().get(getPosition())).setResult(res);
     }
 
     private void Insert() {
@@ -52,7 +52,7 @@ public class BeadRoadTilePane extends TilePane {
     }
 
     public void Initialize() {
-        while(!childrenLimitReached()) {
+        while (!childrenLimitReached()) {
             Insert();
         }
     }
@@ -60,24 +60,24 @@ public class BeadRoadTilePane extends TilePane {
     public void Initialize(int row, int column) {
         setPrefRows(row);
         setPrefColumns(column);
-        while(!childrenLimitReached()) {
+        while (!childrenLimitReached()) {
             Insert();
         }
     }
 
     public void Remove() {
-        if(getPosition() >= 0) {
-            ((BeadRoadLabel)super.getChildren().get(getPosition())).setResult(BeadRoadResult.EMPTY);
+        if (getPosition() >= 0) {
+            ((BeadRoadLabel) super.getChildren().get(getPosition())).setResult(BeadRoadResult.EMPTY);
             MovePostionBack();
         }
     }
 
-    public int getSize(){
+    public int getSize() {
         return getPosition() + 1;
     }
 
-    public int getPosition(){
-        return (column*8)+row;
+    public int getPosition() {
+        return (column * 8) + row;
     }
 
     @Override
@@ -85,22 +85,20 @@ public class BeadRoadTilePane extends TilePane {
         super.layoutChildren();
     }
 
-    private void MovePositionFront(){
-        if(row == (getPrefRows()-1)) {
+    private void MovePositionFront() {
+        if (row == (getPrefRows() - 1)) {
             column++;
             row = 0;
-        }
-        else {
+        } else {
             row++;
         }
     }
 
-    private void MovePostionBack(){
-        if(row == 0) {
+    private void MovePostionBack() {
+        if (row == 0) {
             column--;
             row = 7;
-        }
-        else {
+        } else {
             row--;
         }
     }
