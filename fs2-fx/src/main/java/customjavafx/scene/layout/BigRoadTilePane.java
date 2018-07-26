@@ -42,7 +42,13 @@ public class BigRoadTilePane extends TilePane {
     }
 
     private void InsertElement(BigRoadLabel e) {
-
+        if(row < 6) {
+            row++;
+        }else {
+            row = 0;
+            column ++;
+        }
+        ((BigRoadLabel) super.getChildren().get(getPosition())).setResult(e.getResult());
     }
 
     public void Initialize() {
@@ -274,6 +280,10 @@ public class BigRoadTilePane extends TilePane {
 
         getChildren().clear();
         Initialize(6,20);
+
+        for(int j = 0; j < (getSize() - size);j++) {
+            this.InsertElement(lst.get(j));
+        }
 
     }
 
