@@ -25,7 +25,7 @@ class DisplayHandler(
       override def handle(t: KeyEvent): Unit = {
         t.getCode match {
           case KeyCode.ENTER => {
-            beadRoad.AddElement(BeadRoadResult.values().apply(scala.util.Random.nextInt(10)))
+            beadRoad.AddElement(BeadRoadResult.values().apply(scala.util.Random.nextInt(7)))
           }
           case _ => {
             beadRoad.RemoveElement()
@@ -41,11 +41,15 @@ class DisplayHandler(
         println(beadRoad.GetLastElement())
         println(s"Big Road Old Position:${bigRoad.getPosition}")
         bigRoad.AddElement(beadRoad.GetLastElement())
-        println(
-          s"Big Road New " +
-            s"Position:${bigRoad.getPosition}")
+        println(s"Big Road New Position:${bigRoad.getPosition}")
+
+      } else {
+        println(s"--Big Road Old Position:${bigRoad.getPosition}")
+        bigRoad.ShiftCellsBack(6)
+        println(s"--Big Road New Position:${bigRoad.getPosition}")
 
       }
+
     }
   })
 

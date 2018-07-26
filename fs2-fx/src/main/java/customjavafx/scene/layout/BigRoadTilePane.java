@@ -11,6 +11,9 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.layout.TilePane;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BigRoadTilePane extends TilePane {
 
     private int column = 0;
@@ -30,22 +33,16 @@ public class BigRoadTilePane extends TilePane {
     private boolean childrenLimitReached() {
         return (super.getChildren().size() == sizeLimit());
     }
-//
-//
-//    private void RemoveLast() {
-//        super.getChildren().remove(0);
-//        MovePostionBack();
-//    }
-//
-//    private void Update(BeadRoadResult res) {
-//        MovePositionFront();
-//        ((BeadRoadLabel) super.getChildren().get(getPosition())).setResult(res);
-//    }
+
 
     private void Insert() {
         BigRoadLabel temp = new BigRoadLabel(BigRoadResult.EMPTY);
         temp.setResult(BigRoadResult.EMPTY);
         super.getChildren().add(temp);
+    }
+
+    private void InsertElement(BigRoadLabel e) {
+
     }
 
     public void Initialize() {
@@ -60,16 +57,11 @@ public class BigRoadTilePane extends TilePane {
         while (!childrenLimitReached()) {
             Insert();
         }
+        this.column = 0;
+        this.row = -1;
     }
 
-    //
-//    public void RemoveElement() {
-//        if (getPosition() >= 0) {
-//            ((BeadRoadLabel) super.getChildren().get(getPosition())).setResult(BeadRoadResult.EMPTY);
-//            MovePostionBack();
-//        }
-//    }
-//
+
     public void AddElement(BeadRoadResult next) {
         MoveToNextPositionFront(next);
         if(getPosition() >= (sizeLimit() - 1)) return;
@@ -268,19 +260,21 @@ public class BigRoadTilePane extends TilePane {
         count.setValue(getSize());
     }
 
-    private void ShiftElementsBack(){
-        for(int i =0; i < (sizeLimit());i++) {
-            super.getChildren().get(i).toBack();
+
+    public void ShiftCellsBack(int size) {
+
+        ArrayList<BigRoadLabel> lst  = new ArrayList<BigRoadLabel>();
+
+        getChildren().forEach(t -> {
+            lst.add((BigRoadLabel)t);
+        });
+        for(int i = 0; i < size; i++) {
+            lst.remove(i);
         }
-    }
-    private void ShiftCellsBack(int size) {
-        for (int i = 0; i < size; i++) {
-            super.getChildren().remove(i);
-        }
-        for (int i = 0; i < size; i++) {
-            Insert();
-        }
-        column--;
+
+        getChildren().clear();
+        Initialize(6,20);
+
     }
 
     private void MovePostionBack() {
