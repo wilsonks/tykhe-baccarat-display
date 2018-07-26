@@ -35,6 +35,7 @@ public class BeadRoadTilePane extends TilePane {
     private void RemoveLast() {
         super.getChildren().remove(0);
         MovePostionBack();
+        count.setValue(getSize());
     }
 
     private void Update(BeadRoadResult res) {
