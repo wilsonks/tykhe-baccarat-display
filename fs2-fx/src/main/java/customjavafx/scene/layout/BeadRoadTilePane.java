@@ -9,6 +9,8 @@ import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.layout.TilePane;
 
+import javax.management.QueryEval;
+
 public class BeadRoadTilePane extends TilePane {
 
     private int column = 0;
@@ -65,6 +67,7 @@ public class BeadRoadTilePane extends TilePane {
             ((BeadRoadLabel) super.getChildren().get(getPosition())).setResult(BeadRoadResult.EMPTY);
             MovePostionBack();
         }
+        count.setValue(getSize());
     }
 
     public void AddElement(BeadRoadResult res) {
@@ -73,13 +76,20 @@ public class BeadRoadTilePane extends TilePane {
             Insert();
         }
         Update(res);
+        count.setValue(getSize());
     }
 
-    private int getSize() {
+    public BeadRoadResult GetLastElement() {
+
+        return  ((BeadRoadLabel)super.getChildren().get(getPosition())).getResult();
+    }
+
+
+    public int getSize() {
         return getPosition() + 1;
     }
 
-    private int getPosition() {
+    public int getPosition() {
         return (column * 8) + row;
     }
 
@@ -95,7 +105,7 @@ public class BeadRoadTilePane extends TilePane {
         } else {
             row++;
         }
-        count.setValue(getSize());
+
     }
 
     private void MovePostionBack() {
@@ -105,7 +115,7 @@ public class BeadRoadTilePane extends TilePane {
         } else {
             row--;
         }
-        count.setValue(getSize());
+
     }
 
 }

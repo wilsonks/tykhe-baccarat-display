@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import customjavafx.scene.layout.BigRoadTilePane?>
 <VBox styleClass="root" stylesheets="@styles/main.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fs2.io.fx.DisplayHandler">
    <children>
       <HBox styleClass="topmost" stylesheets="@styles/header.css">
@@ -72,8 +73,8 @@
       </HBox>
       <Pane prefHeight="234.0" prefWidth="1910.0" styleClass="BigRoadPane">
          <children>
-            <TilePane fx:id="bigRoad" styleClass="BigRoadTilePane">
-            </TilePane>
+            <BigRoadTilePane fx:id="bigRoad" styleClass="BigRoadTilePane">
+            </BigRoadTilePane>
          </children>
          <opaqueInsets>
             <Insets top="10.0" />

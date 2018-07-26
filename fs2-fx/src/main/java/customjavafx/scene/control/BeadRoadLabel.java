@@ -7,9 +7,6 @@ import javafx.scene.control.Label;
 
 public class BeadRoadLabel extends Label {
 
-    public BeadRoadLabel() {
-        this.getStyleClass().add("BeadRoadLabel");
-    }
 
     public BeadRoadLabel(BeadRoadResult result) {
         this.getStyleClass().add("BeadRoadLabel");
@@ -36,6 +33,23 @@ public class BeadRoadLabel extends Label {
         @Override
         protected void invalidated() {
             switch (get()) {
+                case EMPTY:
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_BOTH_PAIR, false);
+                    break;
+
                 case BANKER_WIN:
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, true);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
@@ -233,20 +247,6 @@ public class BeadRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_BOTH_PAIR, true);
                     break;
                 default:
-                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
-                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
-                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
-                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR, false);
-
-                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN, false);
-                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR, false);
-                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR, false);
-                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR, false);
-
-                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
-                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_BANKER_PAIR, false);
-                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_PLAYER_PAIR, false);
-                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_BOTH_PAIR, false);
             }
         }
 

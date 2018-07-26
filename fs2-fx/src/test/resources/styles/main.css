@@ -160,109 +160,110 @@
 	-fx-alignment: top-left;
 	-fx-tile-alignment: top-left;
 	-fx-pref-rows:6;
+	-fx-pref-columns:20;
 	-fx-pref-tile-width:37.1;
 	-fx-pref-tile-height:37.1;
 	-fx-hgap:.5;
 	-fx-vgap:.5;
 }
 
-.BigRoadlabel {
+.BigRoadLabel {
 	-fx-background-color:white;
 	-fx-pref-width:37.1;
 	-fx-pref-height:37.1;
 }
 
-.BigRoadlabel:bankerWin {
+.BigRoadLabel:bankerWin {
 	-fx-background-image: url("../images/big-road/1.png");
 	-fx-background-position: center;
 	-fx-background-repeat: no-repeat, stretch;
 }
 
-.BigRoadlabel:bankerWinBeforeTie {
+.BigRoadLabel:bankerWinBeforeTie {
 	-fx-background-image: url("../images/big-road/1.png"),url(../images/big-road/21.png);
 	-fx-background-position: center,12 14;
 	-fx-background-repeat: no-repeat, no-repeat;
 }
 
-.BigRoadlabel:bankerWinBankerPair {
+.BigRoadLabel:bankerWinBankerPair {
 	-fx-background-image: url("../images/big-road/2.png");
 	-fx-background-position: center;
 	-fx-background-repeat: no-repeat, stretch;
 }
 
-.BigRoadlabel:bankerWinBankerPairBeforeTie {
+.BigRoadLabel:bankerWinBankerPairBeforeTie {
 	-fx-background-image: url("../images/big-road/2.png"),url(../images/big-road/21.png);
 	-fx-background-position: center,12 14;
 	-fx-background-repeat: no-repeat, no-repeat;
 }
 
-.BigRoadlabel:bankerWinPlayerPair {
+.BigRoadLabel:bankerWinPlayerPair {
 	-fx-background-image: url("../images/big-road/3.png");
 	-fx-background-position: center;
 	-fx-background-repeat: no-repeat, stretch;
 }
 
-.BigRoadlabel:bankerWinPlayerPairBeforeTie {
+.BigRoadLabel:bankerWinPlayerPairBeforeTie {
 	-fx-background-image: url("../images/big-road/3.png"),url(../images/big-road/21.png);
 	-fx-background-position: center,12 14;
 	-fx-background-repeat: no-repeat, no-repeat;
 }
 
-.BigRoadlabel:bankerWinBothPair {
+.BigRoadLabel:bankerWinBothPair {
 	-fx-background-image: url("../images/big-road/4.png");
 	-fx-background-position: center;
 	-fx-background-repeat: no-repeat, stretch;
 }
 
-.BigRoadlabel:bankerWinBothPairBeforeTie {
+.BigRoadLabel:bankerWinBothPairBeforeTie {
 	-fx-background-image: url("../images/big-road/4.png"),url(../images/big-road/21.png);
 	-fx-background-position: center,12 14;
 	-fx-background-repeat: no-repeat, no-repeat;
 }
 
-.BigRoadlabel:playerWin {
+.BigRoadLabel:playerWin {
 	-fx-background-image: url("../images/big-road/5.png");
 	-fx-background-position: center;
 	-fx-background-repeat: no-repeat, stretch;
 }
 
-.BigRoadlabel:playerWinBeforeTie {
+.BigRoadLabel:playerWinBeforeTie {
 	-fx-background-image: url("../images/big-road/5.png"),url(../images/big-road/21.png);
 	-fx-background-position: center,12 14;
 	-fx-background-repeat: no-repeat, no-repeat;
 }
 
-.BigRoadlabel:playerWinBankerPair {
+.BigRoadLabel:playerWinBankerPair {
 	-fx-background-image: url("../images/big-road/6.png");
 	-fx-background-position: center;
 	-fx-background-repeat: no-repeat, stretch;
 }
 
-.BigRoadlabel:playerWinBankerPairBeforeTie {
+.BigRoadLabel:playerWinBankerPairBeforeTie {
 	-fx-background-image: url("../images/big-road/6.png"),url(../images/big-road/21.png);
 	-fx-background-position: center,12 14;
 	-fx-background-repeat: no-repeat, no-repeat;
 }
 
-.BigRoadlabel:playerWinPlayerPair {
+.BigRoadLabel:playerWinPlayerPair {
 	-fx-background-image: url("../images/big-road/7.png");
 	-fx-background-position: center;
 	-fx-background-repeat: no-repeat, stretch;
 }
 
-.BigRoadlabel:playerWinPlayerPairBeforeTie {
+.BigRoadLabel:playerWinPlayerPairBeforeTie {
 	-fx-background-image: url("../images/big-road/7.png"),url(../images/big-road/21.png);
 	-fx-background-position: center,12 14;
 	-fx-background-repeat: no-repeat, no-repeat;
 }
 
-.BigRoadlabel:playerWinBothPair {
+.BigRoadLabel:playerWinBothPair {
 	-fx-background-image: url("../images/big-road/8.png");
 	-fx-background-position: center;
 	-fx-background-repeat: no-repeat, stretch;
 }
 
-.BigRoadlabel:playerWinBothPairBeforeTie {
+.BigRoadLabel:playerWinBothPairBeforeTie {
 	-fx-background-image: url("../images/big-road/8.png"),url(../images/big-road/21.png);
 	-fx-background-position: center,12 14;
 	-fx-background-repeat: no-repeat, no-repeat;

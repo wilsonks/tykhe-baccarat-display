@@ -7,6 +7,11 @@ import javafx.scene.control.Label;
 
 public class BigRoadLabel extends Label {
 
+    public BigRoadLabel(BigRoadResult result) {
+        this.getStyleClass().add("BigRoadLabel");
+        this.setResult(result);
+    }
+
     //Create states - 16
     private static final PseudoClass PSEUDO_CLASS_BANKER_WIN = PseudoClass.getPseudoClass("bankerWin");
     private static final PseudoClass PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR = PseudoClass.getPseudoClass("bankerWinBankerPair");
@@ -33,6 +38,25 @@ public class BigRoadLabel extends Label {
         @Override
         protected void invalidated() {
             switch (get()) {
+                case EMPTY:
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+                    break;
                 case BANKER_WIN:
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, true);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);

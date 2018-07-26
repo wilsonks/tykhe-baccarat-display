@@ -1,13 +1,12 @@
 package fs2.io.fx
 
 import customjavafx.scene.control.BeadRoadResult
-import customjavafx.scene.layout.BeadRoadTilePane
+import customjavafx.scene.layout.{BeadRoadTilePane, BigRoadTilePane}
 import fs2.io.fx.syntax._
 import javafx.beans.value.{ChangeListener, ObservableValue}
 import javafx.event.EventHandler
 import javafx.scene.control.Label
 import javafx.scene.input.{KeyCode, KeyEvent}
-import javafx.scene.layout.TilePane
 import scalafxml.core.macros.sfxml
 
 @sfxml(additionalControls = List("customjavafx.scene.layout"))
@@ -15,10 +14,11 @@ class DisplayHandler(
   val handBetMin: Label,
   val handBetMax: Label,
   val beadRoad: BeadRoadTilePane,
-  val bigRoad: TilePane)(implicit display: Display, echo: Port[String, Echo.Transition]) {
+  val bigRoad: BigRoadTilePane)(implicit display: Display, echo: Port[String, Echo.Transition]) {
 
-  //BeadRoad
   beadRoad.Initialize(8, 20)
+  bigRoad.Initialize(6, 20)
+
   display.root.addEventHandler(
     KeyEvent.KEY_PRESSED,
     new EventHandler[KeyEvent] {
@@ -26,12 +26,9 @@ class DisplayHandler(
         t.getCode match {
           case KeyCode.ENTER => {
             beadRoad.AddElement(BeadRoadResult.values().apply(scala.util.Random.nextInt(10)))
-            println(beadRoad.count.toString)
-
           }
           case _ => {
             beadRoad.RemoveElement()
-            println(beadRoad.count.toString)
           }
         }
       }
@@ -39,8 +36,16 @@ class DisplayHandler(
   )
 
   beadRoad.count.addListener(new ChangeListener[Number] {
-    override def changed(observableValue: ObservableValue[_ <: Number], t: Number, t1: Number): Unit = {
-      println(s"Changed from $t $t1")
+    override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
+      if (t2.intValue() > t1.intValue()) {
+        println(beadRoad.GetLastElement())
+        println(s"Big Road Old Position:${bigRoad.getPosition}")
+        bigRoad.AddElement(beadRoad.GetLastElement())
+        println(
+          s"Big Road New " +
+            s"Position:${bigRoad.getPosition}")
+
+      }
     }
   })
 
