@@ -31,22 +31,27 @@ public class BigRoadTilePane extends TilePane {
     }
 
     private boolean childrenLimitReached() {
-        return (super.getChildren().size() == sizeLimit());
+        return (getChildren().size() == sizeLimit());
     }
 
 
     private void Insert() {
         BigRoadLabel temp = new BigRoadLabel(BigRoadResult.EMPTY);
         temp.setResult(BigRoadResult.EMPTY);
-        super.getChildren().add(temp);
+        this.getChildren().add(temp);
     }
 
     private void InsertElement(BigRoadLabel e) {
-        if(row < 6) {
-            row++;
-        }else {
+        if(row != -1) {
+            if(row < (getPrefRows() - 1)) {
+                row++;
+            }else {
+                row = 0;
+                column ++;
+            }
+        }
+        else {
             row = 0;
-            column ++;
         }
         ((BigRoadLabel) super.getChildren().get(getPosition())).setResult(e.getResult());
     }
@@ -58,8 +63,8 @@ public class BigRoadTilePane extends TilePane {
     }
 
     public void Initialize(int row, int column) {
-        super.setPrefRows(row);
-        super.setPrefColumns(column);
+        this.setPrefRows(row);
+        this.setPrefColumns(column);
         while (!childrenLimitReached()) {
             Insert();
         }
@@ -70,7 +75,6 @@ public class BigRoadTilePane extends TilePane {
 
     public void AddElement(BeadRoadResult next) {
         MoveToNextPositionFront(next);
-        if(getPosition() >= (sizeLimit() - 1)) return;
         switch (next) {
             case BANKER_WIN:
                 ((BigRoadLabel) super.getChildren().get(getPosition())).setResult(BigRoadResult.BANKER_WIN);
@@ -260,30 +264,26 @@ public class BigRoadTilePane extends TilePane {
         } else {
             row++;
         }
-        if (getSize() >= sizeLimit()) {
-            ShiftCellsBack(6);
+        if (getPosition() >= sizeLimit()) {
+            ShiftColumn();
         }
         count.setValue(getSize());
     }
 
 
-    public void ShiftCellsBack(int size) {
-
-        ArrayList<BigRoadLabel> lst  = new ArrayList<BigRoadLabel>();
-
-        getChildren().forEach(t -> {
-            lst.add((BigRoadLabel)t);
+    public void ShiftColumn() {
+        int saveRow= row;
+        int saveColumn = column;
+        row = -1;column = 0;
+        getChildren().stream().skip(getPrefRows()).map(x -> (BigRoadLabel)x).forEach(t -> {
+            InsertElement(t);
         });
-        for(int i = 0; i < size; i++) {
-            lst.remove(i);
-        }
+        getChildren().stream().skip(sizeLimit() - getPrefRows()).map(x -> (BigRoadLabel)x).forEach(t -> {
+            t.setResult(BigRoadResult.EMPTY);
+        });
 
-        getChildren().clear();
-        Initialize(6,20);
-
-        for(int j = 0; j < (getSize() - size);j++) {
-            this.InsertElement(lst.get(j));
-        }
+        row = saveRow;
+        column= saveColumn - 1;
 
     }
 

@@ -17,7 +17,7 @@ class DisplayHandler(
   val bigRoad: BigRoadTilePane)(implicit display: Display, echo: Port[String, Echo.Transition]) {
 
   beadRoad.Initialize(8, 20)
-  bigRoad.Initialize(6, 20)
+  bigRoad.Initialize(2, 20)
 
   display.root.addEventHandler(
     KeyEvent.KEY_PRESSED,
@@ -39,15 +39,9 @@ class DisplayHandler(
     override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
       if (t2.intValue() > t1.intValue()) {
         println(beadRoad.GetLastElement())
-        println(s"Big Road Old Position:${bigRoad.getPosition}")
         bigRoad.AddElement(beadRoad.GetLastElement())
-        println(s"Big Road New Position:${bigRoad.getPosition}")
-
       } else {
         println(s"--Big Road Old Position:${bigRoad.getPosition}")
-        bigRoad.ShiftCellsBack(6)
-        println(s"--Big Road New Position:${bigRoad.getPosition}")
-
       }
 
     }

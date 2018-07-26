@@ -159,7 +159,7 @@
 	-fx-orientation: vertical;
 	-fx-alignment: top-left;
 	-fx-tile-alignment: top-left;
-	-fx-pref-rows:6;
+	-fx-pref-rows:2;
 	-fx-pref-columns:20;
 	-fx-pref-tile-width:37.1;
 	-fx-pref-tile-height:37.1;
