@@ -159,7 +159,7 @@
 	-fx-orientation: vertical;
 	-fx-alignment: top-left;
 	-fx-tile-alignment: top-left;
-	-fx-pref-rows:2;
+	-fx-pref-rows:6;
 	-fx-pref-columns:20;
 	-fx-pref-tile-width:37.1;
 	-fx-pref-tile-height:37.1;
@@ -169,6 +169,10 @@
 
 .BigRoadLabel {
 	-fx-background-color:white;
+	-fx-alignment:center;
+	-fx-text-overrun:center-ellipsis;
+	-fx-text-fill:white;
+	-fx-font-weight:bold;
 	-fx-pref-width:37.1;
 	-fx-pref-height:37.1;
 }

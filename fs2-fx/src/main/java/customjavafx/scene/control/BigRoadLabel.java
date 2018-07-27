@@ -12,6 +12,7 @@ public class BigRoadLabel extends Label {
         this.setResult(result);
     }
 
+    private int tieCount = 1;
     //Create states - 16
     private static final PseudoClass PSEUDO_CLASS_BANKER_WIN = PseudoClass.getPseudoClass("bankerWin");
     private static final PseudoClass PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR = PseudoClass.getPseudoClass("bankerWinBankerPair");
@@ -376,8 +377,19 @@ public class BigRoadLabel extends Label {
         public String getName() {
             return "BigRoadLabel";
         }
+
     };
 
+    public int getTieCount() {
+        return this.tieCount;
+    }
+
+    public void  setTieCount(int s){
+        this.tieCount= s;
+    }
+    public void incTieCount(){
+        this.tieCount++;
+    }
     public BigRoadResult getResult() {
         return result.get();
     }
@@ -388,5 +400,6 @@ public class BigRoadLabel extends Label {
 
     public void setResult(BigRoadResult result) {
         this.result.set(result);
+        this.setText("");
     }
 }

@@ -17,7 +17,7 @@ class DisplayHandler(
   val bigRoad: BigRoadTilePane)(implicit display: Display, echo: Port[String, Echo.Transition]) {
 
   beadRoad.Initialize(8, 20)
-  bigRoad.Initialize(2, 20)
+  bigRoad.Initialize(6, 20)
 
   display.root.addEventHandler(
     KeyEvent.KEY_PRESSED,
@@ -25,7 +25,7 @@ class DisplayHandler(
       override def handle(t: KeyEvent): Unit = {
         t.getCode match {
           case KeyCode.ENTER => {
-            beadRoad.AddElement(BeadRoadResult.values().apply(scala.util.Random.nextInt(7)))
+            beadRoad.AddElement(BeadRoadResult.values().apply(scala.util.Random.nextInt(11)))
           }
           case _ => {
             beadRoad.RemoveElement()

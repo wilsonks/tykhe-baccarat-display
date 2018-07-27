@@ -1,6 +1,7 @@
 package customjavafx.scene.layout;
 
 
+import com.sun.org.apache.xpath.internal.functions.FuncSubstring;
 import customjavafx.scene.control.BeadRoadResult;
 import customjavafx.scene.control.BigRoadLabel;
 import customjavafx.scene.control.BigRoadResult;
@@ -10,9 +11,13 @@ import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.layout.TilePane;
+import scala.Int;
 
+import javax.tools.JavaCompiler;
 import java.util.ArrayList;
 import java.util.List;
+
+import static jdk.nashorn.internal.runtime.regexp.joni.Syntax.Java;
 
 public class BigRoadTilePane extends TilePane {
 
@@ -54,6 +59,8 @@ public class BigRoadTilePane extends TilePane {
             row = 0;
         }
         ((BigRoadLabel) super.getChildren().get(getPosition())).setResult(e.getResult());
+        ((BigRoadLabel) super.getChildren().get(getPosition())).setText(e.getText());
+        ((BigRoadLabel) super.getChildren().get(getPosition())).setTieCount(e.getTieCount());
     }
 
     public void Initialize() {
@@ -138,6 +145,10 @@ public class BigRoadTilePane extends TilePane {
                         ((BigRoadLabel) super.getChildren().get(getPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_BOTH_PAIR);
                         break;
                     default:
+                        ((BigRoadLabel) super.getChildren().get(getPosition())).incTieCount();
+                        int tmp =  ((BigRoadLabel) super.getChildren().get(getPosition())).getTieCount();
+                        ((BigRoadLabel) super.getChildren().get(getPosition())).setText(String.valueOf(tmp));
+                        break;
                 }
                 break;
             }
@@ -280,6 +291,8 @@ public class BigRoadTilePane extends TilePane {
         });
         getChildren().stream().skip(sizeLimit() - getPrefRows()).map(x -> (BigRoadLabel)x).forEach(t -> {
             t.setResult(BigRoadResult.EMPTY);
+            t.setText("");
+            t.setTieCount(1);
         });
 
         row = saveRow;
