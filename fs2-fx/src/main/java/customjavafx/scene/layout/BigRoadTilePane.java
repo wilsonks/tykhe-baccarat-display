@@ -323,22 +323,35 @@ public class BigRoadTilePane extends TilePane {
     private void MoveToPrevPosition(){
         BigRoadLabel labelNow = getLabel(getCurrentPosition());
         ClearLabel(getLabel(getCurrentPosition()));
+        if(getCurrentPosition() == 0) { row--; return;}
+        System.out.println("MovePrevPosition<----row=" + row + " column=" + column);
         if(row == 0) {
             column--;
-            while(((BigRoadLabel)getChildren().get(getCurrentPosition()+1)).getResult() != BigRoadResult.EMPTY) {
-                if((row-1)== getPrefRows()) {
+            while(((BigRoadLabel)getChildren().get(getCurrentPosition())).getResult() != BigRoadResult.EMPTY) {
+                if(row == (getPrefRows()-1)) {
                     column++;
-                    row = 0;
                 }
                 else {
                     row++;
+
                 }
             }
+            if(row == (getPrefRows()-1)) {
+                column--;
+            }else {
+                row--;
+            }
         }else if (row == (getPrefRows() - 1)) {
-            row--;
+            if (((BigRoadLabel)getChildren().get(getCurrentPosition())).getResult() != BigRoadResult.EMPTY){
+                row--;
+            }
+            else {
+                column--;
+            }
         }else {
             row--;
         }
+        System.out.println("MovePrevPosition<----row=" + row + " column=" + column);
     }
 
     public void RemoveElement() {
