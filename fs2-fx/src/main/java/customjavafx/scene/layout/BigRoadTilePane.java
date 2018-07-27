@@ -23,6 +23,7 @@ public class BigRoadTilePane extends TilePane {
 
     private int column = 0;
     private int row = -1;
+    private int savedColumn = -1;
     public IntegerProperty count = new SimpleIntegerProperty(0);
 
     public BigRoadTilePane() {
@@ -39,135 +40,12 @@ public class BigRoadTilePane extends TilePane {
         return (getChildren().size() == sizeLimit());
     }
 
-
-    private void Insert() {
-        BigRoadLabel temp = new BigRoadLabel(BigRoadResult.EMPTY);
-        temp.setResult(BigRoadResult.EMPTY);
-        this.getChildren().add(temp);
-    }
-
-    private void InsertElement(BigRoadLabel e) {
-        if(row != -1) {
-            if(row < (getPrefRows() - 1)) {
-                row++;
-            }else {
-                row = 0;
-                column ++;
-            }
-        }
-        else {
-            row = 0;
-        }
-        ((BigRoadLabel) super.getChildren().get(getPosition())).setResult(e.getResult());
-        ((BigRoadLabel) super.getChildren().get(getPosition())).setText(e.getText());
-        ((BigRoadLabel) super.getChildren().get(getPosition())).setTieCount(e.getTieCount());
-    }
-
-    public void Initialize() {
-        while (!childrenLimitReached()) {
-            Insert();
-        }
-    }
-
-    public void Initialize(int row, int column) {
-        this.setPrefRows(row);
-        this.setPrefColumns(column);
-        while (!childrenLimitReached()) {
-            Insert();
-        }
-        this.column = 0;
-        this.row = -1;
-    }
-
-
-    public void AddElement(BeadRoadResult next) {
-        MoveToNextPositionFront(next);
-        switch (next) {
-            case BANKER_WIN:
-                ((BigRoadLabel) super.getChildren().get(getPosition())).setResult(BigRoadResult.BANKER_WIN);
-                break;
-
-            case BANKER_WIN_BANKER_PAIR:
-                ((BigRoadLabel) super.getChildren().get(getPosition())).setResult(BigRoadResult.BANKER_WIN_BANKER_PAIR);
-                break;
-
-            case BANKER_WIN_PLAYER_PAIR:
-                ((BigRoadLabel) super.getChildren().get(getPosition())).setResult(BigRoadResult.BANKER_WIN_PLAYER_PAIR);
-                break;
-
-            case BANKER_WIN_BOTH_PAIR:
-                ((BigRoadLabel) super.getChildren().get(getPosition())).setResult(BigRoadResult.BANKER_WIN_BOTH_PAIR);
-                break;
-
-            case PLAYER_WIN:
-                ((BigRoadLabel) super.getChildren().get(getPosition())).setResult(BigRoadResult.PLAYER_WIN);
-                break;
-
-            case PLAYER_WIN_BANKER_PAIR:
-                ((BigRoadLabel) super.getChildren().get(getPosition())).setResult(BigRoadResult.PLAYER_WIN_BANKER_PAIR);
-                break;
-
-            case PLAYER_WIN_PLAYER_PAIR:
-                ((BigRoadLabel) super.getChildren().get(getPosition())).setResult(BigRoadResult.PLAYER_WIN_PLAYER_PAIR);
-                break;
-
-            case PLAYER_WIN_BOTH_PAIR:
-                ((BigRoadLabel) super.getChildren().get(getPosition())).setResult(BigRoadResult.PLAYER_WIN_BOTH_PAIR);
-                break;
-
-            case TIE_WIN:
-            case TIE_WIN_BANKER_PAIR:
-            case TIE_WIN_PLAYER_PAIR:
-            case TIE_WIN_BOTH_PAIR: {
-                switch (((BigRoadLabel) super.getChildren().get(getPosition())).getResult()) {
-                    case BANKER_WIN:
-                        ((BigRoadLabel) super.getChildren().get(getPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN);
-                        break;
-                    case BANKER_WIN_BANKER_PAIR:
-                        ((BigRoadLabel) super.getChildren().get(getPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_BANKER_PAIR);
-                        break;
-                    case BANKER_WIN_PLAYER_PAIR:
-                        ((BigRoadLabel) super.getChildren().get(getPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_PLAYER_PAIR);
-                        break;
-                    case BANKER_WIN_BOTH_PAIR:
-                        ((BigRoadLabel) super.getChildren().get(getPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_BOTH_PAIR);
-                        break;
-                    case PLAYER_WIN:
-                        ((BigRoadLabel) super.getChildren().get(getPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN);
-                        break;
-                    case PLAYER_WIN_BANKER_PAIR:
-                        ((BigRoadLabel) super.getChildren().get(getPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_BANKER_PAIR);
-                        break;
-                    case PLAYER_WIN_PLAYER_PAIR:
-                        ((BigRoadLabel) super.getChildren().get(getPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_PLAYER_PAIR);
-                        break;
-                    case PLAYER_WIN_BOTH_PAIR:
-                        ((BigRoadLabel) super.getChildren().get(getPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_BOTH_PAIR);
-                        break;
-                    default:
-                        ((BigRoadLabel) super.getChildren().get(getPosition())).incTieCount();
-                        int tmp =  ((BigRoadLabel) super.getChildren().get(getPosition())).getTieCount();
-                        ((BigRoadLabel) super.getChildren().get(getPosition())).setText(String.valueOf(tmp));
-                        break;
-                }
-                break;
-            }
-
-            default:
-                break;
-        }
-    }
-
-    public int getSize() {
-        return getPosition() + 1;
-    }
-
-    public int getPosition() {
-        return (column * getPrefRows()) + row;
+    private boolean notStartPosition(){
+        return (row >= 0);
     }
 
     private boolean isCurrentWinRed() {
-        switch (((BigRoadLabel) super.getChildren().get(getPosition())).getResult()) {
+        switch (((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult()) {
             case BANKER_WIN:
             case BANKER_WIN_BANKER_PAIR:
             case BANKER_WIN_PLAYER_PAIR:
@@ -183,7 +61,7 @@ public class BigRoadTilePane extends TilePane {
     }
 
     private boolean isCurrentWinBlue() {
-        switch (((BigRoadLabel) super.getChildren().get(getPosition())).getResult()) {
+        switch (((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult()) {
             case PLAYER_WIN:
             case PLAYER_WIN_BANKER_PAIR:
             case PLAYER_WIN_PLAYER_PAIR:
@@ -234,22 +112,183 @@ public class BigRoadTilePane extends TilePane {
         }
     }
 
-    @Override
-    protected void layoutChildren() {
-        super.layoutChildren();
+    private BigRoadLabel getLabel(int pos){
+        return ((BigRoadLabel) super.getChildren().get(pos));
+    }
+
+    private void ClearLabel(BigRoadLabel t) {
+        t.setResult(BigRoadResult.EMPTY);
+        t.setText("");
+        t.setTieCount(1);
     }
 
     private void MoveForSameColor() {
         if ((getPrefRows() - (row + 1)) == 0) {
+            if(savedColumn == -1) savedColumn = column;
             column++;
+
         } else {
-            row++;
+            if (((BigRoadLabel) super.getChildren().get(getCurrentPosition() + 1)).getResult() == BigRoadResult.EMPTY){
+                row++;
+            }
+            else {
+                if(savedColumn == -1) savedColumn = column;
+                column++;
+
+            }
         }
     }
 
     private void MoveForDifferentColor() {
-        column++;
-        row = 0;
+        if(savedColumn != -1) {
+            column = savedColumn + 1;
+            savedColumn = -1;
+            row = 0;
+        }
+        else {
+            column++;
+            row = 0;
+
+        }
+    }
+
+    private void Insert() {
+        this.getChildren().add(new BigRoadLabel(BigRoadResult.EMPTY));
+    }
+
+    private void CopyLabelToCurrentPosition(BigRoadLabel e) {
+        if(row != -1) {
+            if(row < (getPrefRows() - 1)) {
+                row++;
+            }else {
+                row = 0;
+                column ++;
+            }
+        }
+        else {
+            row = 0;
+        }
+        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(e.getResult());
+        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setText(e.getText());
+        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setTieCount(e.getTieCount());
+    }
+
+    public int getSize() {
+        return getCurrentPosition() + 1;
+    }
+
+    public void Initialize() {
+        while (!childrenLimitReached()) {
+            Insert();
+        }
+    }
+
+    public void Initialize(int row, int column) {
+        this.setPrefRows(row);
+        this.setPrefColumns(column);
+        while (!childrenLimitReached()) {
+            Insert();
+        }
+        this.column = 0;
+        this.row = -1;
+    }
+
+    public int getCurrentPosition() {
+        return (column * getPrefRows()) + row;
+    }
+
+    public void ShiftColumn() {
+        int localSaveRow= row;
+        int localSaveColumn = column;
+        row = -1;column = 0;
+        getChildren().stream().skip(getPrefRows()).map(x -> (BigRoadLabel)x).forEach(t -> {
+            CopyLabelToCurrentPosition(t);
+        });
+        getChildren().stream().skip(sizeLimit() - getPrefRows()).map(x -> (BigRoadLabel)x).forEach(t -> {
+            ClearLabel(t);
+        });
+
+        row = localSaveRow;
+        column= localSaveColumn - 1;
+        if(savedColumn != -1) savedColumn--;
+    }
+
+    public void AddElement(BeadRoadResult next) {
+        MoveToNextPositionFront(next);
+        switch (next) {
+            case BANKER_WIN:
+                ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.BANKER_WIN);
+                break;
+
+            case BANKER_WIN_BANKER_PAIR:
+                ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.BANKER_WIN_BANKER_PAIR);
+                break;
+
+            case BANKER_WIN_PLAYER_PAIR:
+                ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.BANKER_WIN_PLAYER_PAIR);
+                break;
+
+            case BANKER_WIN_BOTH_PAIR:
+                ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.BANKER_WIN_BOTH_PAIR);
+                break;
+
+            case PLAYER_WIN:
+                ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.PLAYER_WIN);
+                break;
+
+            case PLAYER_WIN_BANKER_PAIR:
+                ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.PLAYER_WIN_BANKER_PAIR);
+                break;
+
+            case PLAYER_WIN_PLAYER_PAIR:
+                ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.PLAYER_WIN_PLAYER_PAIR);
+                break;
+
+            case PLAYER_WIN_BOTH_PAIR:
+                ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.PLAYER_WIN_BOTH_PAIR);
+                break;
+
+            case TIE_WIN:
+            case TIE_WIN_BANKER_PAIR:
+            case TIE_WIN_PLAYER_PAIR:
+            case TIE_WIN_BOTH_PAIR: {
+                switch (((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult()) {
+                    case BANKER_WIN:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN);
+                        break;
+                    case BANKER_WIN_BANKER_PAIR:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_BANKER_PAIR);
+                        break;
+                    case BANKER_WIN_PLAYER_PAIR:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_PLAYER_PAIR);
+                        break;
+                    case BANKER_WIN_BOTH_PAIR:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_BOTH_PAIR);
+                        break;
+                    case PLAYER_WIN:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN);
+                        break;
+                    case PLAYER_WIN_BANKER_PAIR:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_BANKER_PAIR);
+                        break;
+                    case PLAYER_WIN_PLAYER_PAIR:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_PLAYER_PAIR);
+                        break;
+                    case PLAYER_WIN_BOTH_PAIR:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_BOTH_PAIR);
+                        break;
+                    default:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).incTieCount();
+                        int tmp =  ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getTieCount();
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setText(String.valueOf(tmp));
+                        break;
+                }
+                break;
+            }
+
+            default:
+                break;
+        }
     }
 
     private void MoveToNextPositionFront(BeadRoadResult next) {
@@ -275,34 +314,42 @@ public class BigRoadTilePane extends TilePane {
         } else {
             row++;
         }
-        if (getPosition() >= sizeLimit()) {
+        if (getCurrentPosition() >= sizeLimit()) {
             ShiftColumn();
         }
         count.setValue(getSize());
     }
 
+    private void MoveToPrevPosition(){
+        BigRoadLabel labelNow = getLabel(getCurrentPosition());
+        ClearLabel(getLabel(getCurrentPosition()));
+        if(row == 0) {
+            column--;
+            while(((BigRoadLabel)getChildren().get(getCurrentPosition()+1)).getResult() != BigRoadResult.EMPTY) {
+                if((row-1)== getPrefRows()) {
+                    column++;
+                    row = 0;
+                }
+                else {
+                    row++;
+                }
+            }
+        }else if (row == (getPrefRows() - 1)) {
+            row--;
+        }else {
+            row--;
+        }
+    }
 
-    public void ShiftColumn() {
-        int saveRow= row;
-        int saveColumn = column;
-        row = -1;column = 0;
-        getChildren().stream().skip(getPrefRows()).map(x -> (BigRoadLabel)x).forEach(t -> {
-            InsertElement(t);
-        });
-        getChildren().stream().skip(sizeLimit() - getPrefRows()).map(x -> (BigRoadLabel)x).forEach(t -> {
-            t.setResult(BigRoadResult.EMPTY);
-            t.setText("");
-            t.setTieCount(1);
-        });
-
-        row = saveRow;
-        column= saveColumn - 1;
+    public void RemoveElement() {
+        if (notStartPosition()) MoveToPrevPosition();
 
     }
 
-    private void MovePostionBack() {
-
-        count.setValue(getSize());
+    @Override
+    protected void layoutChildren() {
+        super.layoutChildren();
     }
+
 
 }
