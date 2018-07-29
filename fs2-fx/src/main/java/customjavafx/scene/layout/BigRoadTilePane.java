@@ -99,9 +99,8 @@ public class BigRoadTilePane extends TilePane {
         }
     }
 
-    private BigRoadLabel getLabel(int pos){
-        return ((BigRoadLabel) super.getChildren().get(pos));
-    }
+
+
 
     private void ClearLabel(BigRoadLabel t) {
         t.setResult(BigRoadResult.EMPTY);
@@ -111,23 +110,6 @@ public class BigRoadTilePane extends TilePane {
 
     private void Insert() {
         this.getChildren().add(new BigRoadLabel(BigRoadResult.EMPTY));
-    }
-
-    private void CopyLabelToCurrentPosition(BigRoadLabel e) {
-        if(row != -1) {
-            if(row < (getPrefRows() - 1)) {
-                row++;
-            }else {
-                row = 0;
-                column ++;
-            }
-        }
-        else {
-            row = 0;
-        }
-        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(e.getResult());
-        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setText(e.getText());
-        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setTieCount(e.getTieCount());
     }
 
     private int getSize() {
@@ -147,22 +129,11 @@ public class BigRoadTilePane extends TilePane {
         }
         row = localSaveRow;
         column= localSaveColumn - 1;
-        if(savedColumn != -1) savedColumn--;
-    }
-
-    private void ShiftColumn() {
-//        UpdateBigEyeRoadList();
-        int localSaveRow= row;
-        int localSaveColumn = column;
-        row = -1;column = 0;
-        getChildren().stream().skip(getPrefRows()).map(x -> (BigRoadLabel)x).forEach(t -> {
-            CopyLabelToCurrentPosition(t);
-        });
-        getChildren().stream().skip(getSizeLimit() - getPrefRows()).map(x -> (BigRoadLabel)x).forEach(t -> {
-            ClearLabel(t);
-        });
-        row = localSaveRow;
-        column= localSaveColumn - 1;
+        c4 =  c3;
+        c3 =  c2;
+        c2 = c1;
+        c1 = c0;
+        c0 = 0;
         if(savedColumn != -1) savedColumn--;
     }
 
@@ -326,7 +297,6 @@ public class BigRoadTilePane extends TilePane {
         bead.getChildren().stream().map(x->(BeadRoadLabel)x).forEach(t->{
             AddElement(t.getResult());
         });
-
         long ballsAfter = getCount();
         if(ballsAfter > ballsBefore) {
             if(c0 >= 2) {
