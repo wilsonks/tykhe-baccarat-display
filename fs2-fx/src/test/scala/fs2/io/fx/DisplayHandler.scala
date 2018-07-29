@@ -43,7 +43,6 @@ class DisplayHandler(
     .addListener(new ChangeListener[Number] {
       override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
         bigRoad.ReArrangeElements(beadRoad)
-//        bigEyeRoad.ReArrangeElements(bigRoad)
       }
     })
 
@@ -54,11 +53,10 @@ class DisplayHandler(
         observableValue: ObservableValue[_ <: ObservableList[String]],
         t: ObservableList[String],
         t1: ObservableList[String]): Unit = {
-        println("--------------------------------->")
         t1.forEach(x => {
           print(x);
         })
-        println("<---------------------------------")
+        println();
 
       }
     })

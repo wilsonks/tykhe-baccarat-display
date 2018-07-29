@@ -19,6 +19,7 @@ public class BigRoadTilePane extends TilePane {
     private int column = 0;
     private int row = -1;
     private int savedColumn = -1;
+    private Long ballsBefore = 0L;
 
     private int c0,c1,c2,c3,c4 = 0;
     
@@ -137,7 +138,20 @@ public class BigRoadTilePane extends TilePane {
         return (column * getPrefRows()) + row;
     }
 
+    private void ShiftColumnNew() {
+        int localSaveRow= row;
+        int localSaveColumn = column;
+        this.getChildren().remove(0, (getPrefRows()));
+        for(int i=0; i < (getPrefRows());i++){
+            Insert();
+        }
+        row = localSaveRow;
+        column= localSaveColumn - 1;
+        if(savedColumn != -1) savedColumn--;
+    }
+
     private void ShiftColumn() {
+//        UpdateBigEyeRoadList();
         int localSaveRow= row;
         int localSaveColumn = column;
         row = -1;column = 0;
@@ -147,7 +161,6 @@ public class BigRoadTilePane extends TilePane {
         getChildren().stream().skip(getSizeLimit() - getPrefRows()).map(x -> (BigRoadLabel)x).forEach(t -> {
             ClearLabel(t);
         });
-
         row = localSaveRow;
         column= localSaveColumn - 1;
         if(savedColumn != -1) savedColumn--;
@@ -214,7 +227,8 @@ public class BigRoadTilePane extends TilePane {
             c0++;
         }
         if (getCurrentPosition() >= getSizeLimit()) {
-            ShiftColumn();
+            ShiftColumnNew();
+
         }
     }
 
@@ -305,16 +319,15 @@ public class BigRoadTilePane extends TilePane {
     }
 
     public void ReArrangeElements(BeadRoadTilePane bead) {
-        long ballsBefore = getCount();
+        ballsBefore = getCount();
         getChildren().stream().map(x -> (BigRoadLabel)x ).forEach(t-> ClearLabel(t));
         row = -1;column = 0;savedColumn= -1;
         c0 = c1 = c2 = c3 = c4 = 0;
         bead.getChildren().stream().map(x->(BeadRoadLabel)x).forEach(t->{
             AddElement(t.getResult());
         });
-        long ballsAfter = getCount();
 
-        System.out.println("c4=" + c4 + " c3=" + c3 + " c2=" + c2 + " c1=" + c1 + " c0=" + c0 );
+        long ballsAfter = getCount();
         if(ballsAfter > ballsBefore) {
             if(c0 >= 2) {
                 if(c1 > 0) {
@@ -336,7 +349,7 @@ public class BigRoadTilePane extends TilePane {
                 }
             }
         }else if (ballsAfter < ballsBefore) {
-            bigEyeRoadList.remove(bigEyeRoadList.size() - 1);
+            if(!bigEyeRoadList.isEmpty()) bigEyeRoadList.remove(bigEyeRoadList.size() - 1);
         }
     }
 
