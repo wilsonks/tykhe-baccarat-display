@@ -9,13 +9,19 @@ import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.layout.TilePane;
 
-import javax.management.QueryEval;
-
 public class BeadRoadTilePane extends TilePane {
 
     private int column = 0;
     private int row = -1;
-    public IntegerProperty count = new SimpleIntegerProperty(0);
+    private IntegerProperty count = new SimpleIntegerProperty(0);
+
+    public IntegerProperty countProperty() {
+        return count;
+    }
+
+    public int getCount() {
+        return count.get();
+    }
 
     public BeadRoadTilePane() {
         super();

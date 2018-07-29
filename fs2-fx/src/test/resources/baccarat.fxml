@@ -15,51 +15,52 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import customjavafx.scene.layout.BigRoadTilePane?>
+<?import customjavafx.scene.layout.BigEyeRoadTilePane?>
 <VBox styleClass="root" stylesheets="@styles/main.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fs2.io.fx.DisplayHandler">
    <children>
-      <HBox styleClass="topmost" stylesheets="@styles/header.css">
-         <children>
-            <Pane styleClass="pane1" HBox.hgrow="NEVER">
-               <children>
-                  <Label styleClass="nameLabel" text="BAC-001">
-                     <effect>
-                        <Lighting>
-                           <bumpInput>
-                              <Shadow />
-                           </bumpInput>
-                           <light>
-                              <Light.Distant />
-                           </light>
-                        </Lighting>
-                     </effect>
-                  </Label>
-                  <Label styleClass="sideBetLabel" text="SideBet: Pairs 1:11">
-                  </Label>
-                  <Label styleClass="minBetLabel" text="Min:">
-                  </Label>
-                  <Label styleClass="maxBetLabel" text="Max:">
-                  </Label>
-                  <Label styleClass="handLabel" text="HandBet">
-                  </Label>
-                  <Label styleClass="pairLabel" text="PairBet">
-                  </Label>
-                  <Label styleClass="tieLabel" text="TieBet">
-                  </Label>
-                  <Label fx:id="handBetMin" styleClass="handMinLabel" text="100">
-                  </Label>
-                  <Label styleClass="pairMinLabel" text="100">
-                  </Label>
-                  <Label styleClass="tieMinLabel" text="100">
-                  </Label>
-                  <Label fx:id="handBetMax" styleClass="handMaxLabel" text="10000">
-                  </Label>
-                  <Label styleClass="pairMaxLabel" text="1000">
-                  </Label>
-                  <Label styleClass="tieMaxLabel" text="1000">
-                  </Label>
-               </children>
-            </Pane>
-         </children></HBox>
+      <!--<HBox styleClass="topmost" stylesheets="@styles/header.css">-->
+         <!--<children>-->
+            <!--<Pane styleClass="pane1" HBox.hgrow="NEVER">-->
+               <!--<children>-->
+                  <!--<Label styleClass="nameLabel" text="BAC-001">-->
+                     <!--<effect>-->
+                        <!--<Lighting>-->
+                           <!--<bumpInput>-->
+                              <!--<Shadow />-->
+                           <!--</bumpInput>-->
+                           <!--<light>-->
+                              <!--<Light.Distant />-->
+                           <!--</light>-->
+                        <!--</Lighting>-->
+                     <!--</effect>-->
+                  <!--</Label>-->
+                  <!--<Label styleClass="sideBetLabel" text="SideBet: Pairs 1:11">-->
+                  <!--</Label>-->
+                  <!--<Label styleClass="minBetLabel" text="Min:">-->
+                  <!--</Label>-->
+                  <!--<Label styleClass="maxBetLabel" text="Max:">-->
+                  <!--</Label>-->
+                  <!--<Label styleClass="handLabel" text="HandBet">-->
+                  <!--</Label>-->
+                  <!--<Label styleClass="pairLabel" text="PairBet">-->
+                  <!--</Label>-->
+                  <!--<Label styleClass="tieLabel" text="TieBet">-->
+                  <!--</Label>-->
+                  <!--<Label fx:id="handBetMin" styleClass="handMinLabel" text="100">-->
+                  <!--</Label>-->
+                  <!--<Label styleClass="pairMinLabel" text="100">-->
+                  <!--</Label>-->
+                  <!--<Label styleClass="tieMinLabel" text="100">-->
+                  <!--</Label>-->
+                  <!--<Label fx:id="handBetMax" styleClass="handMaxLabel" text="10000">-->
+                  <!--</Label>-->
+                  <!--<Label styleClass="pairMaxLabel" text="1000">-->
+                  <!--</Label>-->
+                  <!--<Label styleClass="tieMaxLabel" text="1000">-->
+                  <!--</Label>-->
+               <!--</children>-->
+            <!--</Pane>-->
+         <!--</children></HBox>-->
       <HBox styleClass="top">
          <children>
             <Pane styleClass="BeadRoadPane">
@@ -83,250 +84,8 @@
          <children>
             <Pane styleClass="BigEyeRoadPane">
                <children>
-                  <TilePane styleClass="BigEyeRoadTilePane" tileAlignment="TOP_LEFT">
-                     <children>
-                        <BigEyeRoadLabel result="RED" styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel result="BLUE" styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel result="RED" styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel result="RED" styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel result="RED" styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel result="RED" styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-                        <BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-			<BigEyeRoadLabel styleClass="BigEyeRoadlabel" />
-
-                     </children></TilePane>
+                  <BigEyeRoadTilePane fx:id="bigEyeRoad" styleClass="BigEyeRoadTilePane">
+                  </BigEyeRoadTilePane>
                </children></Pane>
             <Pane styleClass="SmallRoadPane">
                <children>

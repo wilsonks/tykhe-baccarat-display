@@ -1,30 +1,32 @@
 package customjavafx.scene.layout;
 
 
-import com.sun.org.apache.xpath.internal.functions.FuncSubstring;
+import customjavafx.scene.control.BeadRoadLabel;
 import customjavafx.scene.control.BeadRoadResult;
 import customjavafx.scene.control.BigRoadLabel;
 import customjavafx.scene.control.BigRoadResult;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.layout.TilePane;
-import scala.Int;
 
-import javax.tools.JavaCompiler;
 import java.util.ArrayList;
-import java.util.List;
-
-import static jdk.nashorn.internal.runtime.regexp.joni.Syntax.Java;
 
 public class BigRoadTilePane extends TilePane {
 
     private int column = 0;
     private int row = -1;
     private int savedColumn = -1;
-    public IntegerProperty count = new SimpleIntegerProperty(0);
+
+    private int c0,c1,c2,c3,c4 = 0;
+    
+    private ListProperty<String> bigEyeRoadList= new SimpleListProperty<String>(FXCollections.observableList(new ArrayList<String>()));
+
+    public ListProperty<String> bigEyeRoadListProperty() {
+        return bigEyeRoadList;
+    }
 
     public BigRoadTilePane() {
         super();
@@ -32,16 +34,12 @@ public class BigRoadTilePane extends TilePane {
         super.setAlignment(Pos.TOP_LEFT);
     }
 
-    private int sizeLimit() {
+    public int getSizeLimit() {
         return (getPrefColumns() * getPrefRows());
     }
 
     private boolean childrenLimitReached() {
-        return (getChildren().size() == sizeLimit());
-    }
-
-    private boolean notStartPosition(){
-        return (row >= 0);
+        return (getChildren().size() == getSizeLimit());
     }
 
     private boolean isCurrentWinRed() {
@@ -100,18 +98,6 @@ public class BigRoadTilePane extends TilePane {
         }
     }
 
-    private boolean isNextWinTie(BeadRoadResult win) {
-        switch (win) {
-            case TIE_WIN:
-            case TIE_WIN_BANKER_PAIR:
-            case TIE_WIN_PLAYER_PAIR:
-            case TIE_WIN_BOTH_PAIR:
-                return true;
-            default:
-                return false;
-        }
-    }
-
     private BigRoadLabel getLabel(int pos){
         return ((BigRoadLabel) super.getChildren().get(pos));
     }
@@ -120,36 +106,6 @@ public class BigRoadTilePane extends TilePane {
         t.setResult(BigRoadResult.EMPTY);
         t.setText("");
         t.setTieCount(1);
-    }
-
-    private void MoveForSameColor() {
-        if ((getPrefRows() - (row + 1)) == 0) {
-            if(savedColumn == -1) savedColumn = column;
-            column++;
-
-        } else {
-            if (((BigRoadLabel) super.getChildren().get(getCurrentPosition() + 1)).getResult() == BigRoadResult.EMPTY){
-                row++;
-            }
-            else {
-                if(savedColumn == -1) savedColumn = column;
-                column++;
-
-            }
-        }
-    }
-
-    private void MoveForDifferentColor() {
-        if(savedColumn != -1) {
-            column = savedColumn + 1;
-            savedColumn = -1;
-            row = 0;
-        }
-        else {
-            column++;
-            row = 0;
-
-        }
     }
 
     private void Insert() {
@@ -173,44 +129,93 @@ public class BigRoadTilePane extends TilePane {
         ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setTieCount(e.getTieCount());
     }
 
-    public int getSize() {
+    private int getSize() {
         return getCurrentPosition() + 1;
-    }
-
-    public void Initialize() {
-        while (!childrenLimitReached()) {
-            Insert();
-        }
-    }
-
-    public void Initialize(int row, int column) {
-        this.setPrefRows(row);
-        this.setPrefColumns(column);
-        while (!childrenLimitReached()) {
-            Insert();
-        }
-        this.column = 0;
-        this.row = -1;
     }
 
     public int getCurrentPosition() {
         return (column * getPrefRows()) + row;
     }
 
-    public void ShiftColumn() {
+    private void ShiftColumn() {
         int localSaveRow= row;
         int localSaveColumn = column;
         row = -1;column = 0;
         getChildren().stream().skip(getPrefRows()).map(x -> (BigRoadLabel)x).forEach(t -> {
             CopyLabelToCurrentPosition(t);
         });
-        getChildren().stream().skip(sizeLimit() - getPrefRows()).map(x -> (BigRoadLabel)x).forEach(t -> {
+        getChildren().stream().skip(getSizeLimit() - getPrefRows()).map(x -> (BigRoadLabel)x).forEach(t -> {
             ClearLabel(t);
         });
 
         row = localSaveRow;
         column= localSaveColumn - 1;
         if(savedColumn != -1) savedColumn--;
+    }
+
+    private void MoveForSameColor() {
+        if ((getPrefRows() - (row + 1)) == 0) {
+            if(savedColumn == -1) savedColumn = column;
+            column++;
+
+        } else {
+            if (((BigRoadLabel) super.getChildren().get(getCurrentPosition() + 1)).getResult() == BigRoadResult.EMPTY){
+                row++;
+            }
+            else {
+                if(savedColumn == -1) savedColumn = column;
+                column++;
+
+            }
+        }
+        c0++;
+    }
+
+    private void MoveForDifferentColor() {
+        if(savedColumn != -1) {
+            column = savedColumn + 1;
+            savedColumn = -1;
+            row = 0;
+        }
+        else {
+            column++;
+            row = 0;
+
+        }
+        c4 = c3;
+        c3 = c2;
+        c2 = c1;
+        c1 = c0;
+        c0 = 1;
+    }
+
+    private void MoveToNextPositionFront(BeadRoadResult next) {
+        if (getSize() != 0) {
+            if (isCurrentWinRed()) {
+                if (isNextWinRed(next)) {
+                    MoveForSameColor();
+                } else {
+                    if (isNextWinBlue(next)) {
+                        MoveForDifferentColor();
+                    }
+                }
+            }
+            else if (isCurrentWinBlue()) {
+                if (isNextWinRed(next)) {
+                    MoveForDifferentColor();
+                } else {
+                    if (isNextWinBlue(next)) {
+                        MoveForSameColor();
+                    }
+                }
+            }
+        } else {
+            row++;
+            c0++;
+        }
+        if (getCurrentPosition() >= getSizeLimit()) {
+            ShiftColumn();
+        }
     }
 
     public void AddElement(BeadRoadResult next) {
@@ -291,72 +296,58 @@ public class BigRoadTilePane extends TilePane {
         }
     }
 
-    private void MoveToNextPositionFront(BeadRoadResult next) {
-        if (getSize() != 0) {
-            if (isCurrentWinRed()) {
-                if (isNextWinRed(next)) {
-                    MoveForSameColor();
-                } else {
-                    if (isNextWinBlue(next)) {
-                        MoveForDifferentColor();
-                    }
-                }
-            }
-            else if (isCurrentWinBlue()) {
-                if (isNextWinRed(next)) {
-                    MoveForDifferentColor();
-                } else {
-                    if (isNextWinBlue(next)) {
-                        MoveForSameColor();
-                    }
-                }
-            }
-        } else {
-            row++;
-        }
-        if (getCurrentPosition() >= sizeLimit()) {
-            ShiftColumn();
-        }
-        count.setValue(getSize());
+    private Long getCount() {
+        return getChildren()
+                .stream()
+                .map(x->(BigRoadLabel)x)
+                .filter(t->t.getResult()!= BigRoadResult.EMPTY)
+                .count();
     }
 
-    private void MoveToPrevPosition(){
-        BigRoadLabel labelNow = getLabel(getCurrentPosition());
-        ClearLabel(getLabel(getCurrentPosition()));
-        if(getCurrentPosition() == 0) { row--; return;}
-        System.out.println("MovePrevPosition<----row=" + row + " column=" + column);
-        if(row == 0) {
-            column--;
-            while(((BigRoadLabel)getChildren().get(getCurrentPosition())).getResult() != BigRoadResult.EMPTY) {
-                if(row == (getPrefRows()-1)) {
-                    column++;
-                }
-                else {
-                    row++;
+    public void ReArrangeElements(BeadRoadTilePane bead) {
+        long ballsBefore = getCount();
+        getChildren().stream().map(x -> (BigRoadLabel)x ).forEach(t-> ClearLabel(t));
+        row = -1;column = 0;savedColumn= -1;
+        c0 = c1 = c2 = c3 = c4 = 0;
+        bead.getChildren().stream().map(x->(BeadRoadLabel)x).forEach(t->{
+            AddElement(t.getResult());
+        });
+        long ballsAfter = getCount();
 
+        System.out.println("c4=" + c4 + " c3=" + c3 + " c2=" + c2 + " c1=" + c1 + " c0=" + c0 );
+        if(ballsAfter > ballsBefore) {
+            if(c0 >= 2) {
+                if(c1 > 0) {
+                    if(c0 == (c1+1)) {
+                        bigEyeRoadList.add("blue");
+                    }else{
+                        bigEyeRoadList.add("red");
+                    }
                 }
-            }
-            if(row == (getPrefRows()-1)) {
-                column--;
             }else {
-                row--;
+                //Last Element is in First Row
+                if(c2 > 0) {
+                    //You compare you
+                    if((c1+1) == (c2+1)) {
+                        bigEyeRoadList.add("red");
+                    }else{
+                        bigEyeRoadList.add("blue");
+                    }
+                }
             }
-        }else if (row == (getPrefRows() - 1)) {
-            if (((BigRoadLabel)getChildren().get(getCurrentPosition())).getResult() != BigRoadResult.EMPTY){
-                row--;
-            }
-            else {
-                column--;
-            }
-        }else {
-            row--;
+        }else if (ballsAfter < ballsBefore) {
+            bigEyeRoadList.remove(bigEyeRoadList.size() - 1);
         }
-        System.out.println("MovePrevPosition<----row=" + row + " column=" + column);
     }
 
-    public void RemoveElement() {
-        if (notStartPosition()) MoveToPrevPosition();
-
+    public void Initialize(int row, int column) {
+        this.setPrefRows(row);
+        this.setPrefColumns(column);
+        while (!childrenLimitReached()) {
+            Insert();
+        }
+        this.column = 0;
+        this.row = -1;
     }
 
     @Override

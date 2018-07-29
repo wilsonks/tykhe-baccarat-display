@@ -265,11 +265,11 @@ public class BeadRoadLabel extends Label {
         return result.get();
     }
 
-    public ObjectProperty<BeadRoadResult> resultProperty() {
-        return result;
-    }
-
     public void setResult(BeadRoadResult result) {
         this.result.set(result);
+    }
+
+    public ObjectProperty<BeadRoadResult> resultProperty() {
+        return result;
     }
 }

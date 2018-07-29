@@ -159,8 +159,8 @@
 	-fx-orientation: vertical;
 	-fx-alignment: top-left;
 	-fx-tile-alignment: top-left;
-	-fx-pref-rows:6;
-	-fx-pref-columns:49;
+	-fx-pref-rows:4;
+	-fx-pref-columns:20;
 	-fx-pref-tile-width:37.1;
 	-fx-pref-tile-height:37.1;
 	-fx-hgap:.5;
@@ -303,29 +303,30 @@
 .BigEyeRoadTilePane {
 	-fx-scale-x:1;
 	-fx-scale-y:1;
-	-fx-pref-height:167;
-	-fx-orientation: vertical;
+    -fx-alignment: top-left;
+    -fx-tile-alignment: top-left;
+	-fx-pref-rows:4;
+	-fx-pref-columns:21;
 	-fx-hgap:1;
 	-fx-vgap:1;
 	-fx-pref-tile-width:20;
 	-fx-pref-tile-height:20;
-	-fx-pref-rows:4;
 }
 
-.BigEyeRoadlabel {
+.BigEyeRoadLabel {
 	-fx-background-color:white;
 	-fx-pref-width:20;
 	-fx-pref-height:20;
 }
 
-.BigEyeRoadlabel:red {
+.BigEyeRoadLabel:red {
 	-fx-background-image: url("../images/big-eye-road/1.png");
 	-fx-background-position:center;
 	-fx-background-repeat: no-repeat ;
 	-fx-background-size: contain;
 }
 
-.BigEyeRoadlabel:blue {
+.BigEyeRoadLabel:blue {
 	-fx-background-image: url("../images/big-eye-road/2.png");
 	-fx-background-position:center;
 	-fx-background-repeat: no-repeat ;
