@@ -14,6 +14,12 @@ import scalafxml.core.macros.sfxml
 class DisplayHandler(
   val handBetMin: Label,
   val handBetMax: Label,
+  val playerWinCount: Label,
+  val bankerWinCount: Label,
+  val tieWinCount: Label,
+  val playerPairCount: Label,
+  val bankerPairCount: Label,
+  val totalCount: Label,
   val beadRoad: BeadRoadTilePane,
   val bigEyeRoad: BigEyeRoadTilePane,
   val smallRoad: SmallRoadTilePane,
@@ -43,7 +49,7 @@ class DisplayHandler(
   )
 
   beadRoad
-    .getcountProperty()
+    .getCountProperty()
     .addListener(new ChangeListener[Number] {
       override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
         if (t2.longValue() > t1.longValue()) {
@@ -54,19 +60,27 @@ class DisplayHandler(
       }
     })
 
-  beadRoad
-    .getcountProperty()
-    .addListener(new ChangeListener[Number] {
-      override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
-        println("TotalCount=" + t2);
-      }
-    })
+//  beadRoad
+//    .getCountProperty()
+//    .addListener(new ChangeListener[Number] {
+//      override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
+//        if (t2.intValue() > 0) {
+//          totalCount.setText(String.valueOf(t2.intValue()));
+//        } else {
+//          totalCount.setText("");
+//        }
+//      }
+//    })
 
   beadRoad
     .getBankerWinCount()
     .addListener(new ChangeListener[Number] {
       override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
-        println("BankerWin=" + t2);
+        if (t2.intValue() > 0) {
+          bankerWinCount.setText(String.valueOf(t2.intValue()));
+        } else {
+          bankerWinCount.setText("");
+        }
       }
     })
 
@@ -74,7 +88,11 @@ class DisplayHandler(
     .getPlayerWinCount()
     .addListener(new ChangeListener[Number] {
       override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
-        println("PlayerWin=" + t2);
+        if (t2.intValue() > 0) {
+          playerWinCount.setText(String.valueOf(t2.intValue()));
+        } else {
+          playerWinCount.setText("");
+        }
       }
     })
 
@@ -82,7 +100,11 @@ class DisplayHandler(
     .getTieWinCount()
     .addListener(new ChangeListener[Number] {
       override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
-        println("TieWin=" + t2);
+        if (t2.intValue() > 0) {
+          tieWinCount.setText(String.valueOf(t2.intValue()));
+        } else {
+          tieWinCount.setText("");
+        }
       }
     })
 
@@ -90,7 +112,11 @@ class DisplayHandler(
     .getBankerPairCount()
     .addListener(new ChangeListener[Number] {
       override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
-        println("BankerPair=" + t2);
+        if (t2.intValue() > 0) {
+          bankerPairCount.setText(String.valueOf(t2.intValue()));
+        } else {
+          bankerPairCount.setText("");
+        }
       }
     })
 
@@ -98,7 +124,11 @@ class DisplayHandler(
     .getPlayerPairCount()
     .addListener(new ChangeListener[Number] {
       override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
-        println("PlayerPair=" + t2);
+        if (t2.intValue() > 0) {
+          playerPairCount.setText(String.valueOf(t2.intValue()));
+        } else {
+          playerPairCount.setText("");
+        }
       }
     })
 

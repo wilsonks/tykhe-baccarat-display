@@ -1,68 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import customjavafx.scene.control.BigEyeRoadLabel?>
-<?import customjavafx.scene.control.CockroachRoadLabel?>
-<?import customjavafx.scene.control.SmallRoadLabel?>
 <?import customjavafx.scene.layout.BeadRoadTilePane?>
+<?import customjavafx.scene.layout.BigEyeRoadTilePane?>
+<?import customjavafx.scene.layout.BigRoadTilePane?>
+<?import customjavafx.scene.layout.CockroachRoadTilePane?>
+<?import customjavafx.scene.layout.SmallRoadTilePane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.Light.Distant?>
-<?import javafx.scene.effect.Lighting?>
-<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<?import customjavafx.scene.layout.BigRoadTilePane?>
-<?import customjavafx.scene.layout.BigEyeRoadTilePane?>
-<?import customjavafx.scene.layout.SmallRoadTilePane?>
-<?import customjavafx.scene.layout.CockroachRoadTilePane?>
-<VBox styleClass="root" stylesheets="@styles/main.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fs2.io.fx.DisplayHandler">
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+
+<VBox styleClass="root" stylesheets="@styles/main.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fs2.io.fx.DisplayHandler">
    <children>
-      <!--<HBox styleClass="topmost" stylesheets="@styles/header.css">-->
-         <!--<children>-->
-            <!--<Pane styleClass="pane1" HBox.hgrow="NEVER">-->
-               <!--<children>-->
-                  <!--<Label styleClass="nameLabel" text="BAC-001">-->
-                     <!--<effect>-->
-                        <!--<Lighting>-->
-                           <!--<bumpInput>-->
-                              <!--<Shadow />-->
-                           <!--</bumpInput>-->
-                           <!--<light>-->
-                              <!--<Light.Distant />-->
-                           <!--</light>-->
-                        <!--</Lighting>-->
-                     <!--</effect>-->
-                  <!--</Label>-->
-                  <!--<Label styleClass="sideBetLabel" text="SideBet: Pairs 1:11">-->
-                  <!--</Label>-->
-                  <!--<Label styleClass="minBetLabel" text="Min:">-->
-                  <!--</Label>-->
-                  <!--<Label styleClass="maxBetLabel" text="Max:">-->
-                  <!--</Label>-->
-                  <!--<Label styleClass="handLabel" text="HandBet">-->
-                  <!--</Label>-->
-                  <!--<Label styleClass="pairLabel" text="PairBet">-->
-                  <!--</Label>-->
-                  <!--<Label styleClass="tieLabel" text="TieBet">-->
-                  <!--</Label>-->
-                  <!--<Label fx:id="handBetMin" styleClass="handMinLabel" text="100">-->
-                  <!--</Label>-->
-                  <!--<Label styleClass="pairMinLabel" text="100">-->
-                  <!--</Label>-->
-                  <!--<Label styleClass="tieMinLabel" text="100">-->
-                  <!--</Label>-->
-                  <!--<Label fx:id="handBetMax" styleClass="handMaxLabel" text="10000">-->
-                  <!--</Label>-->
-                  <!--<Label styleClass="pairMaxLabel" text="1000">-->
-                  <!--</Label>-->
-                  <!--<Label styleClass="tieMaxLabel" text="1000">-->
-                  <!--</Label>-->
-               <!--</children>-->
-            <!--</Pane>-->
-         <!--</children></HBox>-->
+      <HBox styleClass="topmost" stylesheets="@styles/header.css">
+         <children>
+            <Pane styleClass="pane1" HBox.hgrow="NEVER">
+               <children>
+                  <Label styleClass="nameLabel" text="BAC-001">
+                  </Label>
+                  <Label styleClass="sideBetLabel" text="SideBet: Pairs 1:11">
+                  </Label>
+                  <Label styleClass="minBetLabel" text="Min:">
+                  </Label>
+                  <Label styleClass="maxBetLabel" text="Max:">
+                  </Label>
+                  <Label styleClass="handLabel" text="HandBet">
+                  </Label>
+                  <Label styleClass="pairLabel" text="PairBet">
+                  </Label>
+                  <Label styleClass="tieLabel" text="TieBet">
+                  </Label>
+                  <Label fx:id="handBetMin" styleClass="handMinLabel" text="100">
+                  </Label>
+                  <Label styleClass="pairMinLabel" text="100">
+                  </Label>
+                  <Label styleClass="tieMinLabel" text="100">
+                  </Label>
+                  <Label fx:id="handBetMax" styleClass="handMaxLabel" text="10000">
+                  </Label>
+                  <Label styleClass="pairMaxLabel" text="1000">
+                  </Label>
+                  <Label styleClass="tieMaxLabel" text="1000">
+                  </Label>
+               </children>
+            </Pane>
+         </children></HBox>
       <HBox styleClass="top">
          <children>
             <Pane styleClass="BeadRoadPane">
@@ -71,7 +58,39 @@
                   </BeadRoadTilePane>
                </children>
 	    </Pane>
-            <Pane styleClass="history" />
+            <Pane styleClass="history">
+               <children>
+                  <Label fx:id="playerWinCount" alignment="CENTER" contentDisplay="CENTER" layoutX="213.0" layoutY="109.0" prefHeight="24.0" prefWidth="51.0" text="" textFill="#4a4141">
+                     <font>
+                        <Font name="Arctik 3" size="33.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="bankerWinCount" alignment="CENTER" contentDisplay="CENTER" layoutX="213.0" layoutY="158.0" prefHeight="24.0" prefWidth="51.0" text="" textFill="#4a4141">
+                     <font>
+                        <Font name="Arctik 3" size="33.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tieWinCount" alignment="CENTER" contentDisplay="CENTER" layoutX="213.0" layoutY="216.0" prefHeight="24.0" prefWidth="51.0" text="" textFill="#4a4141">
+                     <font>
+                        <Font name="Arctik 3" size="33.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="playerPairCount" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="109.0" prefHeight="24.0" prefWidth="51.0" text="" textFill="#4a4141">
+                     <font>
+                        <Font name="Arctik 3" size="33.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="bankerPairCount" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="158.0" prefHeight="24.0" prefWidth="51.0" text="" textFill="#4a4141">
+                     <font>
+                        <Font name="Arctik 3" size="33.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalCount" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="216.0" prefHeight="24.0" prefWidth="51.0" text="" textFill="#4a4141">
+                     <font>
+                        <Font name="Arctik 3" size="33.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
          </children>
       </HBox>
       <Pane prefHeight="234.0" prefWidth="1910.0" styleClass="BigRoadPane">

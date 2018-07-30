@@ -14,7 +14,7 @@ public class BeadRoadTilePane extends TilePane {
     private int column = 0;
     private int row = -1;
     private IntegerProperty count = new SimpleIntegerProperty(0);
-    public IntegerProperty getcountProperty() {return count;}
+    public IntegerProperty getCountProperty() {return count;}
 
     private IntegerProperty playerWinCount = new SimpleIntegerProperty(0);
     public IntegerProperty getPlayerWinCount() {return playerWinCount;}
