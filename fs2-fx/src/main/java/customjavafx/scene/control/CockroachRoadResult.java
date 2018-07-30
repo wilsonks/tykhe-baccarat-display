@@ -2,5 +2,6 @@ package customjavafx.scene.control;
 
 public enum CockroachRoadResult {
     RED,
-    BLUE;
+    BLUE,
+    EMPTY;
 }

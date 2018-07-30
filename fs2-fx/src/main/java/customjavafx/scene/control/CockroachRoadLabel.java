@@ -6,6 +6,13 @@ import javafx.css.PseudoClass;
 import javafx.scene.control.Label;
 
 public class CockroachRoadLabel extends Label {
+
+
+    public CockroachRoadLabel(CockroachRoadResult res) {
+        this.getStyleClass().add("CockroachRoadlabel");
+        setResult(res);
+    }
+
     //Add States
     private static final PseudoClass PSEUDO_CLASS_RED = PseudoClass.getPseudoClass("red");
     private static final PseudoClass PSEUDO_CLASS_BLUE = PseudoClass.getPseudoClass("blue");
@@ -22,6 +29,10 @@ public class CockroachRoadLabel extends Label {
                 case BLUE:
                     pseudoClassStateChanged(PSEUDO_CLASS_RED, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BLUE, true);
+                    break;
+                case EMPTY:
+                    pseudoClassStateChanged(PSEUDO_CLASS_RED, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BLUE, false);
                     break;
                 default:
             }

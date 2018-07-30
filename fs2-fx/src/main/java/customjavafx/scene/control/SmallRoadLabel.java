@@ -6,6 +6,16 @@ import javafx.css.PseudoClass;
 import javafx.scene.control.Label;
 
 public class SmallRoadLabel extends Label {
+
+    public SmallRoadLabel(ObjectProperty<SmallRoadResult> result) {
+        this.result = result;
+    }
+
+    public SmallRoadLabel(SmallRoadResult res) {
+        this.getStyleClass().add("SmallRoadLabel");
+        setResult(res);
+    }
+
     //Add States
     private static final PseudoClass PSEUDO_CLASS_RED = PseudoClass.getPseudoClass("red");
     private static final PseudoClass PSEUDO_CLASS_BLUE = PseudoClass.getPseudoClass("blue");
@@ -23,6 +33,11 @@ public class SmallRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_RED, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BLUE, true);
                     break;
+                case EMPTY:
+                    pseudoClassStateChanged(PSEUDO_CLASS_RED, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BLUE, false);
+                    break;
+
                 default:
             }
         }

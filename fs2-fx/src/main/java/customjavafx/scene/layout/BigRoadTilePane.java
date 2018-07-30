@@ -17,14 +17,23 @@ public class BigRoadTilePane extends TilePane {
     private int row = -1;
     private int savedColumn = -1;
     private boolean shiftedNow = false;
-
     private int c0,c1,c2,c3,c4 = 0;
     
     private ListProperty<BigEyeRoadLabel> bigEyeRoadList= new SimpleListProperty<BigEyeRoadLabel>(FXCollections.observableList(new ArrayList<BigEyeRoadLabel>()));
-
     public ListProperty<BigEyeRoadLabel> bigEyeRoadListProperty() {
         return bigEyeRoadList;
     }
+
+    private ListProperty<SmallRoadLabel> smallRoadList= new SimpleListProperty<SmallRoadLabel>(FXCollections.observableList(new ArrayList<SmallRoadLabel>()));
+    public ListProperty<SmallRoadLabel> smallRoadListProperty() {
+        return smallRoadList;
+    }
+
+    private ListProperty<CockroachRoadLabel> cockroachRoadList= new SimpleListProperty<CockroachRoadLabel>(FXCollections.observableList(new ArrayList<CockroachRoadLabel>()));
+    public ListProperty<CockroachRoadLabel> cockroachRoadListProperty() {
+        return cockroachRoadList;
+    }
+
 
     public BigRoadTilePane() {
         super();
@@ -296,33 +305,88 @@ public class BigRoadTilePane extends TilePane {
         });
     }
 
+    private void UpdateBigEyeRoadList(int c0,int c1, int c2){
+        if(c0 >= 2) {
+            if(c1 > 0) {
+                if(c0 == (c1+1)) {
+                    bigEyeRoadList.add(new BigEyeRoadLabel(BigEyeRoadResult.BLUE));
+                }else{
+                    bigEyeRoadList.add(new BigEyeRoadLabel(BigEyeRoadResult.RED));
+                }
+            }
+        }else {
+            //Last Element is in First Row
+            if(c2 > 0) {
+                //You compare you
+                if((c1+1) == (c2+1)) {
+                    bigEyeRoadList.add(new BigEyeRoadLabel(BigEyeRoadResult.RED));
+
+                }else{
+                    bigEyeRoadList.add(new BigEyeRoadLabel(BigEyeRoadResult.BLUE));
+
+                }
+            }
+        }
+    }
+
+    private void UpdateSmallRoadList(int c0,int c1, int c2){
+        if(c0 >= 2) {
+            if(c1 > 0) {
+                if(c0 == (c1+1)) {
+                    smallRoadList.add(new SmallRoadLabel(SmallRoadResult.BLUE));
+                }else{
+                    smallRoadList.add(new SmallRoadLabel(SmallRoadResult.RED));
+                }
+            }
+        }else {
+            //Last Element is in First Row
+            if(c2 > 0) {
+                //You compare you
+                if((c1+1) == (c2+1)) {
+                    smallRoadList.add(new SmallRoadLabel(SmallRoadResult.RED));
+
+                }else{
+                    smallRoadList.add(new SmallRoadLabel(SmallRoadResult.BLUE));
+
+                }
+            }
+        }
+    }
+
+    private void UpdateCockroachRoadList(int c0,int c1, int c2){
+        if(c0 >= 2) {
+            if(c1 > 0) {
+                if(c0 == (c1+1)) {
+                    cockroachRoadList.add(new CockroachRoadLabel(CockroachRoadResult.BLUE));
+                }else{
+                    cockroachRoadList.add(new CockroachRoadLabel(CockroachRoadResult.RED));
+                }
+            }
+        }else {
+            //Last Element is in First Row
+            if(c2 > 0) {
+                //You compare you
+                if((c1+1) == (c2+1)) {
+                    cockroachRoadList.add(new CockroachRoadLabel(CockroachRoadResult.RED));
+
+                }else{
+                    cockroachRoadList.add(new CockroachRoadLabel(CockroachRoadResult.BLUE));
+
+                }
+            }
+        }
+    }
+
+
     public void AddElement(BeadRoadTilePane bead) {
         Long ballsBefore = getCount();
         ReArrangeElements(bead);
         Long ballsAfter = getCount();
-//
+
         if((ballsBefore < ballsAfter) || (shiftedNow)){
-            if(c0 >= 2) {
-                if(c1 > 0) {
-                    if(c0 == (c1+1)) {
-                        bigEyeRoadList.add(new BigEyeRoadLabel(BigEyeRoadResult.BLUE));
-                    }else{
-                        bigEyeRoadList.add(new BigEyeRoadLabel(BigEyeRoadResult.RED));
-                    }
-                }
-            }else {
-                //Last Element is in First Row
-                if(c2 > 0) {
-                    //You compare you
-                    if((c1+1) == (c2+1)) {
-                        bigEyeRoadList.add(new BigEyeRoadLabel(BigEyeRoadResult.RED));
-
-                    }else{
-                        bigEyeRoadList.add(new BigEyeRoadLabel(BigEyeRoadResult.BLUE));
-
-                    }
-                }
-            }
+            UpdateBigEyeRoadList(c0,c1,c2);
+            UpdateSmallRoadList(c0,c2,c3);
+            UpdateCockroachRoadList(c0,c3,c4);
         }
 
         shiftedNow=false;
@@ -335,6 +399,8 @@ public class BigRoadTilePane extends TilePane {
         Long ballsAfter = getCount();
         if (ballsAfter < ballsBefore) {
             if(!bigEyeRoadList.isEmpty()) bigEyeRoadList.remove(bigEyeRoadList.size() - 1);
+            if(!smallRoadList.isEmpty()) smallRoadList.remove(smallRoadList.size() - 1);
+            if(!cockroachRoadList.isEmpty()) cockroachRoadList.remove(cockroachRoadList.size() - 1);
         }
     }
 

@@ -1,7 +1,7 @@
 package fs2.io.fx
 
-import customjavafx.scene.control.{BeadRoadResult, BigEyeRoadLabel}
-import customjavafx.scene.layout.{BeadRoadTilePane, BigEyeRoadTilePane, BigRoadTilePane}
+import customjavafx.scene.control.{BeadRoadResult, BigEyeRoadLabel, CockroachRoadLabel, SmallRoadLabel}
+import customjavafx.scene.layout._
 import fs2.io.fx.syntax._
 import javafx.beans.value.{ChangeListener, ObservableValue}
 import javafx.collections.ObservableList
@@ -16,11 +16,15 @@ class DisplayHandler(
   val handBetMax: Label,
   val beadRoad: BeadRoadTilePane,
   val bigEyeRoad: BigEyeRoadTilePane,
+  val smallRoad: SmallRoadTilePane,
+  val cockroachRoad: CockroachRoadTilePane,
   val bigRoad: BigRoadTilePane)(implicit display: Display, echo: Port[String, Echo.Transition]) {
 
   beadRoad.Initialize(8, 20)
   bigRoad.Initialize(6, 49)
   bigEyeRoad.Initialize(8, 30)
+  smallRoad.Initialize(8, 30)
+  cockroachRoad.Initialize(8, 30)
 
   display.root.addEventHandler(
     KeyEvent.KEY_PRESSED,
@@ -58,6 +62,28 @@ class DisplayHandler(
         t: ObservableList[BigEyeRoadLabel],
         t1: ObservableList[BigEyeRoadLabel]): Unit = {
         bigEyeRoad.ReArrangeElements(t1)
+      }
+    })
+
+  bigRoad
+    .smallRoadListProperty()
+    .addListener(new ChangeListener[ObservableList[SmallRoadLabel]] {
+      override def changed(
+        observableValue: ObservableValue[_ <: ObservableList[SmallRoadLabel]],
+        t: ObservableList[SmallRoadLabel],
+        t1: ObservableList[SmallRoadLabel]): Unit = {
+        smallRoad.ReArrangeElements(t1)
+      }
+    })
+
+  bigRoad
+    .cockroachRoadListProperty()
+    .addListener(new ChangeListener[ObservableList[CockroachRoadLabel]] {
+      override def changed(
+        observableValue: ObservableValue[_ <: ObservableList[CockroachRoadLabel]],
+        t: ObservableList[CockroachRoadLabel],
+        t1: ObservableList[CockroachRoadLabel]): Unit = {
+        cockroachRoad.ReArrangeElements(t1)
       }
     })
 

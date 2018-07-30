@@ -1,19 +1,20 @@
 package customjavafx.scene.layout;
 
 
-import customjavafx.scene.control.*;
+import customjavafx.scene.control.CockroachRoadLabel;
+import customjavafx.scene.control.CockroachRoadResult;
 import javafx.collections.ObservableList;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.layout.TilePane;
 
-public class BigEyeRoadTilePane extends TilePane {
+public class CockroachRoadTilePane extends TilePane {
 
     private int column = 0;
     private int row = -1;
     private int savedColumn = -1;
 
-    public BigEyeRoadTilePane() {
+    public CockroachRoadTilePane() {
         super();
         super.setOrientation(Orientation.VERTICAL);
         super.setAlignment(Pos.TOP_LEFT);
@@ -28,24 +29,24 @@ public class BigEyeRoadTilePane extends TilePane {
     }
 
     private void Insert() {
-        this.getChildren().add(new BigEyeRoadLabel(BigEyeRoadResult.EMPTY));
+        this.getChildren().add(new CockroachRoadLabel(CockroachRoadResult.EMPTY));
     }
 
     private int getSize() {
         return getCurrentPosition() + 1;
     }
 
-
+    
     private int getCurrentPosition() {
         return (column * getPrefRows()) + row;
     }
 
-    private void ClearLabel(BigEyeRoadLabel t) {
-        t.setResult(BigEyeRoadResult.EMPTY);
+    private void ClearLabel(CockroachRoadLabel t) {
+        t.setResult(CockroachRoadResult.EMPTY);
     }
 
     private boolean isCurrentWinRed() {
-        switch (((BigEyeRoadLabel) super.getChildren().get(getCurrentPosition())).getResult()) {
+        switch (((CockroachRoadLabel) super.getChildren().get(getCurrentPosition())).getResult()) {
             case RED:
                 return true;
             default:
@@ -54,7 +55,7 @@ public class BigEyeRoadTilePane extends TilePane {
     }
 
     private boolean isCurrentWinBlue() {
-        switch (((BigEyeRoadLabel) super.getChildren().get(getCurrentPosition())).getResult()) {
+        switch (((CockroachRoadLabel) super.getChildren().get(getCurrentPosition())).getResult()) {
             case BLUE:
                 return true;
             default:
@@ -62,7 +63,7 @@ public class BigEyeRoadTilePane extends TilePane {
         }
     }
 
-    private boolean isNextWinRed(BigEyeRoadResult win) {
+    private boolean isNextWinRed(CockroachRoadResult win) {
         switch (win) {
             case RED:
                 return true;
@@ -70,7 +71,7 @@ public class BigEyeRoadTilePane extends TilePane {
                 return false;
         }
     }
-    private boolean isNextWinBlue(BigEyeRoadResult win) {
+    private boolean isNextWinBlue(CockroachRoadResult win) {
         switch (win) {
             case BLUE:
                 return true;
@@ -98,7 +99,7 @@ public class BigEyeRoadTilePane extends TilePane {
             column++;
 
         } else {
-            if (((BigEyeRoadLabel) super.getChildren().get(getCurrentPosition() + 1)).getResult() == BigEyeRoadResult.EMPTY){
+            if (((CockroachRoadLabel) super.getChildren().get(getCurrentPosition() + 1)).getResult() == CockroachRoadResult.EMPTY){
                 row++;
             }
             else {
@@ -123,7 +124,7 @@ public class BigEyeRoadTilePane extends TilePane {
     }
 
 
-    private void MoveToNextPosition(BigEyeRoadResult next) {
+    private void MoveToNextPosition(CockroachRoadResult next) {
         if (getSize() != 0) {
             if (isCurrentWinRed()) {
                 if (isNextWinRed(next)) {
@@ -152,13 +153,13 @@ public class BigEyeRoadTilePane extends TilePane {
         }
     }
 
-    private void AddElement(BigEyeRoadResult next) {
+    private void AddElement(CockroachRoadResult next) {
         MoveToNextPosition(next);
-        ((BigEyeRoadLabel)getChildren().get(getCurrentPosition())).setResult(next);
+        ((CockroachRoadLabel)getChildren().get(getCurrentPosition())).setResult(next);
     }
 
-    public void ReArrangeElements(ObservableList<BigEyeRoadLabel> labels) {
-        getChildren().stream().map(x -> (BigEyeRoadLabel)x ).forEach(t-> ClearLabel(t));
+    public void ReArrangeElements(ObservableList<CockroachRoadLabel> labels) {
+        getChildren().stream().map(x -> (CockroachRoadLabel)x ).forEach(t-> ClearLabel(t));
         row = -1;column = 0;savedColumn= -1;
         labels.stream().forEach(t-> {
             AddElement(t.getResult());
