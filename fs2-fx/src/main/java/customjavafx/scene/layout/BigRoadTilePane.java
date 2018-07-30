@@ -1,10 +1,7 @@
 package customjavafx.scene.layout;
 
 
-import customjavafx.scene.control.BeadRoadLabel;
-import customjavafx.scene.control.BeadRoadResult;
-import customjavafx.scene.control.BigRoadLabel;
-import customjavafx.scene.control.BigRoadResult;
+import customjavafx.scene.control.*;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
@@ -19,13 +16,13 @@ public class BigRoadTilePane extends TilePane {
     private int column = 0;
     private int row = -1;
     private int savedColumn = -1;
-    private Long ballsBefore = 0L;
+    private boolean shiftedNow = false;
 
     private int c0,c1,c2,c3,c4 = 0;
     
-    private ListProperty<String> bigEyeRoadList= new SimpleListProperty<String>(FXCollections.observableList(new ArrayList<String>()));
+    private ListProperty<BigEyeRoadLabel> bigEyeRoadList= new SimpleListProperty<BigEyeRoadLabel>(FXCollections.observableList(new ArrayList<BigEyeRoadLabel>()));
 
-    public ListProperty<String> bigEyeRoadListProperty() {
+    public ListProperty<BigEyeRoadLabel> bigEyeRoadListProperty() {
         return bigEyeRoadList;
     }
 
@@ -134,6 +131,7 @@ public class BigRoadTilePane extends TilePane {
         c2 = c1;
         c1 = c0;
         c0 = 0;
+        shiftedNow = true;
         if(savedColumn != -1) savedColumn--;
     }
 
@@ -290,21 +288,26 @@ public class BigRoadTilePane extends TilePane {
     }
 
     public void ReArrangeElements(BeadRoadTilePane bead) {
-        ballsBefore = getCount();
         getChildren().stream().map(x -> (BigRoadLabel)x ).forEach(t-> ClearLabel(t));
         row = -1;column = 0;savedColumn= -1;
         c0 = c1 = c2 = c3 = c4 = 0;
         bead.getChildren().stream().map(x->(BeadRoadLabel)x).forEach(t->{
             AddElement(t.getResult());
         });
-        long ballsAfter = getCount();
-        if(ballsAfter > ballsBefore) {
+    }
+
+    public void AddElement(BeadRoadTilePane bead) {
+        Long ballsBefore = getCount();
+        ReArrangeElements(bead);
+        Long ballsAfter = getCount();
+//
+        if((ballsBefore < ballsAfter) || (shiftedNow)){
             if(c0 >= 2) {
                 if(c1 > 0) {
                     if(c0 == (c1+1)) {
-                        bigEyeRoadList.add("blue");
+                        bigEyeRoadList.add(new BigEyeRoadLabel(BigEyeRoadResult.BLUE));
                     }else{
-                        bigEyeRoadList.add("red");
+                        bigEyeRoadList.add(new BigEyeRoadLabel(BigEyeRoadResult.RED));
                     }
                 }
             }else {
@@ -312,13 +315,25 @@ public class BigRoadTilePane extends TilePane {
                 if(c2 > 0) {
                     //You compare you
                     if((c1+1) == (c2+1)) {
-                        bigEyeRoadList.add("red");
+                        bigEyeRoadList.add(new BigEyeRoadLabel(BigEyeRoadResult.RED));
+
                     }else{
-                        bigEyeRoadList.add("blue");
+                        bigEyeRoadList.add(new BigEyeRoadLabel(BigEyeRoadResult.BLUE));
+
                     }
                 }
             }
-        }else if (ballsAfter < ballsBefore) {
+        }
+
+        shiftedNow=false;
+
+    }
+
+    public void RemoveElement(BeadRoadTilePane bead) {
+        Long ballsBefore = getCount();
+        ReArrangeElements(bead);
+        Long ballsAfter = getCount();
+        if (ballsAfter < ballsBefore) {
             if(!bigEyeRoadList.isEmpty()) bigEyeRoadList.remove(bigEyeRoadList.size() - 1);
         }
     }

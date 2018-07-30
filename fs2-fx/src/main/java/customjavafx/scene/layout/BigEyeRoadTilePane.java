@@ -2,6 +2,7 @@ package customjavafx.scene.layout;
 
 
 import customjavafx.scene.control.*;
+import javafx.collections.ObservableList;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.layout.TilePane;
@@ -10,6 +11,7 @@ public class BigEyeRoadTilePane extends TilePane {
 
     private int column = 0;
     private int row = -1;
+    private int savedColumn = -1;
 
     public BigEyeRoadTilePane() {
         super();
@@ -17,17 +19,23 @@ public class BigEyeRoadTilePane extends TilePane {
         super.setAlignment(Pos.TOP_LEFT);
     }
 
-    private int sizeLimit() {
+    public int getSizeLimit() {
         return (getPrefColumns() * getPrefRows());
     }
 
     private boolean childrenLimitReached() {
-        return (getChildren().size() == sizeLimit());
+        return (getChildren().size() == getSizeLimit());
     }
 
     private void Insert() {
         this.getChildren().add(new BigEyeRoadLabel(BigEyeRoadResult.EMPTY));
     }
+
+    private int getSize() {
+        return getCurrentPosition() + 1;
+    }
+
+
 
     private int getCurrentPosition() {
         return (column * getPrefRows()) + row;
@@ -37,36 +45,125 @@ public class BigEyeRoadTilePane extends TilePane {
         t.setResult(BigEyeRoadResult.EMPTY);
     }
 
-    private int FindDragonLength(int column,BigRoadTilePane road) {
-        int dragonLength = 0;
-        int pos= column*4;
-        while(((BigRoadLabel)road.getChildren().get(pos)).getResult() != BigRoadResult.EMPTY ){
-            if(pos%4 == 3){
-                dragonLength++;
-                pos = pos + 4;
-            }else {
-                dragonLength++;
-                pos++;
-            }
-            if(pos >= road.getSizeLimit())break;
+    private boolean isCurrentWinRed() {
+        switch (((BigEyeRoadLabel) super.getChildren().get(getCurrentPosition())).getResult()) {
+            case RED:
+                return true;
+            default:
+                return false;
         }
-        return dragonLength;
     }
 
-    public void ReArrangeElements(BigRoadTilePane road) {
-        getChildren().stream().map(x -> (BigEyeRoadLabel)x ).forEach(t-> ClearLabel(t));
-        this.column = 0;
-        this.row = -1;
-        int currentColumnLength = 0;
-        int targetColumnLength = 0;
-        for(int pos= 4; pos <= road.getCurrentPosition();pos++) {
-            if(((BigRoadLabel)road.getChildren().get(pos)).getResult() != BigRoadResult.EMPTY) {
-                if((pos % 4) != 0) {
-                    currentColumnLength= (pos % 4)+1;
-                    targetColumnLength = FindDragonLength((pos /4) - 1,road);
-                }
+    private boolean isCurrentWinBlue() {
+        switch (((BigEyeRoadLabel) super.getChildren().get(getCurrentPosition())).getResult()) {
+            case BLUE:
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    private boolean isNextWinRed(BigEyeRoadResult win) {
+        switch (win) {
+            case RED:
+                return true;
+            default:
+                return false;
+        }
+    }
+    private boolean isNextWinBlue(BigEyeRoadResult win) {
+        switch (win) {
+            case BLUE:
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    private void ShiftColumnNew() {
+        int localSaveRow= row;
+        int localSaveColumn = column;
+        this.getChildren().remove(0, (getPrefRows()));
+        for(int i=0; i < (getPrefRows());i++){
+            Insert();
+        }
+        row = localSaveRow;
+        column= localSaveColumn - 1;
+        if(savedColumn != -1) savedColumn--;
+    }
+
+
+    private void MoveForSameColor() {
+        if ((getPrefRows() - (row + 1)) == 0) {
+            if(savedColumn == -1) savedColumn = column;
+            column++;
+
+        } else {
+            if (((BigEyeRoadLabel) super.getChildren().get(getCurrentPosition() + 1)).getResult() == BigEyeRoadResult.EMPTY){
+                row++;
+            }
+            else {
+                if(savedColumn == -1) savedColumn = column;
+                column++;
+
             }
         }
+    }
+
+    private void MoveForDifferentColor() {
+        if(savedColumn != -1) {
+            column = savedColumn + 1;
+            savedColumn = -1;
+            row = 0;
+        }
+        else {
+            column++;
+            row = 0;
+
+        }
+    }
+
+
+    private void MoveToNextPosition(BigEyeRoadResult next) {
+        if (getSize() != 0) {
+            if (isCurrentWinRed()) {
+                if (isNextWinRed(next)) {
+                    MoveForSameColor();
+                } else {
+                    if (isNextWinBlue(next)) {
+                        MoveForDifferentColor();
+                    }
+                }
+            }
+            else if (isCurrentWinBlue()) {
+                if (isNextWinRed(next)) {
+                    MoveForDifferentColor();
+                } else {
+                    if (isNextWinBlue(next)) {
+                        MoveForSameColor();
+                    }
+                }
+            }
+        } else {
+            row++;
+        }
+        if (getCurrentPosition() >= getSizeLimit()) {
+            ShiftColumnNew();
+
+        }
+    }
+
+    private void AddElement(BigEyeRoadResult next) {
+        MoveToNextPosition(next);
+        ((BigEyeRoadLabel)getChildren().get(getCurrentPosition())).setResult(next);
+    }
+
+    public void ReArrangeElements(ObservableList<BigEyeRoadLabel> labels) {
+        getChildren().stream().map(x -> (BigEyeRoadLabel)x ).forEach(t-> ClearLabel(t));
+        row = -1;column = 0;savedColumn= -1;
+        labels.stream().forEach(t-> {
+            AddElement(t.getResult());
+        });
     }
 
     public void Initialize(int row, int column) {

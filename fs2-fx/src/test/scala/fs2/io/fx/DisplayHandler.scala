@@ -1,6 +1,6 @@
 package fs2.io.fx
 
-import customjavafx.scene.control.BeadRoadResult
+import customjavafx.scene.control.{BeadRoadResult, BigEyeRoadLabel}
 import customjavafx.scene.layout.{BeadRoadTilePane, BigEyeRoadTilePane, BigRoadTilePane}
 import fs2.io.fx.syntax._
 import javafx.beans.value.{ChangeListener, ObservableValue}
@@ -19,8 +19,8 @@ class DisplayHandler(
   val bigRoad: BigRoadTilePane)(implicit display: Display, echo: Port[String, Echo.Transition]) {
 
   beadRoad.Initialize(8, 20)
-  bigRoad.Initialize(4, 20)
-  bigEyeRoad.Initialize(4, 21)
+  bigRoad.Initialize(6, 49)
+  bigEyeRoad.Initialize(8, 30)
 
   display.root.addEventHandler(
     KeyEvent.KEY_PRESSED,
@@ -42,22 +42,22 @@ class DisplayHandler(
     .countProperty()
     .addListener(new ChangeListener[Number] {
       override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
-        bigRoad.ReArrangeElements(beadRoad)
+        if (t2.longValue() > t1.longValue()) {
+          bigRoad.AddElement(beadRoad);
+        } else {
+          bigRoad.RemoveElement(beadRoad);
+        }
       }
     })
 
   bigRoad
     .bigEyeRoadListProperty()
-    .addListener(new ChangeListener[ObservableList[String]] {
+    .addListener(new ChangeListener[ObservableList[BigEyeRoadLabel]] {
       override def changed(
-        observableValue: ObservableValue[_ <: ObservableList[String]],
-        t: ObservableList[String],
-        t1: ObservableList[String]): Unit = {
-        t1.forEach(x => {
-          print(x);
-        })
-        println();
-
+        observableValue: ObservableValue[_ <: ObservableList[BigEyeRoadLabel]],
+        t: ObservableList[BigEyeRoadLabel],
+        t1: ObservableList[BigEyeRoadLabel]): Unit = {
+        bigEyeRoad.ReArrangeElements(t1)
       }
     })
 

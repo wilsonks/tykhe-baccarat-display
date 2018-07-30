@@ -159,8 +159,8 @@
 	-fx-orientation: vertical;
 	-fx-alignment: top-left;
 	-fx-tile-alignment: top-left;
-	-fx-pref-rows:4;
-	-fx-pref-columns:20;
+	-fx-pref-rows:6;
+	-fx-pref-columns:49;
 	-fx-pref-tile-width:37.1;
 	-fx-pref-tile-height:37.1;
 	-fx-hgap:.5;
@@ -305,8 +305,8 @@
 	-fx-scale-y:1;
     -fx-alignment: top-left;
     -fx-tile-alignment: top-left;
-	-fx-pref-rows:4;
-	-fx-pref-columns:21;
+	-fx-pref-rows:8;
+	-fx-pref-columns:30;
 	-fx-hgap:1;
 	-fx-vgap:1;
 	-fx-pref-tile-width:20;
