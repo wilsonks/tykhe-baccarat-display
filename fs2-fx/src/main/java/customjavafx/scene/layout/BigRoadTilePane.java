@@ -106,8 +106,6 @@ public class BigRoadTilePane extends TilePane {
     }
 
 
-
-
     private void ClearLabel(BigRoadLabel t) {
         t.setResult(BigRoadResult.EMPTY);
         t.setText("");
@@ -329,20 +327,18 @@ public class BigRoadTilePane extends TilePane {
         }
     }
 
-    private void UpdateSmallRoadList(int c0,int c1, int c2){
+    private void UpdateSmallRoadList(int c0,int c1, int c2, int c3){
         if(c0 >= 2) {
-            if(c1 > 0) {
-                if(c0 == (c1+1)) {
+            if(c2 > 0) {
+                if(c0 == (c2+1)) {
                     smallRoadList.add(new SmallRoadLabel(SmallRoadResult.BLUE));
                 }else{
                     smallRoadList.add(new SmallRoadLabel(SmallRoadResult.RED));
                 }
             }
         }else {
-            //Last Element is in First Row
-            if(c2 > 0) {
-                //You compare you
-                if((c1+1) == (c2+1)) {
+            if(c3 > 0) {
+                if((c1+1) == (c3+1)) {
                     smallRoadList.add(new SmallRoadLabel(SmallRoadResult.RED));
 
                 }else{
@@ -353,20 +349,18 @@ public class BigRoadTilePane extends TilePane {
         }
     }
 
-    private void UpdateCockroachRoadList(int c0,int c1, int c2){
+    private void UpdateCockroachRoadList(int c0,int c1, int c2,int c3,int c4){
         if(c0 >= 2) {
-            if(c1 > 0) {
-                if(c0 == (c1+1)) {
+            if(c3 > 0) {
+                if(c0 == (c3+1)) {
                     cockroachRoadList.add(new CockroachRoadLabel(CockroachRoadResult.BLUE));
                 }else{
                     cockroachRoadList.add(new CockroachRoadLabel(CockroachRoadResult.RED));
                 }
             }
         }else {
-            //Last Element is in First Row
-            if(c2 > 0) {
-                //You compare you
-                if((c1+1) == (c2+1)) {
+            if(c4 > 0) {
+                if((c1+1) == (c4+1)) {
                     cockroachRoadList.add(new CockroachRoadLabel(CockroachRoadResult.RED));
 
                 }else{
@@ -385,8 +379,8 @@ public class BigRoadTilePane extends TilePane {
 
         if((ballsBefore < ballsAfter) || (shiftedNow)){
             UpdateBigEyeRoadList(c0,c1,c2);
-            UpdateSmallRoadList(c0,c2,c3);
-            UpdateCockroachRoadList(c0,c3,c4);
+            UpdateSmallRoadList(c0,c1,c2,c3);
+            UpdateCockroachRoadList(c0,c1,c2,c3,c4);
         }
 
         shiftedNow=false;
