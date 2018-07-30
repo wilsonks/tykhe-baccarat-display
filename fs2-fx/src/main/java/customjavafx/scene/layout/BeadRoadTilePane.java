@@ -14,14 +14,27 @@ public class BeadRoadTilePane extends TilePane {
     private int column = 0;
     private int row = -1;
     private IntegerProperty count = new SimpleIntegerProperty(0);
+    public IntegerProperty getcountProperty() {return count;}
 
-    public IntegerProperty countProperty() {
-        return count;
-    }
+    private IntegerProperty playerWinCount = new SimpleIntegerProperty(0);
+    public IntegerProperty getPlayerWinCount() {return playerWinCount;}
 
-    public int getCount() {
-        return count.get();
-    }
+
+    private IntegerProperty bankerWinCount = new SimpleIntegerProperty(0);
+    public IntegerProperty getBankerWinCount() {return bankerWinCount;}
+
+
+    private IntegerProperty tieWinCount = new SimpleIntegerProperty(0);
+    public IntegerProperty getTieWinCount() {return tieWinCount;}
+
+
+    private IntegerProperty playerPairCount = new SimpleIntegerProperty(0);
+    public IntegerProperty getPlayerPairCount() {return playerPairCount;}
+
+    private IntegerProperty bankerPairCount = new SimpleIntegerProperty(0);
+    public IntegerProperty getBankerPairCount() {return bankerPairCount;}
+
+
 
     public BeadRoadTilePane() {
         super();
@@ -37,11 +50,131 @@ public class BeadRoadTilePane extends TilePane {
         return (super.getChildren().size() == sizeLimit());
     }
 
+    private void ResultAdded(BeadRoadResult res) {
+        count.setValue(count.getValue() + 1);
+        switch(res) {
+            case BANKER_WIN:
+                bankerWinCount.setValue(bankerWinCount.getValue()+1);
+                break;
+            case BANKER_WIN_BANKER_PAIR:
+                bankerPairCount.setValue(bankerPairCount.getValue()+1);
+                bankerWinCount.setValue(bankerWinCount.getValue()+1);
+                break;
+            case BANKER_WIN_PLAYER_PAIR:
+                playerPairCount.setValue(playerPairCount.getValue()+1);
+                bankerWinCount.setValue(bankerWinCount.getValue()+1);
+                break;
+
+            case BANKER_WIN_BOTH_PAIR:
+                bankerPairCount.setValue(bankerPairCount.getValue()+1);
+                playerPairCount.setValue(playerPairCount.getValue()+1);
+                bankerWinCount.setValue(bankerWinCount.getValue()+1);
+                break;
+
+            case PLAYER_WIN:
+                playerWinCount.setValue(playerWinCount.getValue()+1);
+                break;
+            case PLAYER_WIN_BANKER_PAIR:
+                bankerPairCount.setValue(bankerPairCount.getValue()+1);
+                playerWinCount.setValue(playerWinCount.getValue()+1);
+                break;
+            case PLAYER_WIN_PLAYER_PAIR:
+                playerPairCount.setValue(playerPairCount.getValue()+1);
+                playerWinCount.setValue(playerWinCount.getValue()+1);
+                break;
+
+            case PLAYER_WIN_BOTH_PAIR:
+                bankerPairCount.setValue(bankerPairCount.getValue()+1);
+                playerPairCount.setValue(playerPairCount.getValue()+1);
+                playerWinCount.setValue(playerWinCount.getValue()+1);
+                break;
+            case TIE_WIN:
+                tieWinCount.setValue(tieWinCount.getValue()+1);
+                break;
+            case TIE_WIN_BANKER_PAIR:
+                bankerPairCount.setValue(bankerPairCount.getValue()+1);
+                tieWinCount.setValue(tieWinCount.getValue()+1);
+                break;
+            case TIE_WIN_PLAYER_PAIR:
+                playerPairCount.setValue(playerPairCount.getValue()+1);
+                tieWinCount.setValue(tieWinCount.getValue()+1);
+                break;
+
+            case TIE_WIN_BOTH_PAIR:
+                bankerPairCount.setValue(bankerPairCount.getValue()+1);
+                playerPairCount.setValue(playerPairCount.getValue()+1);
+                tieWinCount.setValue(tieWinCount.getValue()+1);
+                break;
+
+            default:break;
+        }
+    }
+
+
+    private void ResultRemoved(BeadRoadResult res) {
+        count.setValue(count.getValue() - 1);
+        switch(res) {
+            case BANKER_WIN:
+                bankerWinCount.setValue(bankerWinCount.getValue()-1);
+                break;
+            case BANKER_WIN_BANKER_PAIR:
+                bankerPairCount.setValue(bankerPairCount.getValue()-1);
+                bankerWinCount.setValue(bankerWinCount.getValue()-1);
+                break;
+            case BANKER_WIN_PLAYER_PAIR:
+                playerPairCount.setValue(playerPairCount.getValue()-1);
+                bankerWinCount.setValue(bankerWinCount.getValue()-1);
+                break;
+
+            case BANKER_WIN_BOTH_PAIR:
+                bankerPairCount.setValue(bankerPairCount.getValue()-1);
+                playerPairCount.setValue(playerPairCount.getValue()-1);
+                bankerWinCount.setValue(bankerWinCount.getValue()-1);
+                break;
+
+            case PLAYER_WIN:
+                playerWinCount.setValue(playerWinCount.getValue()-1);
+                break;
+            case PLAYER_WIN_BANKER_PAIR:
+                bankerPairCount.setValue(bankerPairCount.getValue()-1);
+                playerWinCount.setValue(playerWinCount.getValue()-1);
+                break;
+            case PLAYER_WIN_PLAYER_PAIR:
+                playerPairCount.setValue(playerPairCount.getValue()-1);
+                playerWinCount.setValue(playerWinCount.getValue()-1);
+                break;
+
+            case PLAYER_WIN_BOTH_PAIR:
+                bankerPairCount.setValue(bankerPairCount.getValue()-1);
+                playerPairCount.setValue(playerPairCount.getValue()-1);
+                playerWinCount.setValue(playerWinCount.getValue()-1);
+                break;
+            case TIE_WIN:
+                tieWinCount.setValue(tieWinCount.getValue()-1);
+                break;
+            case TIE_WIN_BANKER_PAIR:
+                bankerPairCount.setValue(bankerPairCount.getValue()-1);
+                tieWinCount.setValue(tieWinCount.getValue()-1);
+                break;
+            case TIE_WIN_PLAYER_PAIR:
+                playerPairCount.setValue(playerPairCount.getValue()-1);
+                tieWinCount.setValue(tieWinCount.getValue()-1);
+                break;
+
+            case TIE_WIN_BOTH_PAIR:
+                bankerPairCount.setValue(bankerPairCount.getValue()-1);
+                playerPairCount.setValue(playerPairCount.getValue()-1);
+                tieWinCount.setValue(tieWinCount.getValue()-1);
+                break;
+
+                default:break;
+        }
+    }
 
     private void RemoveLast() {
+        ResultRemoved(((BeadRoadLabel)getChildren().get(0)).getResult());
         super.getChildren().remove(0);
         MovePostionBack();
-        count.setValue(getSize());
     }
 
     private void Update(BeadRoadResult res) {
@@ -71,10 +204,10 @@ public class BeadRoadTilePane extends TilePane {
 
     public void RemoveElement() {
         if (getPosition() >= 0) {
+            ResultRemoved(((BeadRoadLabel) super.getChildren().get(getPosition())).getResult());
             ((BeadRoadLabel) super.getChildren().get(getPosition())).setResult(BeadRoadResult.EMPTY);
             MovePostionBack();
         }
-        count.setValue(getSize());
     }
 
     public void AddElement(BeadRoadResult res) {
@@ -83,7 +216,7 @@ public class BeadRoadTilePane extends TilePane {
             Insert();
         }
         Update(res);
-        count.setValue(getSize());
+        ResultAdded(res);
     }
 
     public BeadRoadResult GetLastElement() {

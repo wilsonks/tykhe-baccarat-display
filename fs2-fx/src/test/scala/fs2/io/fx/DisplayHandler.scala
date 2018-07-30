@@ -43,7 +43,7 @@ class DisplayHandler(
   )
 
   beadRoad
-    .countProperty()
+    .getcountProperty()
     .addListener(new ChangeListener[Number] {
       override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
         if (t2.longValue() > t1.longValue()) {
@@ -51,6 +51,54 @@ class DisplayHandler(
         } else {
           bigRoad.RemoveElement(beadRoad);
         }
+      }
+    })
+
+  beadRoad
+    .getcountProperty()
+    .addListener(new ChangeListener[Number] {
+      override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
+        println("TotalCount=" + t2);
+      }
+    })
+
+  beadRoad
+    .getBankerWinCount()
+    .addListener(new ChangeListener[Number] {
+      override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
+        println("BankerWin=" + t2);
+      }
+    })
+
+  beadRoad
+    .getPlayerWinCount()
+    .addListener(new ChangeListener[Number] {
+      override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
+        println("PlayerWin=" + t2);
+      }
+    })
+
+  beadRoad
+    .getTieWinCount()
+    .addListener(new ChangeListener[Number] {
+      override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
+        println("TieWin=" + t2);
+      }
+    })
+
+  beadRoad
+    .getBankerPairCount()
+    .addListener(new ChangeListener[Number] {
+      override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
+        println("BankerPair=" + t2);
+      }
+    })
+
+  beadRoad
+    .getPlayerPairCount()
+    .addListener(new ChangeListener[Number] {
+      override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
+        println("PlayerPair=" + t2);
       }
     })
 

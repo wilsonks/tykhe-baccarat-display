@@ -35,7 +35,6 @@ public class BigEyeRoadTilePane extends TilePane {
         return getCurrentPosition() + 1;
     }
 
-
     private int getCurrentPosition() {
         return (column * getPrefRows()) + row;
     }
