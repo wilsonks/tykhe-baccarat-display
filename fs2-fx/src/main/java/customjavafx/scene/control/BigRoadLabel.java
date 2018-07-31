@@ -7,6 +7,10 @@ import javafx.scene.control.Label;
 
 public class BigRoadLabel extends Label {
 
+    public BigRoadLabel() {
+        this.getStyleClass().add("BigRoadLabel");
+    }
+
     public BigRoadLabel(BigRoadResult result) {
         this.getStyleClass().add("BigRoadLabel");
         this.setResult(result);

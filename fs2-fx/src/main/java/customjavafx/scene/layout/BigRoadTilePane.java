@@ -327,6 +327,31 @@ public class BigRoadTilePane extends TilePane {
         }
     }
 
+    private BigEyeRoadResult RepeatPatternForBigEyeRoad(int c0,int c1, int c2){
+        if(c0 >= 2) {
+            if(c1 > 0) {
+                if(c0 == (c1+1)) {
+                    return BigEyeRoadResult.BLUE;
+                }else{
+                    return BigEyeRoadResult.RED;
+                }
+            }
+        }else {
+            //Last Element is in First Row
+            if(c2 > 0) {
+                //You compare you
+                if((c1+1) == (c2+1)) {
+                    return BigEyeRoadResult.RED;
+
+                }else{
+                    return BigEyeRoadResult.BLUE;
+
+                }
+            }
+        }
+         return BigEyeRoadResult.EMPTY;
+    }
+
     private void UpdateSmallRoadList(int c0,int c1, int c2, int c3){
         if(c0 >= 2) {
             if(c2 > 0) {
@@ -349,6 +374,29 @@ public class BigRoadTilePane extends TilePane {
         }
     }
 
+    private SmallRoadResult RepeatPatternForSmallRoad(int c0,int c1, int c2, int c3){
+        if(c0 >= 2) {
+            if(c2 > 0) {
+                if(c0 == (c2+1)) {
+                    return SmallRoadResult.BLUE;
+                }else{
+                    return SmallRoadResult.RED;
+                }
+            }
+        }else {
+            if(c3 > 0) {
+                if((c1+1) == (c3+1)) {
+                    return SmallRoadResult.RED;
+
+                }else{
+                    return SmallRoadResult.BLUE;
+
+                }
+            }
+        }
+        return SmallRoadResult.EMPTY;
+    }
+
     private void UpdateCockroachRoadList(int c0,int c1, int c2,int c3,int c4){
         if(c0 >= 2) {
             if(c3 > 0) {
@@ -369,6 +417,29 @@ public class BigRoadTilePane extends TilePane {
                 }
             }
         }
+    }
+
+    private CockroachRoadResult RepeatPatternForCockroachRoad(int c0,int c1, int c2,int c3,int c4){
+        if(c0 >= 2) {
+            if(c3 > 0) {
+                if(c0 == (c3+1)) {
+                    return CockroachRoadResult.BLUE;
+                }else{
+                    return CockroachRoadResult.RED;
+                }
+            }
+        }else {
+            if(c4 > 0) {
+                if((c1+1) == (c4+1)) {
+                    return CockroachRoadResult.RED;
+
+                }else{
+                    return CockroachRoadResult.BLUE;
+
+                }
+            }
+        }
+        return CockroachRoadResult.EMPTY;
     }
 
 
@@ -396,6 +467,33 @@ public class BigRoadTilePane extends TilePane {
             if(!smallRoadList.isEmpty()) smallRoadList.remove(smallRoadList.size() - 1);
             if(!cockroachRoadList.isEmpty()) cockroachRoadList.remove(cockroachRoadList.size() - 1);
         }
+    }
+
+    public void UpdatePredictions(BigEyeRoadLabel b1,
+                                  SmallRoadLabel b2,
+                                  CockroachRoadLabel b3,
+                                  BigEyeRoadLabel p1,
+                                  SmallRoadLabel p2,
+                                  CockroachRoadLabel p3) {
+
+    if(getCurrentPosition() < 0) return;
+
+    if(isCurrentWinRed()){
+        b1.setResult(RepeatPatternForBigEyeRoad(c0+1,c1,c2));
+        b2.setResult(RepeatPatternForSmallRoad(c0+1,c1,c2,c3));
+        b3.setResult(RepeatPatternForCockroachRoad(c0+1,c1,c2,c3,c4));
+        p1.setResult(RepeatPatternForBigEyeRoad(1,c0,c1));
+        p2.setResult(RepeatPatternForSmallRoad(1,c0,c1,c2));
+        p3.setResult(RepeatPatternForCockroachRoad(1,c0,c1,c2,c3));
+    } else {
+        p1.setResult(RepeatPatternForBigEyeRoad(c0+1,c1,c2));
+        p2.setResult(RepeatPatternForSmallRoad(c0+1,c1,c2,c3));
+        p3.setResult(RepeatPatternForCockroachRoad(c0+1,c1,c2,c3,c4));
+        b1.setResult(RepeatPatternForBigEyeRoad(1,c0,c1));
+        b2.setResult(RepeatPatternForSmallRoad(1,c0,c1,c2));
+        b3.setResult(RepeatPatternForCockroachRoad(1,c0,c1,c2,c3));
+    }
+
     }
 
     public void Initialize(int row, int column) {

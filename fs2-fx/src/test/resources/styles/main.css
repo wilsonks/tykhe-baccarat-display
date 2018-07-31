@@ -1,5 +1,5 @@
 .root {
-	-fx-background-color:lightskyblue;
+	-fx-background-color:teal;
 	-fx-padding: 10 5 10 5;
 	-fx-spacing:10;
      	-style1-color: rgb(0,0,0);
@@ -12,10 +12,71 @@
     -fx-max-height:1080;
 }
 
-#
+#totalCount {
+    -fx-background-color:goldenrod;
+    -fx-text-fill:white;
+}
+
+#bankerWinCount {
+    -fx-background-color:red;
+    -fx-text-fill:white;
+}
+
+#playerWinCount {
+    -fx-background-color:dodgerblue;
+    -fx-text-fill:white;
+}
+
+#tieWinCount {
+    -fx-background-color:limegreen;
+    -fx-text-fill:white;
+}
+
+#bankerPairCount {
+    -fx-background-color:red;
+    -fx-text-fill:white;
+}
+
+#playerPairCount {
+    -fx-background-color:dodgerblue;
+        -fx-text-fill:white;
+}
+
+
+#tLabel {
+    -fx-text-fill:white;
+    -fx-alignment:center-right;
+}
+
+#bLabel {
+    -fx-text-fill:white;
+    -fx-alignment:center-right;
+}
+
+#pLabel {
+    -fx-text-fill:white;
+    -fx-alignment:center-right;
+}
+
+#tieLabel {
+    -fx-text-fill:white;
+    -fx-alignment:center-right;
+}
+
+#bpLabel {
+    -fx-text-fill:white;
+    -fx-alignment:center-right;
+}
+
+#ppLabel {
+     -fx-text-fill:white;
+    -fx-alignment:center-right;
+}
+
+
 
 .top {
-     	-fx-background-color: lightskyblue;
+     	-fx-background-color: teal;
 	-fx-spacing:5;
 	-fx-pref-width:1920;
 	-fx-pref-height:432;
@@ -26,14 +87,19 @@
 }
 
 .history {
-	-fx-background-color:white;
+	-fx-background-color:black;
 	-fx-background-radius:0,0,0,0;
-	-fx-pref-width:840;
+	-fx-pref-width:835;
 	-fx-pref-height:432;
-			-fx-min-width:840;
+			-fx-min-width:835;
         	-fx-min-height:432;
-        		-fx-max-width:840;
+        		-fx-max-width:835;
             	-fx-max-height:432;
+}
+
+
+.predictionBox {
+    -fx-background-color:white;
 }
 
 
@@ -64,7 +130,7 @@
 }
 
 .BeadRoadLabel {
-    -fx-background-color:rgb(206,235,251);
+    -fx-background-color:derive(teal,90%);
     -fx-pref-height: 51;
     -fx-pref-width: 51;
 }
@@ -288,15 +354,15 @@
 
 
 .bottomHBox {
-	-fx-background-color:lightskyblue;
+	-fx-background-color:teal;
 	-fx-pref-width:1910;
-	-fx-pref-height:167;
+	-fx-pref-height:127;
 	-fx-spacing:11;
 }
 
 .BigEyeRoadPane {
 	-fx-background-color:rgb(108,116,118,.5);
-	-fx-pref-height:167;
+	-fx-pref-height:127;
 	-fx-pref-width:629;
 }
 
@@ -306,7 +372,7 @@
 	-fx-scale-y:1;
     -fx-alignment: top-left;
     -fx-tile-alignment: top-left;
-	-fx-pref-rows:8;
+	-fx-pref-rows:6;
 	-fx-pref-columns:30;
 	-fx-hgap:1;
 	-fx-vgap:1;
@@ -337,7 +403,7 @@
 
 .SmallRoadPane {
 	-fx-background-color: rgb(108,116,118,.5);
-	-fx-pref-height:167;
+	-fx-pref-height:127;
 	-fx-pref-width:629;
 }
 
@@ -346,7 +412,7 @@
 	-fx-scale-y:1;
     -fx-alignment: top-left;
     -fx-tile-alignment: top-left;
-	-fx-pref-rows:8;
+	-fx-pref-rows:6;
 	-fx-pref-columns:30;
 	-fx-hgap:1;
 	-fx-vgap:1;
@@ -377,7 +443,7 @@
 
 .CockroachRoadPane {
 	-fx-background-color: rgb(108,116,118,.5);
-	-fx-pref-height:167;
+	-fx-pref-height:127;
 	-fx-pref-width:629;
 }
 
@@ -386,7 +452,7 @@
 	-fx-scale-y:1;
     -fx-alignment: top-left;
     -fx-tile-alignment: top-left;
-	-fx-pref-rows:8;
+	-fx-pref-rows:6;
 	-fx-pref-columns:30;
 	-fx-hgap:1;
 	-fx-vgap:1;
@@ -394,20 +460,20 @@
 	-fx-pref-tile-height:20;
 }
 
-.CockroachRoadlabel {
+.CockroachRoadLabel {
 	-fx-background-color:white;
 	-fx-pref-width:20;
 	-fx-pref-height:20;
 }
 
-.CockroachRoadlabel:red {
+.CockroachRoadLabel:red {
 	-fx-background-image: url("../images/cockroach-road/1.png");
 	-fx-background-position:center;
 	-fx-background-repeat: no-repeat ;
 	-fx-background-size: contain;
 }
 
-.CockroachRoadlabel:blue {
+.CockroachRoadLabel:blue {
 	-fx-background-image: url("../images/cockroach-road/2.png");
 	-fx-background-position:center;
 	-fx-background-repeat: no-repeat ;

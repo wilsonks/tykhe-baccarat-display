@@ -7,6 +7,9 @@ import javafx.scene.control.Label;
 
 public class BeadRoadLabel extends Label {
 
+    public BeadRoadLabel() {
+        this.getStyleClass().add("BeadRoadLabel");
+    }
 
     public BeadRoadLabel(BeadRoadResult result) {
         this.getStyleClass().add("BeadRoadLabel");

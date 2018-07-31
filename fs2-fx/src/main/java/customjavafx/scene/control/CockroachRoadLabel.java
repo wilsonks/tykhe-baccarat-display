@@ -8,8 +8,12 @@ import javafx.scene.control.Label;
 public class CockroachRoadLabel extends Label {
 
 
+    public CockroachRoadLabel() {
+        this.getStyleClass().add("CockroachRoadLabel");
+    }
+
     public CockroachRoadLabel(CockroachRoadResult res) {
-        this.getStyleClass().add("CockroachRoadlabel");
+        this.getStyleClass().add("CockroachRoadLabel");
         setResult(res);
     }
 

@@ -1,23 +1,23 @@
 .topmost {
-     -fx-background-color: white;
+     -fx-background-color: teal;
 	-fx-spacing:0;
 	-fx-pref-width:1920;
-	-fx-pref-height:150;
+	-fx-pref-height:200;
 		-fx-min-width:1920;
-        -fx-min-height:150;
+        -fx-min-height:200;
         -fx-max-width:1920;
-        -fx-max-height:150;
-	theme-color: burlywood;
+        -fx-max-height:200;
+	theme-color: white;
 
 }
 
 .pane1 {
 	-fx-pref-width:1920;
-		-fx-pref-height:150;
+		-fx-pref-height:200;
     		-fx-min-width:1920;
-            -fx-min-height:150;
+            -fx-min-height:200;
             -fx-max-width:1920;
-            -fx-max-height:150;
+            -fx-max-height:200;
 }
 
 .nameLabel {
@@ -27,7 +27,7 @@
 	-fx-pref-width:300;
 	-fx-pref-height:78;
 	-fx-alignment:top-left;
-	-fx-font-family: BASKVILL;
+	-fx-font-family: Bookman;
 	-fx-font-size: 60;
 	-fx-font-style:normal;
 	-fx-font-weight:900;
@@ -40,7 +40,7 @@
 	-fx-pref-width:450;
 	-fx-pref-height:35;
 	-fx-alignment:bottom-left;
-	-fx-font-family: BASKVILL;
+	-fx-font-family: Bookman;
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:200;
@@ -50,10 +50,10 @@
 	-fx-text-fill: theme-color;
 	-fx-translate-x: 900;
 	-fx-translate-y:45;
-	-fx-pref-width:150;
+	-fx-pref-width:200;
 	-fx-pref-height:30;
 	-fx-alignment:center-right;
-	-fx-font-family: BASKVILL;
+	-fx-font-family: Bookman;
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:200;
@@ -63,10 +63,10 @@
 	-fx-text-fill: theme-color;
 	-fx-translate-x: 900;
 	-fx-translate-y:90;
-	-fx-pref-width:150;
+	-fx-pref-width:200;
 	-fx-pref-height:30;
 	-fx-alignment:center-right;
-	-fx-font-family: BASKVILL;
+	-fx-font-family: Bookman;
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:200;
@@ -79,7 +79,7 @@
 	-fx-pref-width:200;
 	-fx-pref-height:35;
 	-fx-alignment:center-left;
-	-fx-font-family: BASKVILL;
+	-fx-font-family: Bookman;
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:200;
@@ -92,7 +92,7 @@
 	-fx-pref-width:200;
 	-fx-pref-height:35;
 	-fx-alignment:center-left;
-	-fx-font-family: BASKVILL;
+	-fx-font-family: Bookman;
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:200;
@@ -105,7 +105,7 @@
 	-fx-pref-width:200;
 	-fx-pref-height:35;
 	-fx-alignment:center-left;
-	-fx-font-family: BASKVILL;
+	-fx-font-family: Bookman;
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:200;
@@ -119,7 +119,7 @@
 	-fx-pref-width:200;
 	-fx-pref-height:35;
 	-fx-alignment:center-left;
-	-fx-font-family: BASKVILL;
+	-fx-font-family: Bookman;
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:500;
@@ -132,7 +132,7 @@
 	-fx-pref-width:200;
 	-fx-pref-height:35;
 	-fx-alignment:center-left;
-	-fx-font-family: BASKVILL;
+	-fx-font-family: Bookman;
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:500;
@@ -145,7 +145,7 @@
 	-fx-pref-width:200;
 	-fx-pref-height:35;
 	-fx-alignment:center-left;
-	-fx-font-family: BASKVILL;
+	-fx-font-family: Bookman;
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:500;
@@ -158,7 +158,7 @@
 	-fx-pref-width:200;
 	-fx-pref-height:35;
 	-fx-alignment:center-left;
-	-fx-font-family: BASKVILL;
+	-fx-font-family: Bookman;
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:500;
@@ -171,7 +171,7 @@
 	-fx-pref-width:200;
 	-fx-pref-height:35;
 	-fx-alignment:center-left;
-	-fx-font-family: BASKVILL;
+	-fx-font-family: Bookman;
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:500;
@@ -184,7 +184,7 @@
 	-fx-pref-width:200;
 	-fx-pref-height:35;
 	-fx-alignment:center-left;
-	-fx-font-family: BASKVILL;
+	-fx-font-family: Bookman;
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:500;

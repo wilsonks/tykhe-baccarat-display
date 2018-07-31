@@ -10,7 +10,7 @@ import javafx.scene.control.Label
 import javafx.scene.input.{KeyCode, KeyEvent}
 import scalafxml.core.macros.sfxml
 
-@sfxml(additionalControls = List("customjavafx.scene.layout"))
+@sfxml(additionalControls = List("customjavafx.scene.layout", "customjavafx.scene.control"))
 class DisplayHandler(
   val handBetMin: Label,
   val handBetMax: Label,
@@ -23,14 +23,20 @@ class DisplayHandler(
   val beadRoad: BeadRoadTilePane,
   val bigEyeRoad: BigEyeRoadTilePane,
   val smallRoad: SmallRoadTilePane,
+  val b1: BigEyeRoadLabel,
+  val b2: SmallRoadLabel,
+  val b3: CockroachRoadLabel,
+  val p1: BigEyeRoadLabel,
+  val p2: SmallRoadLabel,
+  val p3: CockroachRoadLabel,
   val cockroachRoad: CockroachRoadTilePane,
   val bigRoad: BigRoadTilePane)(implicit display: Display, echo: Port[String, Echo.Transition]) {
 
   beadRoad.Initialize(8, 20)
   bigRoad.Initialize(6, 49)
-  bigEyeRoad.Initialize(8, 30)
-  smallRoad.Initialize(8, 30)
-  cockroachRoad.Initialize(8, 30)
+  bigEyeRoad.Initialize(6, 30)
+  smallRoad.Initialize(6, 30)
+  cockroachRoad.Initialize(6, 30)
 
   display.root.addEventHandler(
     KeyEvent.KEY_PRESSED,
@@ -57,20 +63,14 @@ class DisplayHandler(
         } else {
           bigRoad.RemoveElement(beadRoad);
         }
+        if (t2.intValue() > 0) {
+          totalCount.setText(String.valueOf(t2.intValue()));
+        } else {
+          totalCount.setText("");
+        }
+        bigRoad.UpdatePredictions(b1, b2, b3, p1, p2, p3)
       }
     })
-
-//  beadRoad
-//    .getCountProperty()
-//    .addListener(new ChangeListener[Number] {
-//      override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
-//        if (t2.intValue() > 0) {
-//          totalCount.setText(String.valueOf(t2.intValue()));
-//        } else {
-//          totalCount.setText("");
-//        }
-//      }
-//    })
 
   beadRoad
     .getBankerWinCount()

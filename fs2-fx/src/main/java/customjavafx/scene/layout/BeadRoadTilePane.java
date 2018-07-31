@@ -13,6 +13,7 @@ public class BeadRoadTilePane extends TilePane {
 
     private int column = 0;
     private int row = -1;
+
     private IntegerProperty count = new SimpleIntegerProperty(0);
     public IntegerProperty getCountProperty() {return count;}
 
@@ -172,9 +173,10 @@ public class BeadRoadTilePane extends TilePane {
     }
 
     private void RemoveLast() {
-        ResultRemoved(((BeadRoadLabel)getChildren().get(0)).getResult());
+        BeadRoadResult tmp = ((BeadRoadLabel)getChildren().get(0)).getResult();
         super.getChildren().remove(0);
         MovePostionBack();
+        ResultRemoved(tmp);
     }
 
     private void Update(BeadRoadResult res) {
@@ -204,9 +206,10 @@ public class BeadRoadTilePane extends TilePane {
 
     public void RemoveElement() {
         if (getPosition() >= 0) {
-            ResultRemoved(((BeadRoadLabel) super.getChildren().get(getPosition())).getResult());
+            BeadRoadResult tmp = ((BeadRoadLabel) super.getChildren().get(getPosition())).getResult();
             ((BeadRoadLabel) super.getChildren().get(getPosition())).setResult(BeadRoadResult.EMPTY);
             MovePostionBack();
+            ResultRemoved(tmp);
         }
     }
 

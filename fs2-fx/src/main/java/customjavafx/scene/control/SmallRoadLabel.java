@@ -11,6 +11,10 @@ public class SmallRoadLabel extends Label {
         this.result = result;
     }
 
+    public SmallRoadLabel() {
+        this.getStyleClass().add("SmallRoadLabel");
+    }
+
     public SmallRoadLabel(SmallRoadResult res) {
         this.getStyleClass().add("SmallRoadLabel");
         setResult(res);

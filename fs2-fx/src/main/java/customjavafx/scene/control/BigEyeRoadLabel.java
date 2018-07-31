@@ -7,6 +7,10 @@ import javafx.scene.control.Label;
 
 public class BigEyeRoadLabel extends Label {
 
+    public BigEyeRoadLabel() {
+        this.getStyleClass().add("BigEyeRoadLabel");
+    }
+
     public BigEyeRoadLabel(BigEyeRoadResult res) {
         this.getStyleClass().add("BigEyeRoadLabel");
         setResult(res);
