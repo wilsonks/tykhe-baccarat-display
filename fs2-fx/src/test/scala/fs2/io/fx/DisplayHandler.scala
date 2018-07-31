@@ -41,11 +41,12 @@ class DisplayHandler(
   display.root.addEventHandler(
     KeyEvent.KEY_PRESSED,
     new EventHandler[KeyEvent] {
+      var pPair: Boolean = false
+      var bPair: Boolean = false
+
       override def handle(t: KeyEvent): Unit = {
-        var pPair: Boolean = false
-        var bPair: Boolean = false
         t.getCode match {
-          case KeyCode.END | KeyCode.NUMPAD1 =>
+          case KeyCode.END | KeyCode.NUMPAD1 => {
             (bPair, pPair) match {
               case (false, false) => beadRoad.AddElement(BeadRoadResult.BANKER_WIN)
               case (true, false)  => beadRoad.AddElement(BeadRoadResult.BANKER_WIN_BANKER_PAIR)
@@ -53,8 +54,11 @@ class DisplayHandler(
               case (true, true)   => beadRoad.AddElement(BeadRoadResult.BANKER_WIN_BOTH_PAIR)
               case _              =>
             }
+            bPair = false
+            pPair = false
+          }
 
-          case KeyCode.DOWN | KeyCode.NUMPAD2 =>
+          case KeyCode.DOWN | KeyCode.NUMPAD2 => {
             (bPair, pPair) match {
               case (false, false) => beadRoad.AddElement(BeadRoadResult.PLAYER_WIN)
               case (true, false)  => beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_BANKER_PAIR)
@@ -62,8 +66,11 @@ class DisplayHandler(
               case (true, true)   => beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_BOTH_PAIR)
               case _              =>
             }
+            bPair = false
+            pPair = false
+          }
 
-          case KeyCode.PAGE_DOWN | KeyCode.NUMPAD3 =>
+          case KeyCode.PAGE_DOWN | KeyCode.NUMPAD3 => {
             (bPair, pPair) match {
               case (false, false) => beadRoad.AddElement(BeadRoadResult.TIE_WIN)
               case (true, false)  => beadRoad.AddElement(BeadRoadResult.TIE_WIN_BANKER_PAIR)
@@ -71,20 +78,12 @@ class DisplayHandler(
               case (true, true)   => beadRoad.AddElement(BeadRoadResult.TIE_WIN_BOTH_PAIR)
               case _              =>
             }
-
-          case KeyCode.LEFT | KeyCode.NUMPAD4 =>
-            bPair match {
-              case true  => bPair = false
-              case false => bPair = true
-            }
-
-          case KeyCode.CLEAR | KeyCode.NUMPAD5 =>
-            pPair match {
-              case true  => pPair = false
-              case false => pPair = true
-            }
-
-          case KeyCode.SUBTRACT => beadRoad.RemoveElement()
+            bPair = false
+            pPair = false
+          }
+          case KeyCode.LEFT | KeyCode.NUMPAD4  => bPair = !bPair
+          case KeyCode.CLEAR | KeyCode.NUMPAD5 => pPair = !pPair
+          case KeyCode.SUBTRACT                => beadRoad.RemoveElement()
 
           case _ =>
         }
