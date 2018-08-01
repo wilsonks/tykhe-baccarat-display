@@ -1,6 +1,7 @@
 package customjavafx.scene.control;
 
 public enum BigRoadResult {
+    TIE_WIN,
     BANKER_WIN,
     BANKER_WIN_BANKER_PAIR,
     BANKER_WIN_PLAYER_PAIR,

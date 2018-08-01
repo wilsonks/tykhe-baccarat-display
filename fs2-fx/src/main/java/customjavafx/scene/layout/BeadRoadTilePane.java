@@ -38,17 +38,24 @@ public class BeadRoadTilePane extends TilePane {
 
 
     public BeadRoadTilePane() {
-        super();
-        super.setOrientation(Orientation.VERTICAL);
-        super.setAlignment(Pos.TOP_LEFT);
+        setOrientation(Orientation.VERTICAL);
+        setAlignment(Pos.TOP_LEFT);
     }
 
     private int sizeLimit() {
         return (getPrefColumns() * getPrefRows());
     }
 
+    private int getSize() {
+        return getPosition() + 1;
+    }
+
+    private int getPosition() {
+        return (column * 8) + row;
+    }
+
     private boolean childrenLimitReached() {
-        return (super.getChildren().size() == sizeLimit());
+        return (getChildren().size() == sizeLimit());
     }
 
     private void ResultAdded(BeadRoadResult res) {
@@ -110,7 +117,6 @@ public class BeadRoadTilePane extends TilePane {
             default:break;
         }
     }
-
 
     private void ResultRemoved(BeadRoadResult res) {
         count.setValue(count.getValue() - 1);
@@ -174,71 +180,20 @@ public class BeadRoadTilePane extends TilePane {
 
     private void RemoveLast() {
         BeadRoadResult tmp = ((BeadRoadLabel)getChildren().get(0)).getResult();
-        super.getChildren().remove(0);
+        getChildren().remove(0);
         MovePostionBack();
         ResultRemoved(tmp);
     }
 
     private void Update(BeadRoadResult res) {
         MovePositionFront();
-        ((BeadRoadLabel) super.getChildren().get(getPosition())).setResult(res);
+        ((BeadRoadLabel) getChildren().get(getPosition())).setResult(res);
     }
 
     private void Insert() {
         BeadRoadLabel temp = new BeadRoadLabel(BeadRoadResult.EMPTY);
         temp.setResult(BeadRoadResult.EMPTY);
-        super.getChildren().add(temp);
-    }
-
-    public void Initialize() {
-        while (!childrenLimitReached()) {
-            Insert();
-        }
-    }
-
-    public void Initialize(int row, int column) {
-        setPrefRows(row);
-        setPrefColumns(column);
-        while (!childrenLimitReached()) {
-            Insert();
-        }
-    }
-
-    public void RemoveElement() {
-        if (getPosition() >= 0) {
-            BeadRoadResult tmp = ((BeadRoadLabel) super.getChildren().get(getPosition())).getResult();
-            ((BeadRoadLabel) super.getChildren().get(getPosition())).setResult(BeadRoadResult.EMPTY);
-            MovePostionBack();
-            ResultRemoved(tmp);
-        }
-    }
-
-    public void AddElement(BeadRoadResult res) {
-        if (getSize() == sizeLimit()) {
-            RemoveLast();
-            Insert();
-        }
-        Update(res);
-        ResultAdded(res);
-    }
-
-    public BeadRoadResult GetLastElement() {
-
-        return  ((BeadRoadLabel)super.getChildren().get(getPosition())).getResult();
-    }
-
-
-    public int getSize() {
-        return getPosition() + 1;
-    }
-
-    public int getPosition() {
-        return (column * 8) + row;
-    }
-
-    @Override
-    protected void layoutChildren() {
-        super.layoutChildren();
+        getChildren().add(temp);
     }
 
     private void MovePositionFront() {
@@ -259,6 +214,51 @@ public class BeadRoadTilePane extends TilePane {
             row--;
         }
 
+    }
+
+    public void RemoveElement() {
+        if (getPosition() >= 0) {
+            BeadRoadResult tmp = ((BeadRoadLabel) getChildren().get(getPosition())).getResult();
+            ((BeadRoadLabel) getChildren().get(getPosition())).setResult(BeadRoadResult.EMPTY);
+            MovePostionBack();
+            ResultRemoved(tmp);
+        }
+    }
+
+    public void AddElement(BeadRoadResult res) {
+        if (getSize() == sizeLimit()) {
+            RemoveLast();
+            Insert();
+        }
+        Update(res);
+        ResultAdded(res);
+    }
+
+    public void Initialize(int row, int column) {
+        setPrefRows(row);
+        setPrefColumns(column);
+        while (!childrenLimitReached()) {
+            Insert();
+        }
+    }
+
+    public void Reset() {
+        getChildren().stream().map(t->(BeadRoadLabel)t).forEach(t->{
+            t.setResult(BeadRoadResult.EMPTY);
+        });
+        bankerWinCount.setValue(0);
+        tieWinCount.setValue(0);
+        playerWinCount.setValue(0);
+        bankerPairCount.setValue(0);
+        playerPairCount.setValue(0);
+        count.setValue(0);
+        column = 0;
+        row= -1;
+    }
+
+    @Override
+    protected void layoutChildren() {
+        super.layoutChildren();
     }
 
 }

@@ -17,7 +17,9 @@ public class BigRoadLabel extends Label {
     }
 
     private int tieCount = 1;
-    //Create states - 16
+
+    private static final PseudoClass PSEUDO_CLASS_TIE_WIN = PseudoClass.getPseudoClass("tieWin");
+
     private static final PseudoClass PSEUDO_CLASS_BANKER_WIN = PseudoClass.getPseudoClass("bankerWin");
     private static final PseudoClass PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR = PseudoClass.getPseudoClass("bankerWinBankerPair");
     private static final PseudoClass PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR = PseudoClass.getPseudoClass("bankerWinPlayerPair");
@@ -44,6 +46,27 @@ public class BigRoadLabel extends Label {
         protected void invalidated() {
             switch (get()) {
                 case EMPTY:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+                    break;
+                case TIE_WIN:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, true);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -63,6 +86,7 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
                     break;
                 case BANKER_WIN:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, true);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -82,6 +106,7 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
                     break;
                 case BANKER_WIN_BANKER_PAIR:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, true);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -101,6 +126,7 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
                     break;
                 case BANKER_WIN_PLAYER_PAIR:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, true);
@@ -120,6 +146,7 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
                     break;
                 case BANKER_WIN_BOTH_PAIR:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -139,6 +166,7 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
                     break;
                 case PLAYER_WIN:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -158,6 +186,7 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
                     break;
                 case PLAYER_WIN_BANKER_PAIR:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -177,6 +206,7 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
                     break;
                 case PLAYER_WIN_PLAYER_PAIR:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -196,6 +226,7 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
                     break;
                 case PLAYER_WIN_BOTH_PAIR:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -215,6 +246,7 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
                     break;
                 case TIE_AFTER_BANKER_WIN:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -234,6 +266,7 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
                     break;
                 case TIE_AFTER_BANKER_WIN_BANKER_PAIR:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -253,6 +286,7 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
                     break;
                 case TIE_AFTER_BANKER_WIN_PLAYER_PAIR:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -272,6 +306,7 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
                     break;
                 case TIE_AFTER_BANKER_WIN_BOTH_PAIR:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -291,6 +326,7 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
                     break;
                 case TIE_AFTER_PLAYER_WIN:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -310,6 +346,7 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
                     break;
                 case TIE_AFTER_PLAYER_WIN_BANKER_PAIR:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -329,6 +366,7 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
                     break;
                 case TIE_AFTER_PLAYER_WIN_PLAYER_PAIR:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -348,6 +386,7 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
                     break;
                 case TIE_AFTER_PLAYER_WIN_BOTH_PAIR:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -404,6 +443,6 @@ public class BigRoadLabel extends Label {
 
     public void setResult(BigRoadResult result) {
         this.result.set(result);
-        this.setText("");
+//        this.setText("");
     }
 }

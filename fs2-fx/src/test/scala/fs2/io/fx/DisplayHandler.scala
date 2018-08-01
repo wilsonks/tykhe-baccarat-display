@@ -82,69 +82,66 @@ class DisplayHandler(
           case KeyCode.LEFT | KeyCode.NUMPAD4  => bPair = !bPair
           case KeyCode.CLEAR | KeyCode.NUMPAD5 => pPair = !pPair
           case KeyCode.SUBTRACT                => beadRoad.RemoveElement()
+          case KeyCode.DIVIDE                  => beadRoad.Reset()
 
-          case _ =>
+          case _ => println(t)
         }
       }
     }
   )
 
-  beadRoad
-    .getCountProperty()
+  beadRoad.getCountProperty
     .addListener(new ChangeListener[Number] {
       override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
-        if (t2.longValue() > t1.longValue()) {
-          bigRoad.AddElement(beadRoad);
-        } else {
-          bigRoad.RemoveElement(beadRoad);
-        }
         if (t2.intValue() > 0) {
-          totalCount.setText(String.valueOf(t2.intValue()));
+          if (t2.longValue() > t1.longValue()) {
+            bigRoad.AddElement(beadRoad)
+          } else {
+            bigRoad.RemoveElement(beadRoad)
+          }
+          totalCount.setText(String.valueOf(t2.intValue()))
         } else {
-          totalCount.setText("");
+          bigRoad.Reset()
+          totalCount.setText("")
         }
         bigRoad.UpdatePredictions(b1, b2, b3, p1, p2, p3)
       }
     })
 
-  beadRoad
-    .getBankerWinCount()
+  beadRoad.getBankerWinCount
     .addListener(new ChangeListener[Number] {
       override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
         if (t2.intValue() > 0) {
-          bankerWinCount.setText(String.valueOf(t2.intValue()));
+          bankerWinCount.setText(String.valueOf(t2.intValue()))
         } else {
-          bankerWinCount.setText("");
+          bankerWinCount.setText("")
         }
       }
     })
 
-  beadRoad
-    .getPlayerWinCount()
+  beadRoad.getPlayerWinCount
     .addListener(new ChangeListener[Number] {
       override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
         if (t2.intValue() > 0) {
-          playerWinCount.setText(String.valueOf(t2.intValue()));
+          playerWinCount.setText(String.valueOf(t2.intValue()))
         } else {
-          playerWinCount.setText("");
+          playerWinCount.setText("")
         }
       }
     })
 
-  beadRoad
-    .getTieWinCount()
+  beadRoad.getTieWinCount
     .addListener(new ChangeListener[Number] {
       override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
         if (t2.intValue() > 0) {
-          tieWinCount.setText(String.valueOf(t2.intValue()));
+          tieWinCount.setText(String.valueOf(t2.intValue()))
         } else {
-          tieWinCount.setText("");
+          tieWinCount.setText("")
         }
       }
     })
 
-  beadRoad
-    .getBankerPairCount()
+  beadRoad.getBankerPairCount
     .addListener(new ChangeListener[Number] {
       override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
         if (t2.intValue() > 0) {
@@ -155,48 +152,53 @@ class DisplayHandler(
       }
     })
 
-  beadRoad
-    .getPlayerPairCount()
+  beadRoad.getPlayerPairCount
     .addListener(new ChangeListener[Number] {
       override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
         if (t2.intValue() > 0) {
-          playerPairCount.setText(String.valueOf(t2.intValue()));
+          playerPairCount.setText(String.valueOf(t2.intValue()))
         } else {
-          playerPairCount.setText("");
+          playerPairCount.setText("")
         }
       }
     })
 
-  bigRoad
-    .bigEyeRoadListProperty()
+  bigRoad.bigEyeRoadListProperty
     .addListener(new ChangeListener[ObservableList[BigEyeRoadLabel]] {
       override def changed(
         observableValue: ObservableValue[_ <: ObservableList[BigEyeRoadLabel]],
         t: ObservableList[BigEyeRoadLabel],
         t1: ObservableList[BigEyeRoadLabel]): Unit = {
-        bigEyeRoad.ReArrangeElements(t1)
+        if (!t1.isEmpty) bigEyeRoad.ReArrangeElements(t1)
+        else {
+          bigEyeRoad.Reset()
+        }
       }
     })
 
-  bigRoad
-    .smallRoadListProperty()
+  bigRoad.smallRoadListProperty
     .addListener(new ChangeListener[ObservableList[SmallRoadLabel]] {
       override def changed(
         observableValue: ObservableValue[_ <: ObservableList[SmallRoadLabel]],
         t: ObservableList[SmallRoadLabel],
         t1: ObservableList[SmallRoadLabel]): Unit = {
-        smallRoad.ReArrangeElements(t1)
+        if (!t1.isEmpty) smallRoad.ReArrangeElements(t1)
+        else {
+          smallRoad.Reset()
+        }
       }
     })
 
-  bigRoad
-    .cockroachRoadListProperty()
+  bigRoad.cockroachRoadListProperty
     .addListener(new ChangeListener[ObservableList[CockroachRoadLabel]] {
       override def changed(
         observableValue: ObservableValue[_ <: ObservableList[CockroachRoadLabel]],
         t: ObservableList[CockroachRoadLabel],
         t1: ObservableList[CockroachRoadLabel]): Unit = {
-        cockroachRoad.ReArrangeElements(t1)
+        if (!t1.isEmpty) cockroachRoad.ReArrangeElements(t1)
+        else {
+          cockroachRoad.Reset()
+        }
       }
     })
 

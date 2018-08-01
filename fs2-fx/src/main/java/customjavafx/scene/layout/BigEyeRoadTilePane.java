@@ -174,6 +174,15 @@ public class BigEyeRoadTilePane extends TilePane {
         this.row = -1;
     }
 
+    public void Reset(){
+        getChildren().stream().map(t->(BigEyeRoadLabel)t).forEach(t->{
+            t.setResult(BigEyeRoadResult.EMPTY);
+        });
+        column = 0;
+        row= -1;
+        savedColumn = -1;
+    }
+
     @Override
     protected void layoutChildren() {
         super.layoutChildren();
