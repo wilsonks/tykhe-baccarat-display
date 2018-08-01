@@ -3,6 +3,7 @@ package customjavafx.scene.layout;
 
 import customjavafx.scene.control.BeadRoadLabel;
 import customjavafx.scene.control.BeadRoadResult;
+import customjavafx.scene.control.LastWinResult;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.geometry.Orientation;
@@ -118,6 +119,28 @@ public class BeadRoadTilePane extends TilePane {
         }
     }
 
+    private boolean isCurrentWinRed() {
+        switch (((BeadRoadLabel) getChildren().get(getPosition())).getResult()) {
+            case BANKER_WIN:
+            case BANKER_WIN_BANKER_PAIR:
+            case BANKER_WIN_PLAYER_PAIR:
+            case BANKER_WIN_BOTH_PAIR:
+                return true;
+                default:return false;
+        }
+    }
+
+    private boolean isCurrentWinBlue() {
+        switch (((BeadRoadLabel) getChildren().get(getPosition())).getResult()) {
+            case PLAYER_WIN:
+            case PLAYER_WIN_BANKER_PAIR:
+            case PLAYER_WIN_PLAYER_PAIR:
+            case PLAYER_WIN_BOTH_PAIR:
+                return true;
+            default:return false;
+        }
+    }
+
     private void ResultRemoved(BeadRoadResult res) {
         count.setValue(count.getValue() - 1);
         switch(res) {
@@ -222,6 +245,14 @@ public class BeadRoadTilePane extends TilePane {
             ((BeadRoadLabel) getChildren().get(getPosition())).setResult(BeadRoadResult.EMPTY);
             MovePostionBack();
             ResultRemoved(tmp);
+        }
+    }
+
+    public LastWinResult LastWin(){
+        if(isCurrentWinRed()) return LastWinResult.BANKER_WIN;
+        else if (isCurrentWinBlue()) return LastWinResult.PLAYER_WIN;
+        else {
+            return LastWinResult.TIE_WIN;
         }
     }
 

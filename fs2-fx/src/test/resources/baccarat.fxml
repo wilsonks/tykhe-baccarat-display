@@ -3,6 +3,7 @@
 <?import customjavafx.scene.control.BeadRoadLabel?>
 <?import customjavafx.scene.control.BigEyeRoadLabel?>
 <?import customjavafx.scene.control.CockroachRoadLabel?>
+<?import customjavafx.scene.control.LastWinLabel?>
 <?import customjavafx.scene.control.SmallRoadLabel?>
 <?import customjavafx.scene.layout.BeadRoadTilePane?>
 <?import customjavafx.scene.layout.BigEyeRoadTilePane?>
@@ -11,6 +12,8 @@
 <?import customjavafx.scene.layout.SmallRoadTilePane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -20,12 +23,12 @@
    <children>
       <HBox styleClass="topmost" stylesheets="@styles/header.css">
          <children>
-            <Pane styleClass="pane1" HBox.hgrow="NEVER">
+            <Pane styleClass="pane1">
                <children>
                   <Label styleClass="nameLabel" text="BAC-001">
                   </Label>
-                  <Label styleClass="sideBetLabel" text="SideBet: Pairs 1:11">
-                  </Label>
+                  <!--<Label styleClass="sideBetLabel" text="SideBet: Pairs 1:11">-->
+                  <!--</Label>-->
                   <Label styleClass="minBetLabel" text="Min:">
                   </Label>
                   <Label styleClass="maxBetLabel" text="Max:">
@@ -87,101 +90,127 @@
 	    </Pane>
             <Pane maxWidth="858.0" prefWidth="858.0" styleClass="history">
                <children>
-                  <VBox layoutX="33.0" layoutY="62.0" prefHeight="290.0" prefWidth="125.0" spacing="10.0">
+                  <HBox layoutX="33.0" layoutY="56.0" prefHeight="368.0" prefWidth="798.0" spacing="15.0">
                      <children>
-                        <Label fx:id="bLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="123.0" text="Banker" textFill="#281111">
-                           <font>
-                              <Font name="Book Antiqua Bold" size="21.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="pLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="123.0" text="Player" textFill="#281111">
-                           <font>
-                              <Font name="Book Antiqua Bold" size="21.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="tieLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="60.0" prefHeight="40.0" prefWidth="123.0" text="Tie" textFill="#281111">
-                           <font>
-                              <Font name="Book Antiqua Bold" size="21.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="bpLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="40.0" prefWidth="123.0" text="Banker Pair" textFill="#281111">
-                           <font>
-                              <Font name="Book Antiqua Bold" size="21.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="ppLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="160.0" prefHeight="40.0" prefWidth="123.0" text="Plair Pair" textFill="#281111">
-                           <font>
-                              <Font name="Book Antiqua Bold" size="21.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="tLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="210.0" prefHeight="40.0" prefWidth="123.0" text="Total Count" textFill="#281111">
-                           <font>
-                              <Font name="Book Antiqua Bold" size="21.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox layoutX="158.0" layoutY="62.0" spacing="10.0">
-                     <children>
-                        <Label fx:id="bankerWinCount" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="51.0" text="" textFill="WHITE">
-                           <font>
-                              <Font name="Book Antiqua" size="31.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="playerWinCount" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="51.0" textFill="WHITE">
-                           <font>
-                              <Font name="Book Antiqua" size="31.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="tieWinCount" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="51.0" text="" textFill="WHITE">
-                           <font>
-                              <Font name="Book Antiqua" size="31.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="bankerPairCount" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="51.0" text="" textFill="WHITE">
-                           <font>
-                              <Font name="Book Antiqua" size="31.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="playerPairCount" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="51.0" text="" textFill="WHITE">
-                           <font>
-                              <Font name="Book Antiqua" size="31.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="totalCount" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="51.0" textFill="WHITE">
-                           <font>
-                              <Font name="Book Antiqua" size="31.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox layoutX="270.0" layoutY="62.0" prefHeight="200.0" prefWidth="100.0" styleClass="predictionBox">
-                     <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                        <VBox alignment="TOP_CENTER" prefHeight="364.0" prefWidth="114.0" spacing="30.0">
                            <children>
-                              <BeadRoadLabel result="BANKER_WIN" />
-                              <BeadRoadLabel result="PLAYER_WIN" />
-                           </children></HBox>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
-                           <children>
-                              <BigEyeRoadLabel fx:id="b1"  />
-                              <BigEyeRoadLabel fx:id="p1"  />
+                              <VBox prefHeight="200.0" prefWidth="100.0" styleClass="predictionBox">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <BeadRoadLabel result="BANKER_WIN" />
+                                          <BeadRoadLabel alignment="CENTER" contentDisplay="CENTER" prefWidth="64.0" result="PLAYER_WIN" textAlignment="CENTER" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                                       <children>
+                                          <BigEyeRoadLabel fx:id="b1" />
+                                          <BigEyeRoadLabel fx:id="p1" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                                       <children>
+                                          <SmallRoadLabel fx:id="b2" />
+                                          <SmallRoadLabel fx:id="p2" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                                       <children>
+                                          <CockroachRoadLabel fx:id="b3" />
+                                          <CockroachRoadLabel fx:id="p3" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets top="5.0" />
+                                 </padding>
+                              </VBox>
+                              <LastWinLabel fx:id="lastWin" result="EMPTY" styleClass="lastWinLabel">
+                        </LastWinLabel>
                            </children>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin></HBox>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                        </VBox>
+                        <VBox prefHeight="290.0" prefWidth="125.0" spacing="10.0">
                            <children>
-                              <SmallRoadLabel fx:id="b2" />
-                              <SmallRoadLabel fx:id="p2" />
-                           </children></HBox>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                              <Label fx:id="bLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="123.0" text="Banker" textFill="#281111">
+                                 <font>
+                                    <Font name="Book Antiqua Bold" size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="pLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="123.0" text="Player" textFill="#281111">
+                                 <font>
+                                    <Font name="Book Antiqua Bold" size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="tieLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="60.0" prefHeight="40.0" prefWidth="123.0" text="Tie" textFill="#281111">
+                                 <font>
+                                    <Font name="Book Antiqua Bold" size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="bpLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="40.0" prefWidth="123.0" text="Banker Pair" textFill="#281111">
+                                 <font>
+                                    <Font name="Book Antiqua Bold" size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="ppLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="160.0" prefHeight="40.0" prefWidth="123.0" text="Plair Pair" textFill="#281111">
+                                 <font>
+                                    <Font name="Book Antiqua Bold" size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="tLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="210.0" prefHeight="40.0" prefWidth="123.0" text="Total Count" textFill="#281111">
+                                 <font>
+                                    <Font name="Book Antiqua Bold" size="21.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox spacing="10.0">
                            <children>
-                              <CockroachRoadLabel fx:id="b3" />
-                              <CockroachRoadLabel fx:id="p3" />
-                           </children></HBox>
+                              <Label fx:id="bankerWinCount" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="51.0" text="" textFill="WHITE">
+                                 <font>
+                                    <Font name="Book Antiqua" size="31.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="playerWinCount" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="51.0" textFill="WHITE">
+                                 <font>
+                                    <Font name="Book Antiqua" size="31.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="tieWinCount" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="51.0" text="" textFill="WHITE">
+                                 <font>
+                                    <Font name="Book Antiqua" size="31.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="bankerPairCount" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="51.0" text="" textFill="WHITE">
+                                 <font>
+                                    <Font name="Book Antiqua" size="31.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="playerPairCount" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="51.0" text="" textFill="WHITE">
+                                 <font>
+                                    <Font name="Book Antiqua" size="31.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="totalCount" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="51.0" textFill="WHITE">
+                                 <font>
+                                    <Font name="Book Antiqua" size="31.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <Pane prefHeight="368.0" prefWidth="76.0" />
+                        <ImageView fitHeight="203.0" fitWidth="285.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/logo.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets top="100.0" />
+                           </HBox.margin>
+                        </ImageView>
                      </children>
-                  </VBox>
+                  </HBox>
                </children></Pane>
          </children>
       </HBox>

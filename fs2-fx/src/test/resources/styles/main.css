@@ -1,5 +1,6 @@
 .root {
 	-fx-background-color:teal;
+	-fx-font-family: "Courier New";
 	-fx-padding: 10 5 10 5;
 	-fx-spacing:10;
      	-style1-color: rgb(0,0,0);
@@ -8,6 +9,32 @@
 	-fx-pref-height:1080;
 
 }
+
+
+.LastWinLabel {
+    -fx-background-color:black;
+    -fx-pref-height: 113;
+    -fx-pref-width: 113;
+}
+
+.LastWinLabel:bankerWin {
+    -fx-background-image: url("../images/banker.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat, stretch;
+}
+
+.LastWinLabel:tieWin {
+    -fx-background-image: url("../images/tie.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat, stretch;
+}
+
+.LastWinLabel:playerWin {
+    -fx-background-image: url("../images/player.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat, stretch;
+}
+
 
 #totalCount {
     -fx-background-color:goldenrod;

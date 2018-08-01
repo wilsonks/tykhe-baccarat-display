@@ -10,22 +10,24 @@
 
 .pane1 {
 	-fx-pref-width:1920;
-		-fx-pref-height:200;
+	-fx-pref-height:200;
 
 }
 
 .nameLabel {
-	-fx-text-fill: theme-color;
+	-fx-text-fill: white;
 	-fx-translate-x:0;
 	-fx-translate-y:0;
 	-fx-pref-width:300;
 	-fx-pref-height:78;
 	-fx-alignment:top-left;
-	-fx-font-family: Bookman;
-	-fx-font-size: 60;
-	-fx-font-style:normal;
+	-fx-font-family: "Trebuchet MS";
+	-fx-font-size: 70;
+	-fx-font-style: normal;
 	-fx-font-weight:900;
+
 }
+
 
 .sideBetLabel {
 	-fx-text-fill: theme-color;
@@ -34,7 +36,7 @@
 	-fx-pref-width:450;
 	-fx-pref-height:35;
 	-fx-alignment:bottom-left;
-	-fx-font-family: Bookman;
+	-fx-font-family: "Book Antiqua";
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:200;
@@ -47,7 +49,7 @@
 	-fx-pref-width:200;
 	-fx-pref-height:30;
 	-fx-alignment:center-right;
-	-fx-font-family: Bookman;
+	-fx-font-family: "Book Antiqua";
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:200;
@@ -60,7 +62,7 @@
 	-fx-pref-width:200;
 	-fx-pref-height:30;
 	-fx-alignment:center-right;
-	-fx-font-family: Bookman;
+	-fx-font-family: "Book Antiqua";
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:200;
@@ -73,7 +75,7 @@
 	-fx-pref-width:200;
 	-fx-pref-height:35;
 	-fx-alignment:center-left;
-	-fx-font-family: Bookman;
+	-fx-font-family: "Book Antiqua";
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:200;
@@ -86,7 +88,7 @@
 	-fx-pref-width:200;
 	-fx-pref-height:35;
 	-fx-alignment:center-left;
-	-fx-font-family: Bookman;
+	-fx-font-family: "Book Antiqua";
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:200;
@@ -99,7 +101,7 @@
 	-fx-pref-width:200;
 	-fx-pref-height:35;
 	-fx-alignment:center-left;
-	-fx-font-family: Bookman;
+	-fx-font-family: "Book Antiqua";
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:200;
@@ -113,7 +115,7 @@
 	-fx-pref-width:200;
 	-fx-pref-height:35;
 	-fx-alignment:center-left;
-	-fx-font-family: Bookman;
+	-fx-font-family: "Book Antiqua";
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:500;
@@ -126,7 +128,7 @@
 	-fx-pref-width:200;
 	-fx-pref-height:35;
 	-fx-alignment:center-left;
-	-fx-font-family: Bookman;
+	-fx-font-family: "Book Antiqua";
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:500;
@@ -139,7 +141,7 @@
 	-fx-pref-width:200;
 	-fx-pref-height:35;
 	-fx-alignment:center-left;
-	-fx-font-family: Bookman;
+	-fx-font-family: "Book Antiqua";
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:500;
@@ -152,7 +154,7 @@
 	-fx-pref-width:200;
 	-fx-pref-height:35;
 	-fx-alignment:center-left;
-	-fx-font-family: Bookman;
+	-fx-font-family: "Book Antiqua";
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:500;
@@ -165,7 +167,7 @@
 	-fx-pref-width:200;
 	-fx-pref-height:35;
 	-fx-alignment:center-left;
-	-fx-font-family: Bookman;
+	-fx-font-family: "Book Antiqua";
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:500;
@@ -178,7 +180,7 @@
 	-fx-pref-width:200;
 	-fx-pref-height:35;
 	-fx-alignment:center-left;
-	-fx-font-family: Bookman;
+	-fx-font-family: "Book Antiqua";
 	-fx-font-size: 40;
 	-fx-font-style:normal;
 	-fx-font-weight:500;

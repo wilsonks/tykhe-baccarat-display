@@ -1,6 +1,6 @@
 package fs2.io.fx
 
-import customjavafx.scene.control.{BeadRoadResult, BigEyeRoadLabel, CockroachRoadLabel, SmallRoadLabel}
+import customjavafx.scene.control._
 import customjavafx.scene.layout._
 import fs2.io.fx.syntax._
 import javafx.beans.value.{ChangeListener, ObservableValue}
@@ -23,13 +23,14 @@ class DisplayHandler(
   val beadRoad: BeadRoadTilePane,
   val bigEyeRoad: BigEyeRoadTilePane,
   val smallRoad: SmallRoadTilePane,
+  val cockroachRoad: CockroachRoadTilePane,
   val b1: BigEyeRoadLabel,
   val b2: SmallRoadLabel,
   val b3: CockroachRoadLabel,
   val p1: BigEyeRoadLabel,
   val p2: SmallRoadLabel,
   val p3: CockroachRoadLabel,
-  val cockroachRoad: CockroachRoadTilePane,
+  val lastWin: LastWinLabel,
   val bigRoad: BigRoadTilePane)(implicit display: Display, echo: Port[String, Echo.Transition]) {
 
   beadRoad.Initialize(8, 20)
@@ -99,9 +100,11 @@ class DisplayHandler(
           } else {
             bigRoad.RemoveElement(beadRoad)
           }
+          lastWin.setResult(beadRoad.LastWin())
           totalCount.setText(String.valueOf(t2.intValue()))
         } else {
           bigRoad.Reset()
+          lastWin.setResult(LastWinResult.EMPTY)
           totalCount.setText("")
         }
         bigRoad.UpdatePredictions(b1, b2, b3, p1, p2, p3)
