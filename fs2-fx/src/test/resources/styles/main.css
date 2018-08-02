@@ -1,6 +1,5 @@
 .root {
-	-fx-background-color:teal;
-	-fx-font-family: "Courier New";
+	-fx-background-color:black;
 	-fx-padding: 10 5 10 5;
 	-fx-spacing:10;
      	-style1-color: rgb(0,0,0);
@@ -8,6 +7,18 @@
 	-fx-pref-width:1920;
 	-fx-pref-height:1080;
 
+}
+
+@font-face {
+    src: url('../fonts/ANTQUAB.TTF');
+}
+
+@font-face {
+    src: url('../fonts/ANTQUA.ttf');
+}
+
+@font-face {
+    src: url('../fonts/Bauhaus.ttf');
 }
 
 
@@ -36,118 +47,45 @@
 }
 
 
-#totalCount {
-    -fx-background-color:goldenrod;
-    -fx-text-fill:white;
+
+.counterBox {
+        -fx-background-color: white;
+        -fx-border-radius: 5 5 5 5;
+        -fx-background-radius: 5 5 5 5;
 }
-
-#bankerWinCount {
-    -fx-background-color:red;
-    -fx-text-fill:white;
-}
-
-#playerWinCount {
-    -fx-background-color:dodgerblue;
-    -fx-text-fill:white;
-}
-
-#tieWinCount {
-    -fx-background-color:limegreen;
-    -fx-text-fill:white;
-}
-
-#bankerPairCount {
-    -fx-background-color:red;
-    -fx-text-fill:white;
-}
-
-#playerPairCount {
-    -fx-background-color:dodgerblue;
-        -fx-text-fill:white;
-}
-
-
-#tLabel {
-    -fx-text-fill:white;
-    -fx-alignment:center-right;
-}
-
-#bLabel {
-    -fx-text-fill:white;
-    -fx-alignment:center-right;
-}
-
-#pLabel {
-    -fx-text-fill:white;
-    -fx-alignment:center-right;
-}
-
-#tieLabel {
-    -fx-text-fill:white;
-    -fx-alignment:center-right;
-}
-
-#bpLabel {
-    -fx-text-fill:white;
-    -fx-alignment:center-right;
-}
-
-#ppLabel {
-     -fx-text-fill:white;
-    -fx-alignment:center-right;
-}
-
-
-
-.top {
-     	-fx-background-color: teal;
-	-fx-spacing:5;
-	-fx-pref-width:1920;
-	-fx-pref-height:432;
-
-}
-
-.history {
-	-fx-background-color:black;
-	-fx-background-radius:0,0,0,0;
-	-fx-pref-width:835;
-	-fx-pref-height:432;
-
-}
-
 
 .predictionBox {
-    -fx-background-color:white;
+        -fx-background-color: white;
+        -fx-border-radius: 5 5 5 5;
+        -fx-background-radius: 5 5 5 5;
 }
 
 
 .BeadRoadPane {
-	-fx-background-color: white;
+	-fx-background-color: black;
 	-fx-background-radius:0,0,0,0;
 	-fx-border-color:rgb(108,116,118);
 	-fx-border-width:0,0,0,0;
 	-fx-border-radius: 0,0,0,0;
-	-fx-pref-height:432;
-	-fx-pref-width:1070;
 
 }
 
 .BeadRoadTilePane {
-    -fx-padding:5,0,0,0;
+    -fx-padding:0,0,0,0;
 	-fx-tile-alignment: top-left;
-	-fx-pref-rows: 8;
-	-fx-pref-columns: 20;
-	-fx-pref-tile-width: 51;
-	-fx-pref-tile-height: 51;
-	-fx-hgap: 1.5;
-	-fx-vgap: 1.5;
+	-fx-pref-rows: 7;
+	-fx-pref-columns: 14;
+	-fx-pref-tile-width: 44;
+	-fx-pref-tile-height: 44;
+	-fx-hgap: .5;
+	-fx-vgap: .5;
 	
 }
 
 .BeadRoadLabel {
-    -fx-background-color:derive(teal,90%);
-    -fx-pref-height: 51;
-    -fx-pref-width: 51;
+    -fx-background-color:white;
+    -fx-pref-height: 44;
+    -fx-pref-width: 44;
 }
 
 .BeadRoadLabel:bankerWin {
@@ -366,24 +304,14 @@
 
 
 
-
-
-
-
-
-
-
-
 .bottomHBox {
-	-fx-background-color:teal;
+	-fx-background-color:black;
 	-fx-pref-width:1910;
-	-fx-pref-height:127;
 	-fx-spacing:11;
 }
 
 .BigEyeRoadPane {
 	-fx-background-color:rgb(108,116,118,.5);
-	-fx-pref-height:127;
 	-fx-pref-width:629;
 }
 
@@ -501,4 +429,181 @@
 	-fx-background-size: contain;
 }
 
+.BigEyeRoadHeader {
+    -fx-padding: 0 0 0 0;
+    -fx-background-color: radial-gradient(radius 180%, white, derive(lightgray, -30%), derive(lightgray, 30%));
+    -fx-border-radius: 5 5 5 5;
+    -fx-background-radius: 5 5 5 5;
+    -fx-text-fill: black;
+    -fx-pref-width:200;
+    -fx-pref-height:25;
+    -fx-alignment:center;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 12;
+    }
 
+
+.BeadHeader {
+    -fx-padding: 0 0 0 0;
+    -fx-background-color: radial-gradient(radius 180%, white, derive(lightgray, -30%), derive(lightgray, 30%));
+    -fx-border-radius: 5 5 5 5;
+    -fx-background-radius: 5 5 5 5;
+    -fx-text-fill: black;
+    -fx-pref-width:200;
+    -fx-pref-height:25;
+    -fx-alignment:center;
+    -fx-font-family: 'Book Antiqua';
+    -fx-font-size: 18;
+    }
+
+.BigEyeRoadHeader {
+    -fx-padding: 0 0 0 0;
+    -fx-background-color: radial-gradient(radius 180%, white, derive(lightgray, -30%), derive(lightgray, 30%));
+    -fx-border-radius: 5 5 5 5;
+    -fx-background-radius: 5 5 5 5;
+    -fx-text-fill: black;
+    -fx-pref-width:200;
+    -fx-pref-height:25;
+    -fx-alignment:center;
+    -fx-font-family: 'Book Antiqua';
+    -fx-font-size: 18;
+    }
+
+.FootLabel {
+    -fx-padding: 0 0 5 0;
+    -fx-background-color: radial-gradient(radius 180%, white, derive(lightgray, -30%), derive(lightgray, 30%));
+    -fx-border-radius: 5 5 5 5;
+    -fx-background-radius: 5 5 5 5;
+    -fx-text-fill: black;
+    -fx-pref-width:1910;
+    -fx-pref-height:25;
+    -fx-alignment:center;
+    -fx-font-family: 'Book Antiqua';
+    -fx-font-size: 12;
+
+    }
+
+    .header {
+        -fx-background-color: black;
+    	-fx-pref-width:1920;
+    	-fx-pref-height:200;
+    }
+
+    .nameLabel {
+    	-fx-font-family: 'Bauhaus';
+    	-fx-font-size: 34;
+    }
+
+    .minLabel {
+    	-fx-text-fill: lightgray;
+    	-fx-font-family: 'Book Antiqua';
+    	-fx-font-size: 22;
+        -fx-alignment:center-right;
+
+    }
+
+    .maxLabel {
+    	-fx-text-fill: lightgray;
+    	-fx-font-family: 'Book Antiqua';
+    	-fx-font-size: 22;
+    	-fx-alignment:center-right;
+    }
+
+    .textField {
+        -fx-background-color: radial-gradient(radius 180%, white, derive(lightgray, -30%), derive(lightgray, 30%));
+        -fx-border-radius: 5 5 5 5;
+        -fx-background-radius: 5 5 5 5;
+    	-fx-text-fill: black;
+    	-fx-pref-width:250;
+        -fx-pref-height:25;
+        -fx-alignment:center;
+    	-fx-font-family: 'Book Antiqua';
+    	-fx-font-size: 26;
+
+    }
+
+    .textFieldRight {
+        -fx-background-color: radial-gradient(radius 180%, white, derive(lightgray, -30%), derive(lightgray, 30%));
+        -fx-border-radius: 5 5 5 5;
+        -fx-background-radius: 5 5 5 5;
+    	-fx-text-fill: black;
+    	-fx-pref-width:280;
+        -fx-pref-height:25;
+        -fx-alignment:center-right;
+    	-fx-font-family: 'Book Antiqua';
+    	-fx-font-size: 26;
+
+    }
+
+
+#bankerWinCount {
+    -fx-background-color:red;
+    -fx-text-fill:white;
+    -fx-font-family: 'Book Antiqua';
+    -fx-font-size: 25;
+}
+
+#playerWinCount {
+    -fx-background-color:dodgerblue;
+    -fx-text-fill:white;
+    -fx-font-family: 'Book Antiqua';
+    -fx-font-size: 25;
+}
+
+#tieWinCount {
+    -fx-background-color:limegreen;
+    -fx-text-fill:white;
+    -fx-font-family: 'Book Antiqua';
+    -fx-font-size: 25;
+}
+
+#bankerPairCount {
+    -fx-background-color:red;
+    -fx-text-fill:white;
+    -fx-font-family: 'Book Antiqua';
+    -fx-font-size: 25;
+}
+
+#playerPairCount {
+    -fx-background-color:dodgerblue;
+        -fx-text-fill:white;
+    -fx-font-family: 'Book Antiqua';
+    -fx-font-size: 25;
+}
+
+
+
+#bLabel {
+    -fx-text-fill:black;
+    -fx-alignment:center-right;
+    -fx-font-family: 'Book Antiqua Bold';
+    -fx-font-size: 18;
+}
+
+#pLabel {
+    -fx-text-fill:black;
+    -fx-alignment:center-right;
+    -fx-font-family: "Book Antiqua Bold";
+    -fx-font-size: 18;
+}
+
+#tieLabel {
+    -fx-text-fill:black;
+    -fx-alignment:center-right;
+    -fx-font-family: "Book Antiqua Bold";
+    -fx-font-size: 18;
+}
+
+#bpLabel {
+    -fx-text-fill:black;
+    -fx-alignment:center-right;
+    -fx-font-family: "Book Antiqua Bold";
+    -fx-font-size: 18;
+}
+
+#ppLabel {
+     -fx-text-fill:black;
+    -fx-alignment:center-right;
+    -fx-font-family: 'Book Antiqua Bold';
+    -fx-font-size: 18;
+}

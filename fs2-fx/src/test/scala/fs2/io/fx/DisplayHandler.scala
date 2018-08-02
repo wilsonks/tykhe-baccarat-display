@@ -3,17 +3,19 @@ package fs2.io.fx
 import customjavafx.scene.control._
 import customjavafx.scene.layout._
 import fs2.io.fx.syntax._
+import javafx.animation._
 import javafx.beans.value.{ChangeListener, ObservableValue}
 import javafx.collections.ObservableList
 import javafx.event.EventHandler
 import javafx.scene.control.Label
 import javafx.scene.input.{KeyCode, KeyEvent}
+import javafx.scene.transform.Rotate
+import javafx.util.Duration
+import scalafx.scene.media.AudioClip
 import scalafxml.core.macros.sfxml
 
 @sfxml(additionalControls = List("customjavafx.scene.layout", "customjavafx.scene.control"))
 class DisplayHandler(
-  val handBetMin: Label,
-  val handBetMax: Label,
   val playerWinCount: Label,
   val bankerWinCount: Label,
   val tieWinCount: Label,
@@ -33,7 +35,7 @@ class DisplayHandler(
   val lastWin: LastWinLabel,
   val bigRoad: BigRoadTilePane)(implicit display: Display, echo: Port[String, Echo.Transition]) {
 
-  beadRoad.Initialize(8, 20)
+  beadRoad.Initialize(7, 14)
   bigRoad.Initialize(6, 49)
   bigEyeRoad.Initialize(6, 30)
   smallRoad.Initialize(6, 30)
@@ -95,11 +97,13 @@ class DisplayHandler(
     .addListener(new ChangeListener[Number] {
       override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
         if (t2.intValue() > 0) {
+          lastWinAnimation.play()
           if (t2.longValue() > t1.longValue()) {
             bigRoad.AddElement(beadRoad)
           } else {
             bigRoad.RemoveElement(beadRoad)
           }
+          new AudioClip(getClass.getResource(beadRoad.LastWinAudio()).toExternalForm).play()
           lastWin.setResult(beadRoad.LastWin())
           totalCount.setText(String.valueOf(t2.intValue()))
         } else {
@@ -204,6 +208,13 @@ class DisplayHandler(
         }
       }
     })
+
+  val lastWinAnimation: RotateTransition = new RotateTransition(Duration.millis(50), lastWin)
+  lastWinAnimation.setAxis(Rotate.Y_AXIS)
+  lastWinAnimation.setByAngle(180)
+  lastWinAnimation.setCycleCount(2)
+  lastWinAnimation.setInterpolator(Interpolator.LINEAR)
+  lastWinAnimation.setAutoReverse(true)
 
   display.root.iconifiedProperty().values.subscribe(i => if (i) echo.cancel() else echo.restart())
   display.root.setOnCloseRequest(_ => {

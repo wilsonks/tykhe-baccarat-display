@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 
 public class LastWinLabel extends Label {
 
+
+//    public AudioClip lastWinAudio = new AudioClip(new File("player.mp3").toURI().toString());
     public LastWinLabel() {
         this.getStyleClass().add("LastWinLabel");
     }

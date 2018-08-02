@@ -52,7 +52,7 @@ public class BeadRoadTilePane extends TilePane {
     }
 
     private int getPosition() {
-        return (column * 8) + row;
+        return (column * getPrefRows()) + row;
     }
 
     private boolean childrenLimitReached() {
@@ -232,7 +232,7 @@ public class BeadRoadTilePane extends TilePane {
     private void MovePostionBack() {
         if (row == 0) {
             column--;
-            row = 7;
+            row = getPrefRows() - 1;
         } else {
             row--;
         }
@@ -245,6 +245,14 @@ public class BeadRoadTilePane extends TilePane {
             ((BeadRoadLabel) getChildren().get(getPosition())).setResult(BeadRoadResult.EMPTY);
             MovePostionBack();
             ResultRemoved(tmp);
+        }
+    }
+
+    public String LastWinAudio(){
+        if(isCurrentWinRed()) return "../../../sounds/banker.mp3";
+        else if (isCurrentWinBlue()) return "../../../sounds/player.mp3";
+        else {
+            return "../../../sounds/tie.mp3";
         }
     }
 
@@ -266,11 +274,13 @@ public class BeadRoadTilePane extends TilePane {
     }
 
     public void Initialize(int row, int column) {
-        setPrefRows(row);
-        setPrefColumns(column);
+        this.setPrefRows(row);
+        this.setPrefColumns(column);
         while (!childrenLimitReached()) {
             Insert();
         }
+        this.column = 0;
+        this.row = -1;
     }
 
     public void Reset() {
