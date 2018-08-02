@@ -22,43 +22,7 @@
 }
 
 
-.LastWinLabel {
-    -fx-background-color:black;
-    -fx-pref-height: 113;
-    -fx-pref-width: 113;
-}
 
-.LastWinLabel:bankerWin {
-    -fx-background-image: url("../images/banker.png");
-    -fx-background-position: center;
-    -fx-background-repeat: no-repeat, stretch;
-}
-
-.LastWinLabel:tieWin {
-    -fx-background-image: url("../images/tie.png");
-    -fx-background-position: center;
-    -fx-background-repeat: no-repeat, stretch;
-}
-
-.LastWinLabel:playerWin {
-    -fx-background-image: url("../images/player.png");
-    -fx-background-position: center;
-    -fx-background-repeat: no-repeat, stretch;
-}
-
-
-
-.counterBox {
-        -fx-background-color: white;
-        -fx-border-radius: 5 5 5 5;
-        -fx-background-radius: 5 5 5 5;
-}
-
-.predictionBox {
-        -fx-background-color: white;
-        -fx-border-radius: 5 5 5 5;
-        -fx-background-radius: 5 5 5 5;
-}
 
 
 .BeadRoadPane {
@@ -431,7 +395,7 @@
 
 .BigEyeRoadHeader {
     -fx-padding: 0 0 0 0;
-    -fx-background-color: radial-gradient(radius 180%, white, derive(lightgray, -30%), derive(lightgray, 30%));
+    -fx-background-color: radial-gradient(radius 180%,orange, derive(lightgray, -30%), derive(lightgray, 30%));
     -fx-border-radius: 5 5 5 5;
     -fx-background-radius: 5 5 5 5;
     -fx-text-fill: black;
@@ -445,7 +409,7 @@
 
 .BeadHeader {
     -fx-padding: 0 0 0 0;
-    -fx-background-color: radial-gradient(radius 180%, white, derive(lightgray, -30%), derive(lightgray, 30%));
+    -fx-background-color: radial-gradient(radius 180%,orange, derive(lightgray, -30%), derive(lightgray, 30%));
     -fx-border-radius: 5 5 5 5;
     -fx-background-radius: 5 5 5 5;
     -fx-text-fill: black;
@@ -458,7 +422,7 @@
 
 .BigEyeRoadHeader {
     -fx-padding: 0 0 0 0;
-    -fx-background-color: radial-gradient(radius 180%, white, derive(lightgray, -30%), derive(lightgray, 30%));
+    -fx-background-color: radial-gradient(radius 180%,orange, derive(lightgray, -30%), derive(lightgray, 30%));
     -fx-border-radius: 5 5 5 5;
     -fx-background-radius: 5 5 5 5;
     -fx-text-fill: black;
@@ -471,7 +435,7 @@
 
 .FootLabel {
     -fx-padding: 0 0 5 0;
-    -fx-background-color: radial-gradient(radius 180%, white, derive(lightgray, -30%), derive(lightgray, 30%));
+    -fx-background-color: radial-gradient(radius 180%,orange, derive(lightgray, -30%), derive(lightgray, 30%));
     -fx-border-radius: 5 5 5 5;
     -fx-background-radius: 5 5 5 5;
     -fx-text-fill: black;
@@ -510,7 +474,7 @@
     }
 
     .textField {
-        -fx-background-color: radial-gradient(radius 180%, white, derive(lightgray, -30%), derive(lightgray, 30%));
+        -fx-background-color: radial-gradient(radius 180%,orange, derive(lightgray, -30%), derive(lightgray, 30%));
         -fx-border-radius: 5 5 5 5;
         -fx-background-radius: 5 5 5 5;
     	-fx-text-fill: black;
@@ -523,7 +487,7 @@
     }
 
     .textFieldRight {
-        -fx-background-color: radial-gradient(radius 180%, white, derive(lightgray, -30%), derive(lightgray, 30%));
+        -fx-background-color: radial-gradient(radius 180%,orange, derive(lightgray, -30%), derive(lightgray, 30%));
         -fx-border-radius: 5 5 5 5;
         -fx-background-radius: 5 5 5 5;
     	-fx-text-fill: black;
@@ -606,4 +570,80 @@
     -fx-alignment:center-right;
     -fx-font-family: 'Book Antiqua Bold';
     -fx-font-size: 18;
+}
+
+.InfoLabel1 {
+        -fx-background-color: radial-gradient(radius 180%,orange, derive(lightgray, -30%), derive(lightgray, 30%));
+    	-fx-text-fill: black;
+    	-fx-pref-width:130;
+        -fx-pref-height:25;
+        -fx-alignment:center;
+    	-fx-font-family: 'Book Antiqua';
+    	-fx-font-size: 15;
+}
+
+.InfoLabel2 {
+        -fx-background-color: radial-gradient(radius 180%,orange, derive(lightgray, -30%), derive(lightgray, 30%));
+    	-fx-text-fill: black;
+    	-fx-pref-width:185;
+        -fx-pref-height:25;
+        -fx-alignment:center;
+    	-fx-font-family: 'Book Antiqua';
+    	-fx-font-size: 15;
+}
+
+.InfoLabel3 {
+        -fx-background-color: radial-gradient(radius 180%,orange, derive(lightgray, -30%), derive(lightgray, 30%));
+    	-fx-text-fill: black;
+    	-fx-pref-width:153;
+        -fx-pref-height:25;
+        -fx-alignment:center;
+    	-fx-font-family: 'Book Antiqua';
+    	-fx-font-size: 15;
+}
+
+
+.LastWinLabel {
+    -fx-background-color: white;
+    -fx-pref-height: 120;
+    -fx-pref-width: 120;
+}
+
+.LastWinLabel:bankerWin {
+    -fx-background-image: url("../images/banker.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat, stretch;
+}
+
+.LastWinLabel:tieWin {
+    -fx-background-image: url("../images/tie.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat, stretch;
+}
+
+.LastWinLabel:playerWin {
+    -fx-background-image: url("../images/player.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat, stretch;
+}
+
+
+
+
+.lastWinBox {
+        -fx-background-color: white;
+        -fx-border-radius: 5 5 5 5;
+        -fx-background-radius: 5 5 5 5;
+}
+
+.counterBox {
+        -fx-background-color: white;
+        -fx-border-radius: 5 5 5 5;
+        -fx-background-radius: 5 5 5 5;
+}
+
+.predictionBox {
+        -fx-background-color: white;
+        -fx-border-radius: 5 5 5 5;
+        -fx-background-radius: 5 5 5 5;
 }

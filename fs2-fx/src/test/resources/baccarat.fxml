@@ -217,8 +217,9 @@
                   <VBox prefHeight="365.0" prefWidth="555.0" />
                   <HBox prefHeight="365.0" prefWidth="629.0" spacing="50.0">
                      <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="365.0" prefWidth="130.0" spacing="30.0">
+                        <VBox alignment="TOP_CENTER" prefHeight="365.0" prefWidth="130.0" spacing="5.0">
                            <children>
+                              <Label styleClass="InfoLabel1" text="Next Game" />
                               <VBox prefHeight="200.0" prefWidth="100.0" styleClass="predictionBox">
                                  <children>
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
@@ -255,10 +256,9 @@
                               </VBox>
                            </children>
                         </VBox>
-                        <LastWinLabel fx:id="lastWin" result="EMPTY" styleClass="lastWinLabel">
-                        </LastWinLabel>
-                        <VBox prefHeight="365.0" prefWidth="185.0">
+                        <VBox prefHeight="365.0" prefWidth="185.0" spacing="5.0">
                            <children>
+                              <Label styleClass="InfoLabel2" text="Game Counter" />
                               <HBox prefHeight="200.0" prefWidth="129.0" spacing="5.0" styleClass="counterBox">
                                  <children>
                                     <VBox prefHeight="290.0" prefWidth="125.0" spacing="8.0">
@@ -295,6 +295,17 @@
                                           <Insets top="4.0" />
                                        </padding>
                                     </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="365.0" prefWidth="153.0" spacing="5.0">
+                           <children>
+                              <Label styleClass="InfoLabel3" text="Last Game" />
+                              <HBox alignment="CENTER" prefHeight="200.0" prefWidth="153.0" styleClass="lastWinBox">
+                                 <children>
+                                    <LastWinLabel fx:id="lastWin" result="EMPTY" styleClass="lastWinLabel" textFill="WHITE">
+                        </LastWinLabel>
                                  </children>
                               </HBox>
                            </children>
