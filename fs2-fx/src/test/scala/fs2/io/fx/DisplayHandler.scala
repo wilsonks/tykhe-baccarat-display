@@ -35,7 +35,7 @@ class DisplayHandler(
   val lastWin: LastWinLabel,
   val bigRoad: BigRoadTilePane)(implicit display: Display, echo: Port[String, Echo.Transition]) {
 
-  beadRoad.Initialize(7, 14)
+  beadRoad.Initialize(8, 14)
   bigRoad.Initialize(6, 49)
   bigEyeRoad.Initialize(6, 30)
   smallRoad.Initialize(6, 30)
@@ -46,46 +46,86 @@ class DisplayHandler(
     new EventHandler[KeyEvent] {
       var pPair: Boolean = false
       var bPair: Boolean = false
+      var bothPair: Boolean = false
+      var natural: Boolean = false
+      var bWin: Boolean = false
+      var pWin: Boolean = false
+      var tWin: Boolean = false
 
       override def handle(t: KeyEvent): Unit = {
         t.getCode match {
-          case KeyCode.END | KeyCode.NUMPAD1 =>
-            (bPair, pPair) match {
-              case (false, false) => beadRoad.AddElement(BeadRoadResult.BANKER_WIN)
-              case (true, false)  => beadRoad.AddElement(BeadRoadResult.BANKER_WIN_BANKER_PAIR)
-              case (false, true)  => beadRoad.AddElement(BeadRoadResult.BANKER_WIN_PLAYER_PAIR)
-              case (true, true)   => beadRoad.AddElement(BeadRoadResult.BANKER_WIN_BOTH_PAIR)
-              case _              =>
-            }
-            bPair = false
-            pPair = false
+          case KeyCode.ENTER =>
+            (bPair, pPair, bothPair, natural, bWin, pWin, tWin) match {
+              case (false, false, false, false, true, false, false) => beadRoad.AddElement(BeadRoadResult.BANKER_WIN)
+              case (true, false, false, false, true, false, false) =>
+                beadRoad.AddElement(BeadRoadResult.BANKER_WIN_BANKER_PAIR)
+              case (false, true, false, false, true, false, false) =>
+                beadRoad.AddElement(BeadRoadResult.BANKER_WIN_PLAYER_PAIR)
+              case (false, false, true, false, true, false, false) =>
+                beadRoad.AddElement(BeadRoadResult.BANKER_WIN_BOTH_PAIR)
+              case (false, false, false, true, true, false, false) =>
+                beadRoad.AddElement(BeadRoadResult.BANKER_WIN_NATURAL)
+              case (true, false, false, true, true, false, false) =>
+                beadRoad.AddElement(BeadRoadResult.BANKER_WIN_BANKER_PAIR_NATURAL)
+              case (false, true, false, true, true, false, false) =>
+                beadRoad.AddElement(BeadRoadResult.BANKER_WIN_PLAYER_PAIR_NATURAL)
+              case (false, false, true, true, true, false, false) =>
+                beadRoad.AddElement(BeadRoadResult.BANKER_WIN_BOTH_PAIR_NATURAL)
 
-          case KeyCode.DOWN | KeyCode.NUMPAD2 =>
-            (bPair, pPair) match {
-              case (false, false) => beadRoad.AddElement(BeadRoadResult.PLAYER_WIN)
-              case (true, false)  => beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_BANKER_PAIR)
-              case (false, true)  => beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_PLAYER_PAIR)
-              case (true, true)   => beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_BOTH_PAIR)
-              case _              =>
-            }
-            bPair = false
-            pPair = false
+              case (false, false, false, false, false, true, false) => beadRoad.AddElement(BeadRoadResult.PLAYER_WIN)
+              case (true, false, false, false, false, true, false) =>
+                beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_BANKER_PAIR)
+              case (false, true, false, false, false, true, false) =>
+                beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_PLAYER_PAIR)
+              case (false, false, true, false, false, true, false) =>
+                beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_BOTH_PAIR)
+              case (false, false, false, true, false, true, false) =>
+                beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_NATURAL)
+              case (true, false, false, true, false, true, false) =>
+                beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_BANKER_PAIR_NATURAL)
+              case (false, true, false, true, false, true, false) =>
+                beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_PLAYER_PAIR_NATURAL)
+              case (false, false, true, true, false, true, false) =>
+                beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_BOTH_PAIR_NATURAL)
 
-          case KeyCode.PAGE_DOWN | KeyCode.NUMPAD3 =>
-            (bPair, pPair) match {
-              case (false, false) => beadRoad.AddElement(BeadRoadResult.TIE_WIN)
-              case (true, false)  => beadRoad.AddElement(BeadRoadResult.TIE_WIN_BANKER_PAIR)
-              case (false, true)  => beadRoad.AddElement(BeadRoadResult.TIE_WIN_PLAYER_PAIR)
-              case (true, true)   => beadRoad.AddElement(BeadRoadResult.TIE_WIN_BOTH_PAIR)
-              case _              =>
+              case (false, false, false, false, false, false, true) => beadRoad.AddElement(BeadRoadResult.TIE_WIN)
+              case (true, false, false, false, false, false, true) =>
+                beadRoad.AddElement(BeadRoadResult.TIE_WIN_BANKER_PAIR)
+              case (false, true, false, false, false, false, true) =>
+                beadRoad.AddElement(BeadRoadResult.TIE_WIN_PLAYER_PAIR)
+              case (false, false, true, false, false, false, true) =>
+                beadRoad.AddElement(BeadRoadResult.TIE_WIN_BOTH_PAIR)
+              case (false, false, false, true, false, false, true) =>
+                beadRoad.AddElement(BeadRoadResult.TIE_WIN_NATURAL)
+              case (true, false, false, true, false, false, true) =>
+                beadRoad.AddElement(BeadRoadResult.TIE_WIN_BANKER_PAIR_NATURAL)
+              case (false, true, false, true, false, false, true) =>
+                beadRoad.AddElement(BeadRoadResult.TIE_WIN_PLAYER_PAIR_NATURAL)
+              case (false, false, true, true, false, false, true) =>
+                beadRoad.AddElement(BeadRoadResult.TIE_WIN_BOTH_PAIR_NATURAL)
+              case _ =>
             }
-            bPair = false
-            pPair = false
+            bPair = false;
+            pPair = false;
+            bothPair = false;
+            natural = false;
+            bWin = false;
+            pWin = false;
+            tWin = false;
+
+          case KeyCode.END | KeyCode.NUMPAD1       => bWin = !bWin
+          case KeyCode.DOWN | KeyCode.NUMPAD2      => pWin = !pWin
+          case KeyCode.PAGE_DOWN | KeyCode.NUMPAD3 => tWin = !tWin
+
+          case KeyCode.UP | KeyCode.NUMPAD8      => natural = !natural
+          case KeyCode.PAGE_UP | KeyCode.NUMPAD9 => natural = !natural
 
           case KeyCode.LEFT | KeyCode.NUMPAD4  => bPair = !bPair
+          case KeyCode.RIGHT | KeyCode.NUMPAD6 => bothPair = !bothPair
           case KeyCode.CLEAR | KeyCode.NUMPAD5 => pPair = !pPair
-          case KeyCode.SUBTRACT                => beadRoad.RemoveElement()
-          case KeyCode.DIVIDE                  => beadRoad.Reset()
+
+          case KeyCode.SUBTRACT               => beadRoad.RemoveElement()
+          case KeyCode.HOME | KeyCode.NUMPAD7 => beadRoad.Reset()
 
           case _ => println(t)
         }

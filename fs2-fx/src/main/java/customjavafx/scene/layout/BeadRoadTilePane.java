@@ -16,26 +16,49 @@ public class BeadRoadTilePane extends TilePane {
     private int row = -1;
 
     private IntegerProperty count = new SimpleIntegerProperty(0);
-    public IntegerProperty getCountProperty() {return count;}
+
+    public IntegerProperty getCountProperty() {
+        return count;
+    }
 
     private IntegerProperty playerWinCount = new SimpleIntegerProperty(0);
-    public IntegerProperty getPlayerWinCount() {return playerWinCount;}
+
+    public IntegerProperty getPlayerWinCount() {
+        return playerWinCount;
+    }
 
 
     private IntegerProperty bankerWinCount = new SimpleIntegerProperty(0);
-    public IntegerProperty getBankerWinCount() {return bankerWinCount;}
+
+    public IntegerProperty getBankerWinCount() {
+        return bankerWinCount;
+    }
 
 
     private IntegerProperty tieWinCount = new SimpleIntegerProperty(0);
-    public IntegerProperty getTieWinCount() {return tieWinCount;}
+
+    public IntegerProperty getTieWinCount() {
+        return tieWinCount;
+    }
 
 
     private IntegerProperty playerPairCount = new SimpleIntegerProperty(0);
-    public IntegerProperty getPlayerPairCount() {return playerPairCount;}
+
+    public IntegerProperty getPlayerPairCount() {
+        return playerPairCount;
+    }
 
     private IntegerProperty bankerPairCount = new SimpleIntegerProperty(0);
-    public IntegerProperty getBankerPairCount() {return bankerPairCount;}
 
+    public IntegerProperty getBankerPairCount() {
+        return bankerPairCount;
+    }
+
+    private IntegerProperty naturalCount = new SimpleIntegerProperty(0);
+
+    public IntegerProperty getNaturalCount() {
+        return naturalCount;
+    }
 
 
     public BeadRoadTilePane() {
@@ -61,61 +84,129 @@ public class BeadRoadTilePane extends TilePane {
 
     private void ResultAdded(BeadRoadResult res) {
         count.setValue(count.getValue() + 1);
-        switch(res) {
+        switch (res) {
             case BANKER_WIN:
-                bankerWinCount.setValue(bankerWinCount.getValue()+1);
+                bankerWinCount.setValue(bankerWinCount.getValue() + 1);
                 break;
             case BANKER_WIN_BANKER_PAIR:
-                bankerPairCount.setValue(bankerPairCount.getValue()+1);
-                bankerWinCount.setValue(bankerWinCount.getValue()+1);
+                bankerPairCount.setValue(bankerPairCount.getValue() + 1);
+                bankerWinCount.setValue(bankerWinCount.getValue() + 1);
                 break;
             case BANKER_WIN_PLAYER_PAIR:
-                playerPairCount.setValue(playerPairCount.getValue()+1);
-                bankerWinCount.setValue(bankerWinCount.getValue()+1);
+                playerPairCount.setValue(playerPairCount.getValue() + 1);
+                bankerWinCount.setValue(bankerWinCount.getValue() + 1);
                 break;
 
             case BANKER_WIN_BOTH_PAIR:
-                bankerPairCount.setValue(bankerPairCount.getValue()+1);
-                playerPairCount.setValue(playerPairCount.getValue()+1);
-                bankerWinCount.setValue(bankerWinCount.getValue()+1);
+                bankerPairCount.setValue(bankerPairCount.getValue() + 1);
+                playerPairCount.setValue(playerPairCount.getValue() + 1);
+                bankerWinCount.setValue(bankerWinCount.getValue() + 1);
                 break;
 
             case PLAYER_WIN:
-                playerWinCount.setValue(playerWinCount.getValue()+1);
+                playerWinCount.setValue(playerWinCount.getValue() + 1);
                 break;
             case PLAYER_WIN_BANKER_PAIR:
-                bankerPairCount.setValue(bankerPairCount.getValue()+1);
-                playerWinCount.setValue(playerWinCount.getValue()+1);
+                bankerPairCount.setValue(bankerPairCount.getValue() + 1);
+                playerWinCount.setValue(playerWinCount.getValue() + 1);
                 break;
             case PLAYER_WIN_PLAYER_PAIR:
-                playerPairCount.setValue(playerPairCount.getValue()+1);
-                playerWinCount.setValue(playerWinCount.getValue()+1);
+                playerPairCount.setValue(playerPairCount.getValue() + 1);
+                playerWinCount.setValue(playerWinCount.getValue() + 1);
                 break;
 
             case PLAYER_WIN_BOTH_PAIR:
-                bankerPairCount.setValue(bankerPairCount.getValue()+1);
-                playerPairCount.setValue(playerPairCount.getValue()+1);
-                playerWinCount.setValue(playerWinCount.getValue()+1);
+                bankerPairCount.setValue(bankerPairCount.getValue() + 1);
+                playerPairCount.setValue(playerPairCount.getValue() + 1);
+                playerWinCount.setValue(playerWinCount.getValue() + 1);
                 break;
             case TIE_WIN:
-                tieWinCount.setValue(tieWinCount.getValue()+1);
+                tieWinCount.setValue(tieWinCount.getValue() + 1);
                 break;
             case TIE_WIN_BANKER_PAIR:
-                bankerPairCount.setValue(bankerPairCount.getValue()+1);
-                tieWinCount.setValue(tieWinCount.getValue()+1);
+                bankerPairCount.setValue(bankerPairCount.getValue() + 1);
+                tieWinCount.setValue(tieWinCount.getValue() + 1);
                 break;
             case TIE_WIN_PLAYER_PAIR:
-                playerPairCount.setValue(playerPairCount.getValue()+1);
-                tieWinCount.setValue(tieWinCount.getValue()+1);
+                playerPairCount.setValue(playerPairCount.getValue() + 1);
+                tieWinCount.setValue(tieWinCount.getValue() + 1);
                 break;
 
             case TIE_WIN_BOTH_PAIR:
-                bankerPairCount.setValue(bankerPairCount.getValue()+1);
-                playerPairCount.setValue(playerPairCount.getValue()+1);
-                tieWinCount.setValue(tieWinCount.getValue()+1);
+                bankerPairCount.setValue(bankerPairCount.getValue() + 1);
+                playerPairCount.setValue(playerPairCount.getValue() + 1);
+                tieWinCount.setValue(tieWinCount.getValue() + 1);
                 break;
 
-            default:break;
+            case BANKER_WIN_NATURAL:
+                bankerWinCount.setValue(bankerWinCount.getValue() + 1);
+                naturalCount.setValue(naturalCount.getValue() + 1);
+                break;
+            case BANKER_WIN_BANKER_PAIR_NATURAL:
+                bankerPairCount.setValue(bankerPairCount.getValue() + 1);
+                bankerWinCount.setValue(bankerWinCount.getValue() + 1);
+                naturalCount.setValue(naturalCount.getValue() + 1);
+
+                break;
+            case BANKER_WIN_PLAYER_PAIR_NATURAL:
+                playerPairCount.setValue(playerPairCount.getValue() + 1);
+                bankerWinCount.setValue(bankerWinCount.getValue() + 1);
+                naturalCount.setValue(naturalCount.getValue() + 1);
+                break;
+
+            case BANKER_WIN_BOTH_PAIR_NATURAL:
+                bankerPairCount.setValue(bankerPairCount.getValue() + 1);
+                playerPairCount.setValue(playerPairCount.getValue() + 1);
+                bankerWinCount.setValue(bankerWinCount.getValue() + 1);
+                naturalCount.setValue(naturalCount.getValue() + 1);
+
+                break;
+
+            case PLAYER_WIN_NATURAL:
+                playerWinCount.setValue(playerWinCount.getValue() + 1);
+                naturalCount.setValue(naturalCount.getValue() + 1);
+                break;
+            case PLAYER_WIN_BANKER_PAIR_NATURAL:
+                bankerPairCount.setValue(bankerPairCount.getValue() + 1);
+                playerWinCount.setValue(playerWinCount.getValue() + 1);
+                naturalCount.setValue(naturalCount.getValue() + 1);
+
+                break;
+            case PLAYER_WIN_PLAYER_PAIR_NATURAL:
+                playerPairCount.setValue(playerPairCount.getValue() + 1);
+                playerWinCount.setValue(playerWinCount.getValue() + 1);
+                naturalCount.setValue(naturalCount.getValue() + 1);
+                break;
+
+            case PLAYER_WIN_BOTH_PAIR_NATURAL:
+                bankerPairCount.setValue(bankerPairCount.getValue() + 1);
+                playerPairCount.setValue(playerPairCount.getValue() + 1);
+                playerWinCount.setValue(playerWinCount.getValue() + 1);
+                naturalCount.setValue(naturalCount.getValue() + 1);
+                break;
+            case TIE_WIN_NATURAL:
+                tieWinCount.setValue(tieWinCount.getValue() + 1);
+                naturalCount.setValue(naturalCount.getValue() + 1);
+                break;
+            case TIE_WIN_BANKER_PAIR_NATURAL:
+                bankerPairCount.setValue(bankerPairCount.getValue() + 1);
+                tieWinCount.setValue(tieWinCount.getValue() + 1);
+                naturalCount.setValue(naturalCount.getValue() + 1);
+                break;
+            case TIE_WIN_PLAYER_PAIR_NATURAL:
+                playerPairCount.setValue(playerPairCount.getValue() + 1);
+                tieWinCount.setValue(tieWinCount.getValue() + 1);
+                naturalCount.setValue(naturalCount.getValue() + 1);
+                break;
+            case TIE_WIN_BOTH_PAIR_NATURAL:
+                bankerPairCount.setValue(bankerPairCount.getValue() + 1);
+                playerPairCount.setValue(playerPairCount.getValue() + 1);
+                tieWinCount.setValue(tieWinCount.getValue() + 1);
+                naturalCount.setValue(naturalCount.getValue() + 1);
+                break;
+
+            default:
+                break;
         }
     }
 
@@ -125,8 +216,13 @@ public class BeadRoadTilePane extends TilePane {
             case BANKER_WIN_BANKER_PAIR:
             case BANKER_WIN_PLAYER_PAIR:
             case BANKER_WIN_BOTH_PAIR:
+            case BANKER_WIN_NATURAL:
+            case BANKER_WIN_BANKER_PAIR_NATURAL:
+            case BANKER_WIN_PLAYER_PAIR_NATURAL:
+            case BANKER_WIN_BOTH_PAIR_NATURAL:
                 return true;
-                default:return false;
+            default:
+                return false;
         }
     }
 
@@ -136,73 +232,144 @@ public class BeadRoadTilePane extends TilePane {
             case PLAYER_WIN_BANKER_PAIR:
             case PLAYER_WIN_PLAYER_PAIR:
             case PLAYER_WIN_BOTH_PAIR:
+                case PLAYER_WIN_NATURAL:
+            case PLAYER_WIN_BANKER_PAIR_NATURAL:
+            case PLAYER_WIN_PLAYER_PAIR_NATURAL:
+            case PLAYER_WIN_BOTH_PAIR_NATURAL:
                 return true;
-            default:return false;
+            default:
+                return false;
         }
     }
 
     private void ResultRemoved(BeadRoadResult res) {
         count.setValue(count.getValue() - 1);
-        switch(res) {
+        switch (res) {
             case BANKER_WIN:
-                bankerWinCount.setValue(bankerWinCount.getValue()-1);
+                bankerWinCount.setValue(bankerWinCount.getValue() - 1);
                 break;
             case BANKER_WIN_BANKER_PAIR:
-                bankerPairCount.setValue(bankerPairCount.getValue()-1);
-                bankerWinCount.setValue(bankerWinCount.getValue()-1);
+                bankerPairCount.setValue(bankerPairCount.getValue() - 1);
+                bankerWinCount.setValue(bankerWinCount.getValue() - 1);
                 break;
             case BANKER_WIN_PLAYER_PAIR:
-                playerPairCount.setValue(playerPairCount.getValue()-1);
-                bankerWinCount.setValue(bankerWinCount.getValue()-1);
+                playerPairCount.setValue(playerPairCount.getValue() - 1);
+                bankerWinCount.setValue(bankerWinCount.getValue() - 1);
                 break;
 
             case BANKER_WIN_BOTH_PAIR:
-                bankerPairCount.setValue(bankerPairCount.getValue()-1);
-                playerPairCount.setValue(playerPairCount.getValue()-1);
-                bankerWinCount.setValue(bankerWinCount.getValue()-1);
+                bankerPairCount.setValue(bankerPairCount.getValue() - 1);
+                playerPairCount.setValue(playerPairCount.getValue() - 1);
+                bankerWinCount.setValue(bankerWinCount.getValue() - 1);
                 break;
 
             case PLAYER_WIN:
-                playerWinCount.setValue(playerWinCount.getValue()-1);
+                playerWinCount.setValue(playerWinCount.getValue() - 1);
                 break;
             case PLAYER_WIN_BANKER_PAIR:
-                bankerPairCount.setValue(bankerPairCount.getValue()-1);
-                playerWinCount.setValue(playerWinCount.getValue()-1);
+                bankerPairCount.setValue(bankerPairCount.getValue() - 1);
+                playerWinCount.setValue(playerWinCount.getValue() - 1);
                 break;
             case PLAYER_WIN_PLAYER_PAIR:
-                playerPairCount.setValue(playerPairCount.getValue()-1);
-                playerWinCount.setValue(playerWinCount.getValue()-1);
+                playerPairCount.setValue(playerPairCount.getValue() - 1);
+                playerWinCount.setValue(playerWinCount.getValue() - 1);
                 break;
 
             case PLAYER_WIN_BOTH_PAIR:
-                bankerPairCount.setValue(bankerPairCount.getValue()-1);
-                playerPairCount.setValue(playerPairCount.getValue()-1);
-                playerWinCount.setValue(playerWinCount.getValue()-1);
+                bankerPairCount.setValue(bankerPairCount.getValue() - 1);
+                playerPairCount.setValue(playerPairCount.getValue() - 1);
+                playerWinCount.setValue(playerWinCount.getValue() - 1);
                 break;
             case TIE_WIN:
-                tieWinCount.setValue(tieWinCount.getValue()-1);
+                tieWinCount.setValue(tieWinCount.getValue() - 1);
                 break;
             case TIE_WIN_BANKER_PAIR:
-                bankerPairCount.setValue(bankerPairCount.getValue()-1);
-                tieWinCount.setValue(tieWinCount.getValue()-1);
+                bankerPairCount.setValue(bankerPairCount.getValue() - 1);
+                tieWinCount.setValue(tieWinCount.getValue() - 1);
                 break;
             case TIE_WIN_PLAYER_PAIR:
-                playerPairCount.setValue(playerPairCount.getValue()-1);
-                tieWinCount.setValue(tieWinCount.getValue()-1);
+                playerPairCount.setValue(playerPairCount.getValue() - 1);
+                tieWinCount.setValue(tieWinCount.getValue() - 1);
                 break;
 
             case TIE_WIN_BOTH_PAIR:
-                bankerPairCount.setValue(bankerPairCount.getValue()-1);
-                playerPairCount.setValue(playerPairCount.getValue()-1);
-                tieWinCount.setValue(tieWinCount.getValue()-1);
+                bankerPairCount.setValue(bankerPairCount.getValue() - 1);
+                playerPairCount.setValue(playerPairCount.getValue() - 1);
+                tieWinCount.setValue(tieWinCount.getValue() - 1);
                 break;
 
-                default:break;
+            case BANKER_WIN_NATURAL:
+                bankerWinCount.setValue(bankerWinCount.getValue() - 1);
+                naturalCount.setValue(naturalCount.getValue() - 1);
+                break;
+            case BANKER_WIN_BANKER_PAIR_NATURAL:
+                bankerPairCount.setValue(bankerPairCount.getValue() - 1);
+                bankerWinCount.setValue(bankerWinCount.getValue() - 1);
+                naturalCount.setValue(naturalCount.getValue() - 1);
+                break;
+            case BANKER_WIN_PLAYER_PAIR_NATURAL:
+                playerPairCount.setValue(playerPairCount.getValue() - 1);
+                bankerWinCount.setValue(bankerWinCount.getValue() - 1);
+                naturalCount.setValue(naturalCount.getValue() - 1);
+                break;
+
+            case BANKER_WIN_BOTH_PAIR_NATURAL:
+                bankerPairCount.setValue(bankerPairCount.getValue() - 1);
+                playerPairCount.setValue(playerPairCount.getValue() - 1);
+                bankerWinCount.setValue(bankerWinCount.getValue() - 1);
+                naturalCount.setValue(naturalCount.getValue() - 1);
+                break;
+
+            case PLAYER_WIN_NATURAL:
+                playerWinCount.setValue(playerWinCount.getValue() - 1);
+                naturalCount.setValue(naturalCount.getValue() - 1);
+                break;
+            case PLAYER_WIN_BANKER_PAIR_NATURAL:
+                bankerPairCount.setValue(bankerPairCount.getValue() - 1);
+                playerWinCount.setValue(playerWinCount.getValue() - 1);
+                naturalCount.setValue(naturalCount.getValue() - 1);
+                break;
+            case PLAYER_WIN_PLAYER_PAIR_NATURAL:
+                playerPairCount.setValue(playerPairCount.getValue() - 1);
+                playerWinCount.setValue(playerWinCount.getValue() - 1);
+                naturalCount.setValue(naturalCount.getValue() - 1);
+                break;
+
+            case PLAYER_WIN_BOTH_PAIR_NATURAL:
+                bankerPairCount.setValue(bankerPairCount.getValue() - 1);
+                playerPairCount.setValue(playerPairCount.getValue() - 1);
+                playerWinCount.setValue(playerWinCount.getValue() - 1);
+                naturalCount.setValue(naturalCount.getValue() - 1);
+                break;
+            case TIE_WIN_NATURAL:
+                tieWinCount.setValue(tieWinCount.getValue() - 1);
+                naturalCount.setValue(naturalCount.getValue() - 1);
+                break;
+            case TIE_WIN_BANKER_PAIR_NATURAL:
+                bankerPairCount.setValue(bankerPairCount.getValue() - 1);
+                tieWinCount.setValue(tieWinCount.getValue() - 1);
+                naturalCount.setValue(naturalCount.getValue() - 1);
+                break;
+            case TIE_WIN_PLAYER_PAIR_NATURAL:
+                playerPairCount.setValue(playerPairCount.getValue() - 1);
+                tieWinCount.setValue(tieWinCount.getValue() - 1);
+                naturalCount.setValue(naturalCount.getValue() - 1);
+                break;
+
+            case TIE_WIN_BOTH_PAIR_NATURAL:
+                bankerPairCount.setValue(bankerPairCount.getValue() - 1);
+                playerPairCount.setValue(playerPairCount.getValue() - 1);
+                tieWinCount.setValue(tieWinCount.getValue() - 1);
+                naturalCount.setValue(naturalCount.getValue() - 1);
+                break;
+
+            default:
+                break;
         }
     }
 
     private void RemoveLast() {
-        BeadRoadResult tmp = ((BeadRoadLabel)getChildren().get(0)).getResult();
+        BeadRoadResult tmp = ((BeadRoadLabel) getChildren().get(0)).getResult();
         getChildren().remove(0);
         MovePostionBack();
         ResultRemoved(tmp);
@@ -248,16 +415,16 @@ public class BeadRoadTilePane extends TilePane {
         }
     }
 
-    public String LastWinAudio(){
-        if(isCurrentWinRed()) return "../../../sounds/banker.mp3";
+    public String LastWinAudio() {
+        if (isCurrentWinRed()) return "../../../sounds/banker.mp3";
         else if (isCurrentWinBlue()) return "../../../sounds/player.mp3";
         else {
             return "../../../sounds/tie.mp3";
         }
     }
 
-    public LastWinResult LastWin(){
-        if(isCurrentWinRed()) return LastWinResult.BANKER_WIN;
+    public LastWinResult LastWin() {
+        if (isCurrentWinRed()) return LastWinResult.BANKER_WIN;
         else if (isCurrentWinBlue()) return LastWinResult.PLAYER_WIN;
         else {
             return LastWinResult.TIE_WIN;
@@ -266,8 +433,9 @@ public class BeadRoadTilePane extends TilePane {
 
     public void AddElement(BeadRoadResult res) {
         if (getSize() == sizeLimit()) {
-            RemoveLast();
-            Insert();
+            Reset();
+//            RemoveLast();
+//            Insert();
         }
         Update(res);
         ResultAdded(res);
@@ -284,7 +452,7 @@ public class BeadRoadTilePane extends TilePane {
     }
 
     public void Reset() {
-        getChildren().stream().map(t->(BeadRoadLabel)t).forEach(t->{
+        getChildren().stream().map(t -> (BeadRoadLabel) t).forEach(t -> {
             t.setResult(BeadRoadResult.EMPTY);
         });
         bankerWinCount.setValue(0);
@@ -294,7 +462,7 @@ public class BeadRoadTilePane extends TilePane {
         playerPairCount.setValue(0);
         count.setValue(0);
         column = 0;
-        row= -1;
+        row = -1;
     }
 
     @Override

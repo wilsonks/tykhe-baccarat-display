@@ -54,6 +54,7 @@ public class BeadRoadLabel extends Label {
                     break;
 
                 case BANKER_WIN:
+                case BANKER_WIN_NATURAL:
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, true);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -71,6 +72,7 @@ public class BeadRoadLabel extends Label {
                     break;
 
                 case BANKER_WIN_BANKER_PAIR:
+                case BANKER_WIN_BANKER_PAIR_NATURAL:
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, true);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -88,6 +90,7 @@ public class BeadRoadLabel extends Label {
                     break;
 
                 case BANKER_WIN_PLAYER_PAIR:
+                case BANKER_WIN_PLAYER_PAIR_NATURAL:
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, true);
@@ -104,6 +107,7 @@ public class BeadRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_BOTH_PAIR, false);
                     break;
                 case BANKER_WIN_BOTH_PAIR:
+                case BANKER_WIN_BOTH_PAIR_NATURAL:
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -121,6 +125,7 @@ public class BeadRoadLabel extends Label {
                     break;
 
                 case PLAYER_WIN:
+                case PLAYER_WIN_NATURAL:
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -137,6 +142,7 @@ public class BeadRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_BOTH_PAIR, false);
                     break;
                 case PLAYER_WIN_BANKER_PAIR:
+                case PLAYER_WIN_BANKER_PAIR_NATURAL:
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -153,6 +159,7 @@ public class BeadRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_BOTH_PAIR, false);
                     break;
                 case PLAYER_WIN_PLAYER_PAIR:
+                case PLAYER_WIN_PLAYER_PAIR_NATURAL:
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -169,6 +176,7 @@ public class BeadRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_BOTH_PAIR, false);
                     break;
                 case PLAYER_WIN_BOTH_PAIR:
+                case PLAYER_WIN_BOTH_PAIR_NATURAL:
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -186,6 +194,7 @@ public class BeadRoadLabel extends Label {
                     break;
 
                 case TIE_WIN:
+                case TIE_WIN_NATURAL:
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -202,6 +211,7 @@ public class BeadRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_BOTH_PAIR, false);
                     break;
                 case TIE_WIN_BANKER_PAIR:
+                case TIE_WIN_BANKER_PAIR_NATURAL:
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -218,6 +228,7 @@ public class BeadRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_BOTH_PAIR, false);
                     break;
                 case TIE_WIN_PLAYER_PAIR:
+                case TIE_WIN_PLAYER_PAIR_NATURAL:
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
@@ -234,6 +245,7 @@ public class BeadRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_BOTH_PAIR, false);
                     break;
                 case TIE_WIN_BOTH_PAIR:
+                case TIE_WIN_BOTH_PAIR_NATURAL:
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);

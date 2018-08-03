@@ -40,6 +40,28 @@ public class BigRoadLabel extends Label {
     private static final PseudoClass PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR = PseudoClass.getPseudoClass("playerWinPlayerPairBeforeTie");
     private static final PseudoClass PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR = PseudoClass.getPseudoClass("playerWinBothPairBeforeTie");
 
+    private static final PseudoClass PSEUDO_CLASS_TIE_WIN_NATURAL = PseudoClass.getPseudoClass("tieWinNatural");
+
+    private static final PseudoClass PSEUDO_CLASS_BANKER_WIN_NATURAL = PseudoClass.getPseudoClass("bankerWinNatural");
+    private static final PseudoClass PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL = PseudoClass.getPseudoClass("bankerWinBankerPairNatural");
+    private static final PseudoClass PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL = PseudoClass.getPseudoClass("bankerWinPlayerPairNatural");
+    private static final PseudoClass PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL = PseudoClass.getPseudoClass("bankerWinBothPairNatural");
+
+    private static final PseudoClass PSEUDO_CLASS_PLAYER_WIN_NATURAL = PseudoClass.getPseudoClass("playerWinNatural");
+    private static final PseudoClass PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL = PseudoClass.getPseudoClass("playerWinBankerPairNatural");
+    private static final PseudoClass PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL = PseudoClass.getPseudoClass("playerWinPlayerPairNatural");
+    private static final PseudoClass PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL = PseudoClass.getPseudoClass("playerWinBothPairNatural");
+
+    private static final PseudoClass PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL = PseudoClass.getPseudoClass("bankerWinBeforeTieNatural");
+    private static final PseudoClass PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL = PseudoClass.getPseudoClass("bankerWinBankerPairBeforeTieNatural");
+    private static final PseudoClass PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL = PseudoClass.getPseudoClass("bankerWinPlayerPairBeforeTieNatural");
+    private static final PseudoClass PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL = PseudoClass.getPseudoClass("bankerWinBothPairBeforeTieNatural");
+
+    private static final PseudoClass PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL = PseudoClass.getPseudoClass("playerWinBeforeTieNatural");
+    private static final PseudoClass PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL = PseudoClass.getPseudoClass("playerWinBankerPairBeforeTieNatural");
+    private static final PseudoClass PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL = PseudoClass.getPseudoClass("playerWinPlayerPairBeforeTieNatural");
+    private static final PseudoClass PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL = PseudoClass.getPseudoClass("playerWinBothPairBeforeTieNatural");
+
 
     private ObjectProperty<BigRoadResult> result = new ObjectPropertyBase<BigRoadResult>() {
         @Override
@@ -64,6 +86,25 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
                     break;
                 case TIE_WIN:
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, true);
@@ -84,6 +125,25 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
                     break;
                 case BANKER_WIN:
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
@@ -104,6 +164,25 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
                     break;
                 case BANKER_WIN_BANKER_PAIR:
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
@@ -124,6 +203,25 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
                     break;
                 case BANKER_WIN_PLAYER_PAIR:
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
@@ -144,6 +242,25 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
                     break;
                 case BANKER_WIN_BOTH_PAIR:
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
@@ -164,6 +281,25 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
                     break;
                 case PLAYER_WIN:
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
@@ -184,6 +320,25 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
                     break;
                 case PLAYER_WIN_BANKER_PAIR:
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
@@ -204,6 +359,25 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
                     break;
                 case PLAYER_WIN_PLAYER_PAIR:
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
@@ -224,6 +398,25 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
                     break;
                 case PLAYER_WIN_BOTH_PAIR:
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
@@ -244,6 +437,25 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
                     break;
                 case TIE_AFTER_BANKER_WIN:
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
@@ -264,6 +476,25 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
                     break;
                 case TIE_AFTER_BANKER_WIN_BANKER_PAIR:
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
@@ -284,6 +515,25 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
                     break;
                 case TIE_AFTER_BANKER_WIN_PLAYER_PAIR:
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
@@ -304,6 +554,25 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
                     break;
                 case TIE_AFTER_BANKER_WIN_BOTH_PAIR:
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
@@ -324,6 +593,25 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
                     break;
                 case TIE_AFTER_PLAYER_WIN:
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
@@ -344,6 +632,25 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
                     break;
                 case TIE_AFTER_PLAYER_WIN_BANKER_PAIR:
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
@@ -364,6 +671,25 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, true);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
                     break;
                 case TIE_AFTER_PLAYER_WIN_PLAYER_PAIR:
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
@@ -384,6 +710,25 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, true);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
                     break;
                 case TIE_AFTER_PLAYER_WIN_BOTH_PAIR:
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
@@ -404,6 +749,688 @@ public class BigRoadLabel extends Label {
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
                     pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, true);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    break;
+                case TIE_WIN_NATURAL:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, true);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    break;
+                case BANKER_WIN_NATURAL:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, true);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    break;
+                case BANKER_WIN_BANKER_PAIR_NATURAL:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, true);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    break;
+                case BANKER_WIN_PLAYER_PAIR_NATURAL:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, true);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    break;
+                case BANKER_WIN_BOTH_PAIR_NATURAL:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, true);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    break;
+                case PLAYER_WIN_NATURAL:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, true);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    break;
+                case PLAYER_WIN_BANKER_PAIR_NATURAL:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, true);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    break;
+                case PLAYER_WIN_PLAYER_PAIR_NATURAL:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR, true);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, true);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    break;
+                case PLAYER_WIN_BOTH_PAIR_NATURAL:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, true);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    break;
+                case TIE_AFTER_BANKER_WIN_NATURAL:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, true);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    break;
+                case TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, true);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    break;
+                case TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, true);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    break;
+                case TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, true);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    break;
+                case TIE_AFTER_PLAYER_WIN_NATURAL:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, true);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    break;
+                case TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, true);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    break;
+                case TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, true);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    break;
+                case TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL:
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_PLAYER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_NATURAL, false);
+
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL, false);
+                    pseudoClassStateChanged(PSEUDO_CLASS_TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL, true);
                     break;
 
 

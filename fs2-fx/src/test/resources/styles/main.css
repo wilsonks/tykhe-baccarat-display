@@ -1,13 +1,47 @@
 .root {
-	-fx-background-color:black;
-	-fx-padding: 10 5 10 5;
-	-fx-spacing:10;
-     	-style1-color: rgb(0,0,0);
-     	-style2-color: lightblue;
+/*transparent,aliceblue,antiquewhite,aqua,aquamarine,azure,beige,bisque,black,blanchedalmond,blue,blueviolet,
+brown,burlywood,cadetblue,chartreuse,chocolate,coral,cornflowerblue,cornsilk,crimson,cyan,darkblue,darkcyan,
+darkgoldenrod,darkgray,darkgreen,darkgrey,darkkhaki,darkmagenta,darkolivegreen,darkorange,darkorchid,darkred,
+darksalmon,darkseagreen,darkslateblue,darkslategray,darkslategrey,darkturquoise,darkviolet,deeppink,deepskyblue,
+dimgray,dimgrey,dodgerblue,firebrick,floralwhite,forestgreen,fuchsia,gainsboro,ghostwhite,gold,goldenrod,gray,
+green,greenyellow,grey,honeydew,hotpink,indianred,indigo,ivory,khaki,lavender,lavenderblush,lawngreen,lemonchiffon,
+lightblue,lightcoral,lightcyan,lightgoldenrodyellow,lightgray,lightgreen,lightgrey,lightpink,lightsalmon,
+lightseagreen,lightskyblue,lightslategray,lightslategrey,lightsteelblue,lightyellow,lime,limegreen,linen,
+magenta,maroon,mediumaquamarine,mediumblue,mediumorchid,mediumpurple,mediumseagreen,mediumslateblue,
+mediumspringgreen,mediumturquoise,mediumvioletred,midnightblue,mintcream,mistyrose,moccasin,navajowhite,navy,
+oldlace,olive,olivedrab,orange,orangered,orchid,palegoldenrod,palegreen,paleturquoise,palevioletred,papayawhip,
+peachpuff,peru,pink,plum,powderblue,purple,red,rosybrown,royalblue,saddlebrown,salmon,sandybrown,seagreen,
+seashell,sienna,silver,skyblue,slateblue,slategray,slategrey,snow,springgreen,steelblue,tan,teal,thistle,tomato,
+turquoise,violet,wheat,white,whitesmoke,yellow,yellowgreen*/
+    style1-color: black;
+    style2-color: radial-gradient(radius 180%,orange, derive(lightgray, -30%), derive(lightgray, 30%));
+    style3-color: white;
+	-fx-background-color: style1-color;
+	-fx-padding: 10 5 5 5;
+	-fx-spacing:5;
 	-fx-pref-width:1920;
 	-fx-pref-height:1080;
 
 }
+
+.header {
+   	-fx-pref-width:1920;
+   /*	-fx-pref-height:200;*/
+}
+
+.BeadRoadPane {
+	-fx-background-radius:0,0,0,0;
+	-fx-border-color:rgb(108,116,118);
+	-fx-border-width:0,0,0,0;
+	-fx-border-radius: 0,0,0,0;
+
+}
+
+.bottomHBox {
+	-fx-pref-width:1910;
+	-fx-spacing:11;
+}
+
 
 @font-face {
     src: url('../fonts/ANTQUAB.TTF');
@@ -26,28 +60,31 @@
 
 
 .BeadRoadPane {
-	-fx-background-color: black;
+	-fx-background-color: rgb(108,116,118,.5);
+	-fx-padding:0 0 0 0;
 	-fx-background-radius:0,0,0,0;
 	-fx-border-color:rgb(108,116,118);
 	-fx-border-width:0,0,0,0;
-	-fx-border-radius: 0,0,0,0;
-
+	-fx-border-radius:0,0,0,0;
+	/*-fx-pref-height:233;*/
+	-fx-pref-width:628;
 }
+
 
 .BeadRoadTilePane {
     -fx-padding:0,0,0,0;
 	-fx-tile-alignment: top-left;
-	-fx-pref-rows: 7;
+	-fx-pref-rows: 8;
 	-fx-pref-columns: 14;
 	-fx-pref-tile-width: 44;
 	-fx-pref-tile-height: 44;
 	-fx-hgap: .5;
 	-fx-vgap: .5;
-	
+
 }
 
 .BeadRoadLabel {
-    -fx-background-color:white;
+    -fx-background-color:style3-color;
     -fx-pref-height: 44;
     -fx-pref-width: 44;
 }
@@ -133,7 +170,7 @@
 	-fx-border-color:rgb(108,116,118);
 	-fx-border-width:0,0,0,0;
 	-fx-border-radius:0,0,0,0;
-	-fx-pref-height:233;
+	/*-fx-pref-height:233;*/
 	-fx-pref-width:1920;
 }
 
@@ -152,7 +189,7 @@
 }
 
 .BigRoadLabel {
-	-fx-background-color:white;
+	-fx-background-color:style3-color;
 	-fx-alignment:center;
 	-fx-text-overrun:center-ellipsis;
 	-fx-text-fill:white;
@@ -262,17 +299,117 @@
 	-fx-background-position: center,12 14;
 	-fx-background-repeat: no-repeat, no-repeat;
 }
-
-
-
-
-
-
-.bottomHBox {
-	-fx-background-color:black;
-	-fx-pref-width:1910;
-	-fx-spacing:11;
+.BigRoadLabel:tieWinNatural {
+	-fx-background-image: url("../images/big-road/natural.png"),url("../images/big-road/21.png");
+	-fx-background-position: center,12 14;
+	-fx-background-repeat: no-repeat, no-repeat;
 }
+
+
+
+
+.BigRoadLabel:bankerWinNatural {
+	-fx-background-image: url("../images/big-road/13.png");
+	-fx-background-position: center;
+	-fx-background-repeat: no-repeat, stretch;
+}
+
+.BigRoadLabel:bankerWinBeforeTieNatural {
+	-fx-background-image: url("../images/big-road/13.png"),url(../images/big-road/21.png);
+	-fx-background-position: center,12 14;
+	-fx-background-repeat: no-repeat, no-repeat;
+}
+
+.BigRoadLabel:bankerWinBankerPairNatural {
+	-fx-background-image: url("../images/big-road/14.png");
+	-fx-background-position: center;
+	-fx-background-repeat: no-repeat, stretch;
+}
+
+.BigRoadLabel:bankerWinBankerPairBeforeTieNatural {
+	-fx-background-image: url("../images/big-road/14.png"),url(../images/big-road/21.png);
+	-fx-background-position: center,12 14;
+	-fx-background-repeat: no-repeat, no-repeat;
+}
+
+.BigRoadLabel:bankerWinPlayerPairNatural {
+	-fx-background-image: url("../images/big-road/15.png");
+	-fx-background-position: center;
+	-fx-background-repeat: no-repeat, stretch;
+}
+
+.BigRoadLabel:bankerWinPlayerPairBeforeTieNatural {
+	-fx-background-image: url("../images/big-road/15.png"),url(../images/big-road/21.png);
+	-fx-background-position: center,12 14;
+	-fx-background-repeat: no-repeat, no-repeat;
+}
+
+.BigRoadLabel:bankerWinBothPairNatural {
+	-fx-background-image: url("../images/big-road/16.png");
+	-fx-background-position: center;
+	-fx-background-repeat: no-repeat, stretch;
+}
+
+.BigRoadLabel:bankerWinBothPairBeforeTieNatural {
+	-fx-background-image: url("../images/big-road/16.png"),url(../images/big-road/21.png);
+	-fx-background-position: center,12 14;
+	-fx-background-repeat: no-repeat, no-repeat;
+}
+
+.BigRoadLabel:playerWinNatural {
+	-fx-background-image: url("../images/big-road/17.png");
+	-fx-background-position: center;
+	-fx-background-repeat: no-repeat, stretch;
+}
+
+.BigRoadLabel:playerWinBeforeTieNatural {
+	-fx-background-image: url("../images/big-road/17.png"),url(../images/big-road/21.png);
+	-fx-background-position: center,12 14;
+	-fx-background-repeat: no-repeat, no-repeat;
+}
+
+.BigRoadLabel:playerWinBankerPairNatural {
+	-fx-background-image: url("../images/big-road/18.png");
+	-fx-background-position: center;
+	-fx-background-repeat: no-repeat, stretch;
+}
+
+.BigRoadLabel:playerWinBankerPairBeforeTieNatural {
+	-fx-background-image: url("../images/big-road/18.png"),url(../images/big-road/21.png);
+	-fx-background-position: center,12 14;
+	-fx-background-repeat: no-repeat, no-repeat;
+}
+
+.BigRoadLabel:playerWinPlayerPairNatural {
+	-fx-background-image: url("../images/big-road/19.png");
+	-fx-background-position: center;
+	-fx-background-repeat: no-repeat, stretch;
+}
+
+.BigRoadLabel:playerWinPlayerPairBeforeTieNatural {
+	-fx-background-image: url("../images/big-road/19.png"),url(../images/big-road/21.png);
+	-fx-background-position: center,12 14;
+	-fx-background-repeat: no-repeat, no-repeat;
+}
+
+.BigRoadLabel:playerWinBothPairNatural {
+	-fx-background-image: url("../images/big-road/20.png");
+	-fx-background-position: center;
+	-fx-background-repeat: no-repeat, stretch;
+}
+
+.BigRoadLabel:playerWinBothPairBeforeTieNatural {
+	-fx-background-image: url("../images/big-road/20.png"),url(../images/big-road/21.png);
+	-fx-background-position: center,12 14;
+	-fx-background-repeat: no-repeat, no-repeat;
+}
+
+
+
+
+
+
+
 
 .BigEyeRoadPane {
 	-fx-background-color:rgb(108,116,118,.5);
@@ -294,7 +431,7 @@
 }
 
 .BigEyeRoadLabel {
-	-fx-background-color:white;
+	-fx-background-color:style3-color;
 	-fx-pref-width:20;
 	-fx-pref-height:20;
 }
@@ -316,7 +453,7 @@
 
 .SmallRoadPane {
 	-fx-background-color: rgb(108,116,118,.5);
-	-fx-pref-height:127;
+	/*-fx-pref-height:127;*/
 	-fx-pref-width:629;
 }
 
@@ -334,7 +471,7 @@
 }
 
 .SmallRoadLabel {
-	-fx-background-color:white;
+	-fx-background-color:style3-color;
 	-fx-pref-width:20;
 	-fx-pref-height:20;
 }
@@ -356,7 +493,7 @@
 
 .CockroachRoadPane {
 	-fx-background-color: rgb(108,116,118,.5);
-	-fx-pref-height:127;
+/*	-fx-pref-height:127;*/
 	-fx-pref-width:629;
 }
 
@@ -374,7 +511,7 @@
 }
 
 .CockroachRoadLabel {
-	-fx-background-color:white;
+	-fx-background-color:style3-color;
 	-fx-pref-width:20;
 	-fx-pref-height:20;
 }
@@ -393,25 +530,12 @@
 	-fx-background-size: contain;
 }
 
-.BigEyeRoadHeader {
-    -fx-padding: 0 0 0 0;
-    -fx-background-color: radial-gradient(radius 180%,orange, derive(lightgray, -30%), derive(lightgray, 30%));
-    -fx-border-radius: 5 5 5 5;
-    -fx-background-radius: 5 5 5 5;
-    -fx-text-fill: black;
-    -fx-pref-width:200;
-    -fx-pref-height:25;
-    -fx-alignment:center;
-    -fx-font-family: "Helvetica";
-    -fx-font-size: 12;
-    }
-
 
 .BeadHeader {
     -fx-padding: 0 0 0 0;
-    -fx-background-color: radial-gradient(radius 180%,orange, derive(lightgray, -30%), derive(lightgray, 30%));
-    -fx-border-radius: 5 5 5 5;
-    -fx-background-radius: 5 5 5 5;
+    -fx-background-color: style2-color;
+/*    -fx-border-radius: 5 5 5 5;
+    -fx-background-radius: 5 5 5 5*/;
     -fx-text-fill: black;
     -fx-pref-width:200;
     -fx-pref-height:25;
@@ -422,9 +546,9 @@
 
 .BigEyeRoadHeader {
     -fx-padding: 0 0 0 0;
-    -fx-background-color: radial-gradient(radius 180%,orange, derive(lightgray, -30%), derive(lightgray, 30%));
-    -fx-border-radius: 5 5 5 5;
-    -fx-background-radius: 5 5 5 5;
+    -fx-background-color: style2-color;
+/*    -fx-border-radius: 5 5 5 5;
+    -fx-background-radius: 5 5 5 5;*/
     -fx-text-fill: black;
     -fx-pref-width:200;
     -fx-pref-height:25;
@@ -433,25 +557,9 @@
     -fx-font-size: 18;
     }
 
-.FootLabel {
-    -fx-padding: 0 0 5 0;
-    -fx-background-color: radial-gradient(radius 180%,orange, derive(lightgray, -30%), derive(lightgray, 30%));
-    -fx-border-radius: 5 5 5 5;
-    -fx-background-radius: 5 5 5 5;
-    -fx-text-fill: black;
-    -fx-pref-width:1910;
-    -fx-pref-height:25;
-    -fx-alignment:center;
-    -fx-font-family: 'Book Antiqua';
-    -fx-font-size: 12;
 
-    }
 
-    .header {
-        -fx-background-color: black;
-    	-fx-pref-width:1920;
-    	-fx-pref-height:200;
-    }
+
 
     .nameLabel {
     	-fx-font-family: 'Bauhaus';
@@ -474,7 +582,7 @@
     }
 
     .textField {
-        -fx-background-color: radial-gradient(radius 180%,orange, derive(lightgray, -30%), derive(lightgray, 30%));
+        -fx-background-color: style2-color;
         -fx-border-radius: 5 5 5 5;
         -fx-background-radius: 5 5 5 5;
     	-fx-text-fill: black;
@@ -487,7 +595,7 @@
     }
 
     .textFieldRight {
-        -fx-background-color: radial-gradient(radius 180%,orange, derive(lightgray, -30%), derive(lightgray, 30%));
+        -fx-background-color: style2-color;
         -fx-border-radius: 5 5 5 5;
         -fx-background-radius: 5 5 5 5;
     	-fx-text-fill: black;
@@ -503,35 +611,35 @@
 #bankerWinCount {
     -fx-background-color:red;
     -fx-text-fill:white;
-    -fx-font-family: 'Book Antiqua';
+    -fx-font-family: 'Book Antiqua Bold';
     -fx-font-size: 25;
 }
 
 #playerWinCount {
     -fx-background-color:dodgerblue;
     -fx-text-fill:white;
-    -fx-font-family: 'Book Antiqua';
+    -fx-font-family: 'Book Antiqua Bold';
     -fx-font-size: 25;
 }
 
 #tieWinCount {
     -fx-background-color:limegreen;
     -fx-text-fill:white;
-    -fx-font-family: 'Book Antiqua';
+    -fx-font-family: 'Book Antiqua Bold';
     -fx-font-size: 25;
 }
 
 #bankerPairCount {
     -fx-background-color:red;
     -fx-text-fill:white;
-    -fx-font-family: 'Book Antiqua';
+    -fx-font-family: 'Book Antiqua Bold';
     -fx-font-size: 25;
 }
 
 #playerPairCount {
     -fx-background-color:dodgerblue;
         -fx-text-fill:white;
-    -fx-font-family: 'Book Antiqua';
+    -fx-font-family: 'Book Antiqua Bold';
     -fx-font-size: 25;
 }
 
@@ -573,7 +681,7 @@
 }
 
 .InfoLabel1 {
-        -fx-background-color: radial-gradient(radius 180%,orange, derive(lightgray, -30%), derive(lightgray, 30%));
+        -fx-background-color: style2-color;
     	-fx-text-fill: black;
     	-fx-pref-width:130;
         -fx-pref-height:25;
@@ -583,7 +691,7 @@
 }
 
 .InfoLabel2 {
-        -fx-background-color: radial-gradient(radius 180%,orange, derive(lightgray, -30%), derive(lightgray, 30%));
+        -fx-background-color: style2-color;
     	-fx-text-fill: black;
     	-fx-pref-width:185;
         -fx-pref-height:25;
@@ -593,7 +701,7 @@
 }
 
 .InfoLabel3 {
-        -fx-background-color: radial-gradient(radius 180%,orange, derive(lightgray, -30%), derive(lightgray, 30%));
+        -fx-background-color: style2-color;
     	-fx-text-fill: black;
     	-fx-pref-width:153;
         -fx-pref-height:25;
@@ -604,7 +712,7 @@
 
 
 .LastWinLabel {
-    -fx-background-color: white;
+    -fx-background-color: style3-color;
     -fx-pref-height: 120;
     -fx-pref-width: 120;
 }
@@ -631,19 +739,33 @@
 
 
 .lastWinBox {
-        -fx-background-color: white;
+        -fx-background-color: style3-color;
         -fx-border-radius: 5 5 5 5;
         -fx-background-radius: 5 5 5 5;
 }
 
 .counterBox {
-        -fx-background-color: white;
+        -fx-background-color: style3-color;
         -fx-border-radius: 5 5 5 5;
         -fx-background-radius: 5 5 5 5;
 }
 
 .predictionBox {
-        -fx-background-color: white;
+        -fx-background-color: style3-color;
         -fx-border-radius: 5 5 5 5;
         -fx-background-radius: 5 5 5 5;
 }
+
+.FootLabel {
+    -fx-padding: 0 0 0 0;
+    -fx-background-color: style2-color;
+    -fx-border-radius: 5 5 5 5;
+    -fx-background-radius: 5 5 5 5;
+    -fx-text-fill: black;
+    -fx-pref-width:1910;
+    -fx-pref-height:25;
+    -fx-alignment:center;
+    -fx-font-family: 'Book Antiqua';
+    -fx-font-size: 12;
+
+    }

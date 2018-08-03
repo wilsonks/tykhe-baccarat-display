@@ -59,6 +59,14 @@ public class BigRoadTilePane extends TilePane {
             case TIE_AFTER_BANKER_WIN_BANKER_PAIR:
             case TIE_AFTER_BANKER_WIN_PLAYER_PAIR:
             case TIE_AFTER_BANKER_WIN_BOTH_PAIR:
+            case BANKER_WIN_NATURAL:
+            case BANKER_WIN_BANKER_PAIR_NATURAL:
+            case BANKER_WIN_PLAYER_PAIR_NATURAL:
+            case BANKER_WIN_BOTH_PAIR_NATURAL:
+            case TIE_AFTER_BANKER_WIN_NATURAL:
+            case TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL:
+            case TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL:
+            case TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL:
                 return true;
             default:
                 return false;
@@ -75,6 +83,14 @@ public class BigRoadTilePane extends TilePane {
             case TIE_AFTER_PLAYER_WIN_BANKER_PAIR:
             case TIE_AFTER_PLAYER_WIN_PLAYER_PAIR:
             case TIE_AFTER_PLAYER_WIN_BOTH_PAIR:
+            case PLAYER_WIN_NATURAL:
+            case PLAYER_WIN_BANKER_PAIR_NATURAL:
+            case PLAYER_WIN_PLAYER_PAIR_NATURAL:
+            case PLAYER_WIN_BOTH_PAIR_NATURAL:
+            case TIE_AFTER_PLAYER_WIN_NATURAL:
+            case TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL:
+            case TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL:
+            case TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL:
                 return true;
             default:
                 return false;
@@ -87,6 +103,10 @@ public class BigRoadTilePane extends TilePane {
             case BANKER_WIN_BANKER_PAIR:
             case BANKER_WIN_PLAYER_PAIR:
             case BANKER_WIN_BOTH_PAIR:
+            case BANKER_WIN_NATURAL:
+            case BANKER_WIN_BANKER_PAIR_NATURAL:
+            case BANKER_WIN_PLAYER_PAIR_NATURAL:
+            case BANKER_WIN_BOTH_PAIR_NATURAL:
                 return true;
             default:
                 return false;
@@ -99,6 +119,11 @@ public class BigRoadTilePane extends TilePane {
             case PLAYER_WIN_BANKER_PAIR:
             case PLAYER_WIN_PLAYER_PAIR:
             case PLAYER_WIN_BOTH_PAIR:
+            case PLAYER_WIN_NATURAL:
+            case PLAYER_WIN_BANKER_PAIR_NATURAL:
+            case PLAYER_WIN_PLAYER_PAIR_NATURAL:
+            case PLAYER_WIN_BOTH_PAIR_NATURAL:
+
                 return true;
             default:
                 return false;
@@ -133,11 +158,7 @@ public class BigRoadTilePane extends TilePane {
         }
         row = localSaveRow;
         column= localSaveColumn - 1;
-        c4 =  c3;
-        c3 =  c2;
-        c2 = c1;
-        c1 = c0;
-        c0 = 0;
+        c4 =  c3;c3 =  c2;c2 = c1;c1 = c0;c0 = 0;
         shiftedNow = true;
         if(savedColumn != -1) savedColumn--;
     }
@@ -171,11 +192,7 @@ public class BigRoadTilePane extends TilePane {
             row = 0;
 
         }
-        c4 = c3;
-        c3 = c2;
-        c2 = c1;
-        c1 = c0;
-        c0 = 1;
+        c4 = c3;c3 = c2;c2 = c1;c1 = c0;c0 = 1;
     }
 
     private void MoveToNextPositionFront(BeadRoadResult next) {
@@ -208,13 +225,15 @@ public class BigRoadTilePane extends TilePane {
         }
     }
 
-    public void AddElement(BeadRoadResult next) {
+    private void AddElement(BeadRoadResult next) {
         MoveToNextPositionFront(next);
         switch (next) {
             case BANKER_WIN:
                 if (((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN) {
                     ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN);
-                }else{
+                }else if(((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN_NATURAL) {
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_NATURAL);
+                }else {
                     ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.BANKER_WIN);
                 }
                 break;
@@ -222,6 +241,8 @@ public class BigRoadTilePane extends TilePane {
             case BANKER_WIN_BANKER_PAIR:
                 if (((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN) {
                     ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_BANKER_PAIR);
+                }else if(((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN_NATURAL) {
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL);
                 }else{
                     ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.BANKER_WIN_BANKER_PAIR);
                 }
@@ -230,6 +251,8 @@ public class BigRoadTilePane extends TilePane {
             case BANKER_WIN_PLAYER_PAIR:
                 if (((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN) {
                     ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_PLAYER_PAIR);
+                }else if(((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN_NATURAL) {
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL);
                 }else{
                     ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.BANKER_WIN_PLAYER_PAIR);
                 }
@@ -238,6 +261,8 @@ public class BigRoadTilePane extends TilePane {
             case BANKER_WIN_BOTH_PAIR:
                 if (((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN) {
                     ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_BOTH_PAIR);
+                }else if(((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN_NATURAL) {
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL);
                 }else{
                     ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.BANKER_WIN_BOTH_PAIR);
                 }
@@ -246,6 +271,8 @@ public class BigRoadTilePane extends TilePane {
             case PLAYER_WIN:
                 if (((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN) {
                     ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN);
+                }else if(((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN_NATURAL) {
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_NATURAL);
                 }else{
                     ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.PLAYER_WIN);
                 }
@@ -254,6 +281,8 @@ public class BigRoadTilePane extends TilePane {
             case PLAYER_WIN_BANKER_PAIR:
                 if (((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN) {
                     ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_BANKER_PAIR);
+                }else if(((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN_NATURAL) {
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL);
                 }else{
                     ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.PLAYER_WIN_BANKER_PAIR);
                 }
@@ -262,6 +291,8 @@ public class BigRoadTilePane extends TilePane {
             case PLAYER_WIN_PLAYER_PAIR:
                 if (((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN) {
                     ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_PLAYER_PAIR);
+                }else if(((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN_NATURAL) {
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL);
                 }else{
                     ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.PLAYER_WIN_PLAYER_PAIR);
                 }
@@ -270,6 +301,8 @@ public class BigRoadTilePane extends TilePane {
             case PLAYER_WIN_BOTH_PAIR:
                 if (((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN) {
                     ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_BOTH_PAIR);
+                }else if(((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN_NATURAL) {
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL);
                 }else{
                     ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.PLAYER_WIN_BOTH_PAIR);
                 }
@@ -306,6 +339,168 @@ public class BigRoadTilePane extends TilePane {
                         break;
                     case PLAYER_WIN_BOTH_PAIR:
                         ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_BOTH_PAIR);
+                        break;
+                    case BANKER_WIN_NATURAL:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_NATURAL);
+                        break;
+                    case BANKER_WIN_BANKER_PAIR_NATURAL:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL);
+                        break;
+                    case BANKER_WIN_PLAYER_PAIR_NATURAL:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL);
+                        break;
+                    case BANKER_WIN_BOTH_PAIR_NATURAL:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL);
+                        break;
+                    case PLAYER_WIN_NATURAL:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_NATURAL);
+                        break;
+                    case PLAYER_WIN_BANKER_PAIR_NATURAL:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL);
+                        break;
+                    case PLAYER_WIN_PLAYER_PAIR_NATURAL:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL);
+                        break;
+                    case PLAYER_WIN_BOTH_PAIR_NATURAL:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL);
+                        break;
+                    default:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).incTieCount();
+                        int tmp =  ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getTieCount();
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setText(String.valueOf(tmp));
+                        break;
+                }
+            }
+            break;
+
+            case BANKER_WIN_NATURAL:
+                if (((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN) {
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_NATURAL);
+                }else{
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.BANKER_WIN_NATURAL);
+                }
+                break;
+
+            case BANKER_WIN_BANKER_PAIR_NATURAL:
+                if (((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN) {
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL);
+                }else{
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.BANKER_WIN_BANKER_PAIR_NATURAL);
+                }
+                break;
+
+            case BANKER_WIN_PLAYER_PAIR_NATURAL:
+                if (((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN) {
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL);
+                }else{
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.BANKER_WIN_PLAYER_PAIR_NATURAL);
+                }
+                break;
+
+            case BANKER_WIN_BOTH_PAIR_NATURAL:
+                if (((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN) {
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL);
+                }else{
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.BANKER_WIN_BOTH_PAIR_NATURAL);
+                }
+                break;
+
+            case PLAYER_WIN_NATURAL:
+                if (((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN) {
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_NATURAL);
+                }else{
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.PLAYER_WIN_NATURAL);
+                }
+                break;
+
+            case PLAYER_WIN_BANKER_PAIR_NATURAL:
+                if (((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN) {
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL);
+                }else{
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.PLAYER_WIN_BANKER_PAIR_NATURAL);
+                }
+                break;
+
+            case PLAYER_WIN_PLAYER_PAIR_NATURAL:
+                if (((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN) {
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL);
+                }else{
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.PLAYER_WIN_PLAYER_PAIR_NATURAL);
+                }
+                break;
+
+            case PLAYER_WIN_BOTH_PAIR_NATURAL:
+                if (((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult() == BigRoadResult.TIE_WIN) {
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL);
+                }else{
+                    ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.PLAYER_WIN_BOTH_PAIR_NATURAL);
+                }
+                break;
+
+            case TIE_WIN_NATURAL:
+            case TIE_WIN_BANKER_PAIR_NATURAL:
+            case TIE_WIN_PLAYER_PAIR_NATURAL:
+            case TIE_WIN_BOTH_PAIR_NATURAL: {
+                switch (((BigRoadLabel) super.getChildren().get(getCurrentPosition())).getResult()) {
+                    case EMPTY:
+                    case TIE_WIN:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_WIN_NATURAL);
+                        break;
+                    case BANKER_WIN:
+                    case TIE_AFTER_BANKER_WIN:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_NATURAL);
+                        break;
+                    case BANKER_WIN_BANKER_PAIR:
+                    case TIE_AFTER_BANKER_WIN_BANKER_PAIR:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL);
+                        break;
+                    case BANKER_WIN_PLAYER_PAIR:
+                    case TIE_AFTER_BANKER_WIN_PLAYER_PAIR:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL);
+                        break;
+                    case BANKER_WIN_BOTH_PAIR:
+                    case TIE_AFTER_BANKER_WIN_BOTH_PAIR:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL);
+                        break;
+                    case PLAYER_WIN:
+                    case TIE_AFTER_PLAYER_WIN:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_NATURAL);
+                        break;
+                    case PLAYER_WIN_BANKER_PAIR:
+                    case TIE_AFTER_PLAYER_WIN_BANKER_PAIR:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL);
+                        break;
+                    case PLAYER_WIN_PLAYER_PAIR:
+                    case TIE_AFTER_PLAYER_WIN_PLAYER_PAIR:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL);
+                        break;
+                    case PLAYER_WIN_BOTH_PAIR:
+                    case TIE_AFTER_PLAYER_WIN_BOTH_PAIR:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL);
+                        break;
+                    case BANKER_WIN_NATURAL:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_NATURAL);
+                        break;
+                    case BANKER_WIN_BANKER_PAIR_NATURAL:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_BANKER_PAIR_NATURAL);
+                        break;
+                    case BANKER_WIN_PLAYER_PAIR_NATURAL:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_PLAYER_PAIR_NATURAL);
+                        break;
+                    case BANKER_WIN_BOTH_PAIR_NATURAL:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_BANKER_WIN_BOTH_PAIR_NATURAL);
+                        break;
+                    case PLAYER_WIN_NATURAL:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_NATURAL);
+                        break;
+                    case PLAYER_WIN_BANKER_PAIR_NATURAL:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_BANKER_PAIR_NATURAL);
+                        break;
+                    case PLAYER_WIN_PLAYER_PAIR_NATURAL:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_PLAYER_PAIR_NATURAL);
+                        break;
+                    case PLAYER_WIN_BOTH_PAIR_NATURAL:
+                        ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).setResult(BigRoadResult.TIE_AFTER_PLAYER_WIN_BOTH_PAIR_NATURAL);
                         break;
                     default:
                         ((BigRoadLabel) super.getChildren().get(getCurrentPosition())).incTieCount();
@@ -562,11 +757,7 @@ public class BigRoadTilePane extends TilePane {
         row= -1;
         savedColumn = -1;
         shiftedNow = false;
-        c0 = 0;
-        c1 =0;
-        c2 = 0;
-        c3=0;
-        c4=0;
+        c0 = 0;c1 =0;c2 = 0;c3=0;c4=0;
 
     }
 
