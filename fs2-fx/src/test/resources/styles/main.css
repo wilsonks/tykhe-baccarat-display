@@ -1,4 +1,10 @@
+
 .root {
+	-fx-pref-width:1920;
+	-fx-pref-height:1080;
+}
+
+.game {
 /*transparent,aliceblue,antiquewhite,aqua,aquamarine,azure,beige,bisque,black,blanchedalmond,blue,blueviolet,
 brown,burlywood,cadetblue,chartreuse,chocolate,coral,cornflowerblue,cornsilk,crimson,cyan,darkblue,darkcyan,
 darkgoldenrod,darkgray,darkgreen,darkgrey,darkkhaki,darkmagenta,darkolivegreen,darkorange,darkorchid,darkred,
@@ -769,3 +775,42 @@ turquoise,violet,wheat,white,whitesmoke,yellow,yellowgreen*/
     -fx-font-size: 12;
 
     }
+
+.menuBox {
+        -fx-background-color: #43585c;
+        -fx-border-radius: 5 5 5 5;
+            	-fx-text-fill: white;
+            	-fx-pref-width:310;
+                -fx-pref-height:354;
+}
+
+.menuTitle {
+        -fx-background-color: #4cb5f5;
+    	-fx-text-fill: white;
+    	-fx-pref-width:320;
+        -fx-pref-height:42;
+        -fx-alignment:center;
+    	-fx-font-family: 'Bauhaus';
+    	-fx-font-size: 25;
+}
+
+.menuLabels {
+        -fx-background-color: #aac1c6;
+    	-fx-text-fill: black;
+    	-fx-pref-width:200;
+        -fx-pref-height:42;
+        -fx-alignment:top-left;
+    	-fx-font-family: 'Bauhaus';
+    	-fx-font-size: 20;
+}
+
+.menuLabels:focused {
+        -fx-background-color: #34675c;
+        -fx-border-radius: 2 2 2 2;
+    	-fx-text-fill: black;
+    	-fx-pref-width:200;
+        -fx-pref-height:42;
+        -fx-alignment:top-left;
+    	-fx-font-family: 'Bauhaus';
+    	-fx-font-size: 20;
+}

@@ -7,8 +7,9 @@ import javafx.animation._
 import javafx.beans.value.{ChangeListener, ObservableValue}
 import javafx.collections.ObservableList
 import javafx.event.EventHandler
-import javafx.scene.control.Label
+import javafx.scene.control.{Button, Label, TextField}
 import javafx.scene.input.{KeyCode, KeyEvent}
+import javafx.scene.layout.{BorderPane, VBox}
 import javafx.scene.transform.Rotate
 import javafx.util.Duration
 import scalafx.scene.media.AudioClip
@@ -16,6 +17,14 @@ import scalafxml.core.macros.sfxml
 
 @sfxml(additionalControls = List("customjavafx.scene.layout", "customjavafx.scene.control"))
 class DisplayHandler(
+  val gameBox: VBox,
+  val tableNumber: Label,
+  val handBetMin: Label,
+  val handBetMax: Label,
+  val tieBetMin: Label,
+  val tieBetMax: Label,
+  val pairBetMin: Label,
+  val pairBetMax: Label,
   val playerWinCount: Label,
   val bankerWinCount: Label,
   val tieWinCount: Label,
@@ -33,6 +42,21 @@ class DisplayHandler(
   val p2: SmallRoadLabel,
   val p3: CockroachRoadLabel,
   val lastWin: LastWinLabel,
+  val menu: BorderPane,
+  val tName: TextField,
+  val tHandBetMin: TextField,
+  val tHandBetMax: TextField,
+  val tTieBetMin: TextField,
+  val tTieBetMax: TextField,
+  val tPairBetMin: TextField,
+  val tPairBetMax: TextField,
+  val lName: Button,
+  val lHandBetMin: Button,
+  val lHandBetMax: Button,
+  val lTieBetMin: Button,
+  val lTieBetMax: Button,
+  val lPairBetMin: Button,
+  val lPairBetMax: Button,
   val bigRoad: BigRoadTilePane)(implicit display: Display, echo: Port[String, Echo.Transition]) {
 
   beadRoad.Initialize(8, 14)
@@ -41,93 +65,156 @@ class DisplayHandler(
   smallRoad.Initialize(6, 30)
   cockroachRoad.Initialize(6, 30)
 
+  tableNumber.textProperty().bindBidirectional(tName.textProperty())
+  handBetMin.textProperty().bindBidirectional(tHandBetMin.textProperty())
+  handBetMax.textProperty().bindBidirectional(tHandBetMax.textProperty())
+  tieBetMin.textProperty().bindBidirectional(tTieBetMin.textProperty())
+  tieBetMax.textProperty().bindBidirectional(tTieBetMax.textProperty())
+  pairBetMin.textProperty().bindBidirectional(tPairBetMin.textProperty())
+  pairBetMax.textProperty().bindBidirectional(tPairBetMax.textProperty())
+
   display.root.addEventHandler(
     KeyEvent.KEY_PRESSED,
     new EventHandler[KeyEvent] {
-      var pPair: Boolean = false
-      var bPair: Boolean = false
-      var bothPair: Boolean = false
-      var natural: Boolean = false
-      var bWin: Boolean = false
-      var pWin: Boolean = false
-      var tWin: Boolean = false
+      var menuOn = false
+      var editOn = false
+      var pPair = false
+      var bPair = false
+      var bothPair = false
+      var natural = false
+      var bWin = false
+      var pWin = false
+      var tWin = false
+      val tList = Array(tName, tHandBetMin, tHandBetMax, tTieBetMin, tTieBetMax, tPairBetMin, tPairBetMax)
+      val lList = Array(lName, lHandBetMin, lHandBetMax, lTieBetMin, lTieBetMax, lPairBetMin, lPairBetMax)
+      var mIndex = -1
+
+      def focusNext(): Unit = {
+        mIndex = (mIndex + 1) % 7
+        lList((mIndex)).requestFocus()
+      }
+
+      if (java.awt.Toolkit.getDefaultToolkit.getLockingKeyState(java.awt.event.KeyEvent.VK_NUM_LOCK)) {
+        menu.toFront()
+        focusNext()
+        menuOn = true
+        println("Num Lock On")
+      }
 
       override def handle(t: KeyEvent): Unit = {
-        t.getCode match {
-          case KeyCode.ENTER =>
-            (bPair, pPair, bothPair, natural, bWin, pWin, tWin) match {
-              case (false, false, false, false, true, false, false) => beadRoad.AddElement(BeadRoadResult.BANKER_WIN)
-              case (true, false, false, false, true, false, false) =>
-                beadRoad.AddElement(BeadRoadResult.BANKER_WIN_BANKER_PAIR)
-              case (false, true, false, false, true, false, false) =>
-                beadRoad.AddElement(BeadRoadResult.BANKER_WIN_PLAYER_PAIR)
-              case (false, false, true, false, true, false, false) =>
-                beadRoad.AddElement(BeadRoadResult.BANKER_WIN_BOTH_PAIR)
-              case (false, false, false, true, true, false, false) =>
-                beadRoad.AddElement(BeadRoadResult.BANKER_WIN_NATURAL)
-              case (true, false, false, true, true, false, false) =>
-                beadRoad.AddElement(BeadRoadResult.BANKER_WIN_BANKER_PAIR_NATURAL)
-              case (false, true, false, true, true, false, false) =>
-                beadRoad.AddElement(BeadRoadResult.BANKER_WIN_PLAYER_PAIR_NATURAL)
-              case (false, false, true, true, true, false, false) =>
-                beadRoad.AddElement(BeadRoadResult.BANKER_WIN_BOTH_PAIR_NATURAL)
+        if (!menuOn) {
+          println("What?" + bPair + pPair + bothPair + natural + bWin + pWin + tWin)
+          t.getCode match {
+            case KeyCode.ENTER =>
+              (bPair, pPair, bothPair, natural, bWin, pWin, tWin) match {
+                case (false, false, false, false, true, false, false) => beadRoad.AddElement(BeadRoadResult.BANKER_WIN)
+                case (true, false, false, false, true, false, false) =>
+                  beadRoad.AddElement(BeadRoadResult.BANKER_WIN_BANKER_PAIR)
+                case (false, true, false, false, true, false, false) =>
+                  beadRoad.AddElement(BeadRoadResult.BANKER_WIN_PLAYER_PAIR)
+                case (false, false, true, false, true, false, false) =>
+                  beadRoad.AddElement(BeadRoadResult.BANKER_WIN_BOTH_PAIR)
+                case (false, false, false, true, true, false, false) =>
+                  beadRoad.AddElement(BeadRoadResult.BANKER_WIN_NATURAL)
+                case (true, false, false, true, true, false, false) =>
+                  beadRoad.AddElement(BeadRoadResult.BANKER_WIN_BANKER_PAIR_NATURAL)
+                case (false, true, false, true, true, false, false) =>
+                  beadRoad.AddElement(BeadRoadResult.BANKER_WIN_PLAYER_PAIR_NATURAL)
+                case (false, false, true, true, true, false, false) =>
+                  beadRoad.AddElement(BeadRoadResult.BANKER_WIN_BOTH_PAIR_NATURAL)
 
-              case (false, false, false, false, false, true, false) => beadRoad.AddElement(BeadRoadResult.PLAYER_WIN)
-              case (true, false, false, false, false, true, false) =>
-                beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_BANKER_PAIR)
-              case (false, true, false, false, false, true, false) =>
-                beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_PLAYER_PAIR)
-              case (false, false, true, false, false, true, false) =>
-                beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_BOTH_PAIR)
-              case (false, false, false, true, false, true, false) =>
-                beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_NATURAL)
-              case (true, false, false, true, false, true, false) =>
-                beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_BANKER_PAIR_NATURAL)
-              case (false, true, false, true, false, true, false) =>
-                beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_PLAYER_PAIR_NATURAL)
-              case (false, false, true, true, false, true, false) =>
-                beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_BOTH_PAIR_NATURAL)
+                case (false, false, false, false, false, true, false) => beadRoad.AddElement(BeadRoadResult.PLAYER_WIN)
+                case (true, false, false, false, false, true, false) =>
+                  beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_BANKER_PAIR)
+                case (false, true, false, false, false, true, false) =>
+                  beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_PLAYER_PAIR)
+                case (false, false, true, false, false, true, false) =>
+                  beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_BOTH_PAIR)
+                case (false, false, false, true, false, true, false) =>
+                  beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_NATURAL)
+                case (true, false, false, true, false, true, false) =>
+                  beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_BANKER_PAIR_NATURAL)
+                case (false, true, false, true, false, true, false) =>
+                  beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_PLAYER_PAIR_NATURAL)
+                case (false, false, true, true, false, true, false) =>
+                  beadRoad.AddElement(BeadRoadResult.PLAYER_WIN_BOTH_PAIR_NATURAL)
 
-              case (false, false, false, false, false, false, true) => beadRoad.AddElement(BeadRoadResult.TIE_WIN)
-              case (true, false, false, false, false, false, true) =>
-                beadRoad.AddElement(BeadRoadResult.TIE_WIN_BANKER_PAIR)
-              case (false, true, false, false, false, false, true) =>
-                beadRoad.AddElement(BeadRoadResult.TIE_WIN_PLAYER_PAIR)
-              case (false, false, true, false, false, false, true) =>
-                beadRoad.AddElement(BeadRoadResult.TIE_WIN_BOTH_PAIR)
-              case (false, false, false, true, false, false, true) =>
-                beadRoad.AddElement(BeadRoadResult.TIE_WIN_NATURAL)
-              case (true, false, false, true, false, false, true) =>
-                beadRoad.AddElement(BeadRoadResult.TIE_WIN_BANKER_PAIR_NATURAL)
-              case (false, true, false, true, false, false, true) =>
-                beadRoad.AddElement(BeadRoadResult.TIE_WIN_PLAYER_PAIR_NATURAL)
-              case (false, false, true, true, false, false, true) =>
-                beadRoad.AddElement(BeadRoadResult.TIE_WIN_BOTH_PAIR_NATURAL)
-              case _ =>
+                case (false, false, false, false, false, false, true) => beadRoad.AddElement(BeadRoadResult.TIE_WIN)
+                case (true, false, false, false, false, false, true) =>
+                  beadRoad.AddElement(BeadRoadResult.TIE_WIN_BANKER_PAIR)
+                case (false, true, false, false, false, false, true) =>
+                  beadRoad.AddElement(BeadRoadResult.TIE_WIN_PLAYER_PAIR)
+                case (false, false, true, false, false, false, true) =>
+                  beadRoad.AddElement(BeadRoadResult.TIE_WIN_BOTH_PAIR)
+                case (false, false, false, true, false, false, true) =>
+                  beadRoad.AddElement(BeadRoadResult.TIE_WIN_NATURAL)
+                case (true, false, false, true, false, false, true) =>
+                  beadRoad.AddElement(BeadRoadResult.TIE_WIN_BANKER_PAIR_NATURAL)
+                case (false, true, false, true, false, false, true) =>
+                  beadRoad.AddElement(BeadRoadResult.TIE_WIN_PLAYER_PAIR_NATURAL)
+                case (false, false, true, true, false, false, true) =>
+                  beadRoad.AddElement(BeadRoadResult.TIE_WIN_BOTH_PAIR_NATURAL)
+                case _ =>
+              }
+              bPair = false
+              pPair = false
+              bothPair = false
+              natural = false
+              bWin = false
+              pWin = false
+              tWin = false
+              gameBox.requestFocus()
+
+            case KeyCode.END | KeyCode.NUMPAD1       => bWin = !bWin
+            case KeyCode.DOWN | KeyCode.NUMPAD2      => pWin = !pWin; println("Down key Pressed")
+            case KeyCode.PAGE_DOWN | KeyCode.NUMPAD3 => tWin = !tWin
+
+            case KeyCode.UP | KeyCode.NUMPAD8      => natural = !natural; println("Up key Pressed")
+            case KeyCode.PAGE_UP | KeyCode.NUMPAD9 => natural = !natural
+
+            case KeyCode.LEFT | KeyCode.NUMPAD4  => bPair = !bPair; println("Left key Pressed")
+            case KeyCode.RIGHT | KeyCode.NUMPAD6 => bothPair = !bothPair; println("Right key Pressed")
+            case KeyCode.CLEAR | KeyCode.NUMPAD5 => pPair = !pPair
+
+            case KeyCode.SUBTRACT               => beadRoad.RemoveElement()
+            case KeyCode.HOME | KeyCode.NUMPAD7 => beadRoad.Reset()
+            case KeyCode.NUM_LOCK =>
+              menuOn = !menuOn
+              focusNext()
+              if (menuOn) menu.toFront()
+              else {
+                menu.toBack()
+                gameBox.requestFocus()
+              }
+
+            case _ => println(t)
+          }
+        } else {
+          if (!editOn) {
+            t.getCode match {
+              case KeyCode.NUM_LOCK =>
+                menuOn = !menuOn
+                if (menuOn) menu.toFront()
+                else {
+                  menu.toBack()
+                  gameBox.requestFocus()
+                }
+              case KeyCode.ENTER =>
+                tList(mIndex).requestFocus()
+                editOn = !editOn
+              case KeyCode.DOWN | KeyCode.NUMPAD2 => focusNext()
+              case KeyCode.UP | KeyCode.NUMPAD8   => focusNext()
+              case _                              => println("EDIT OFF")
             }
-            bPair = false;
-            pPair = false;
-            bothPair = false;
-            natural = false;
-            bWin = false;
-            pWin = false;
-            tWin = false;
+          } else {
+            t.getCode match {
+              case KeyCode.ENTER | KeyCode.NUM_LOCK =>
+                focusNext()
+                editOn = false
+              case _ => println("EDIT ON")
+            }
 
-          case KeyCode.END | KeyCode.NUMPAD1       => bWin = !bWin
-          case KeyCode.DOWN | KeyCode.NUMPAD2      => pWin = !pWin
-          case KeyCode.PAGE_DOWN | KeyCode.NUMPAD3 => tWin = !tWin
-
-          case KeyCode.UP | KeyCode.NUMPAD8      => natural = !natural
-          case KeyCode.PAGE_UP | KeyCode.NUMPAD9 => natural = !natural
-
-          case KeyCode.LEFT | KeyCode.NUMPAD4  => bPair = !bPair
-          case KeyCode.RIGHT | KeyCode.NUMPAD6 => bothPair = !bothPair
-          case KeyCode.CLEAR | KeyCode.NUMPAD5 => pPair = !pPair
-
-          case KeyCode.SUBTRACT               => beadRoad.RemoveElement()
-          case KeyCode.HOME | KeyCode.NUMPAD7 => beadRoad.Reset()
-
-          case _ => println(t)
+          }
         }
       }
     }
@@ -261,4 +348,5 @@ class DisplayHandler(
     echo.cancel() // stop service
     display.exit()
   })
+
 }
