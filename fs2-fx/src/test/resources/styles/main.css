@@ -778,6 +778,7 @@ turquoise,violet,wheat,white,whitesmoke,yellow,yellowgreen*/
 
 .menuBox {
         -fx-background-color: #43585c;
+        -fx-background-color: #00293c;
         -fx-border-radius: 5 5 5 5;
             	-fx-text-fill: white;
             	-fx-pref-width:310;
@@ -796,6 +797,7 @@ turquoise,violet,wheat,white,whitesmoke,yellow,yellowgreen*/
 
 .menuLabels {
         -fx-background-color: #aac1c6;
+        -fx-background-color: #f1f3ce;
     	-fx-text-fill: black;
     	-fx-pref-width:200;
         -fx-pref-height:42;
@@ -806,7 +808,7 @@ turquoise,violet,wheat,white,whitesmoke,yellow,yellowgreen*/
 
 .menuLabels:focused {
         -fx-background-color: #34675c;
-        -fx-border-radius: 2 2 2 2;
+        -fx-background-color: #f62a00;
     	-fx-text-fill: black;
     	-fx-pref-width:200;
         -fx-pref-height:42;
