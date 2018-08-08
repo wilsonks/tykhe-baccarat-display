@@ -31,10 +31,6 @@ class DisplayHandler(
   val playerPairCount: Label,
   val bankerPairCount: Label,
   val totalCount: Label,
-  val beadRoad: BeadRoadTilePane,
-  val bigEyeRoad: BigEyeRoadTilePane,
-  val smallRoad: SmallRoadTilePane,
-  val cockroachRoad: CockroachRoadTilePane,
   val b1: BigEyeRoadLabel,
   val b2: SmallRoadLabel,
   val b3: CockroachRoadLabel,
@@ -57,6 +53,11 @@ class DisplayHandler(
   val lTieBetMax: Button,
   val lPairBetMin: Button,
   val lPairBetMax: Button,
+  val info: BorderPane,
+  val beadRoad: BeadRoadTilePane,
+  val bigEyeRoad: BigEyeRoadTilePane,
+  val smallRoad: SmallRoadTilePane,
+  val cockroachRoad: CockroachRoadTilePane,
   val bigRoad: BigRoadTilePane)(implicit display: Display, echo: Port[String, Echo.Transition]) {
 
   beadRoad.Initialize(8, 14)
@@ -77,6 +78,7 @@ class DisplayHandler(
     KeyEvent.KEY_PRESSED,
     new EventHandler[KeyEvent] {
       var menuOn = false
+      var infoOn = false
       var editOn = false
       var pPair = false
       var bPair = false
@@ -87,23 +89,33 @@ class DisplayHandler(
       var tWin = false
       val tList = Array(tName, tHandBetMin, tHandBetMax, tTieBetMin, tTieBetMax, tPairBetMin, tPairBetMax)
       val lList = Array(lName, lHandBetMin, lHandBetMax, lTieBetMin, lTieBetMax, lPairBetMin, lPairBetMax)
-      var mIndex = -1
+      var mIndex: Int = 0
+
+      def focusSame(): Unit = {
+        lList(mIndex).requestFocus()
+      }
+
+      def focusBack(): Unit = {
+        if (mIndex == 0) mIndex = 6
+        else {
+          mIndex = (mIndex - 1) % 7
+        }
+        lList(mIndex).requestFocus()
+      }
 
       def focusNext(): Unit = {
         mIndex = (mIndex + 1) % 7
-        lList((mIndex)).requestFocus()
+        lList(mIndex).requestFocus()
       }
 
       if (java.awt.Toolkit.getDefaultToolkit.getLockingKeyState(java.awt.event.KeyEvent.VK_NUM_LOCK)) {
         menu.toFront()
-        focusNext()
+        focusSame()
         menuOn = true
-        println("Num Lock On")
       }
 
       override def handle(t: KeyEvent): Unit = {
         if (!menuOn) {
-          println("What?" + bPair + pPair + bothPair + natural + bWin + pWin + tWin)
           t.getCode match {
             case KeyCode.ENTER =>
               (bPair, pPair, bothPair, natural, bWin, pWin, tWin) match {
@@ -166,23 +178,30 @@ class DisplayHandler(
               gameBox.requestFocus()
 
             case KeyCode.END | KeyCode.NUMPAD1       => bWin = !bWin
-            case KeyCode.DOWN | KeyCode.NUMPAD2      => pWin = !pWin; println("Down key Pressed")
+            case KeyCode.DOWN | KeyCode.NUMPAD2      => pWin = !pWin
             case KeyCode.PAGE_DOWN | KeyCode.NUMPAD3 => tWin = !tWin
 
-            case KeyCode.UP | KeyCode.NUMPAD8      => natural = !natural; println("Up key Pressed")
+            case KeyCode.UP | KeyCode.NUMPAD8      => natural = !natural
             case KeyCode.PAGE_UP | KeyCode.NUMPAD9 => natural = !natural
 
-            case KeyCode.LEFT | KeyCode.NUMPAD4  => bPair = !bPair; println("Left key Pressed")
-            case KeyCode.RIGHT | KeyCode.NUMPAD6 => bothPair = !bothPair; println("Right key Pressed")
+            case KeyCode.LEFT | KeyCode.NUMPAD4  => bPair = !bPair
+            case KeyCode.RIGHT | KeyCode.NUMPAD6 => bothPair = !bothPair
             case KeyCode.CLEAR | KeyCode.NUMPAD5 => pPair = !pPair
+            case KeyCode.MULTIPLY =>
+              infoOn = !infoOn
+              if (infoOn) info.toFront()
+              else {
+                info.toBack()
+              }
 
-            case KeyCode.SUBTRACT               => beadRoad.RemoveElement()
-            case KeyCode.HOME | KeyCode.NUMPAD7 => beadRoad.Reset()
+            case KeyCode.SUBTRACT                                => beadRoad.RemoveElement()
+            case KeyCode.HOME | KeyCode.NUMPAD7 | KeyCode.DIVIDE => beadRoad.Reset()
             case KeyCode.NUM_LOCK =>
               menuOn = !menuOn
-              focusNext()
-              if (menuOn) menu.toFront()
-              else {
+              if (menuOn) {
+                menu.toFront()
+                focusSame()
+              } else {
                 menu.toBack()
                 gameBox.requestFocus()
               }
@@ -203,15 +222,21 @@ class DisplayHandler(
                 tList(mIndex).requestFocus()
                 editOn = !editOn
               case KeyCode.DOWN | KeyCode.NUMPAD2 => focusNext()
-              case KeyCode.UP | KeyCode.NUMPAD8   => focusNext()
-              case _                              => println("EDIT OFF")
+              case KeyCode.UP | KeyCode.NUMPAD8   => focusBack()
+              case _                              =>
             }
           } else {
             t.getCode match {
               case KeyCode.ENTER | KeyCode.NUM_LOCK =>
-                focusNext()
+                focusSame()
                 editOn = false
-              case _ => println("EDIT ON")
+              case KeyCode.MULTIPLY =>
+                infoOn = !infoOn
+                if (infoOn) info.toFront()
+                else {
+                  info.toBack()
+                }
+              case _ =>
             }
 
           }
@@ -279,9 +304,9 @@ class DisplayHandler(
     .addListener(new ChangeListener[Number] {
       override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
         if (t2.intValue() > 0) {
-          bankerPairCount.setText(String.valueOf(t2.intValue()));
+          bankerPairCount.setText(String.valueOf(t2.intValue()))
         } else {
-          bankerPairCount.setText("");
+          bankerPairCount.setText("")
         }
       }
     })

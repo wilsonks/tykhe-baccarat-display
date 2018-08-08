@@ -25,6 +25,18 @@
 
 <StackPane styleClass="root" stylesheets="@styles/main.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fs2.io.fx.DisplayHandler">
    <children>
+      <BorderPane fx:id="info" prefHeight="200.0" prefWidth="200.0">
+         <right>
+            <ImageView fitHeight="444.0" fitWidth="388.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="BOTTOM_CENTER">
+               <image>
+                  <Image url="@images/keypad.png" />
+               </image>
+            </ImageView>
+         </right>
+         <StackPane.margin>
+            <Insets bottom="40.0" right="10.0" />
+         </StackPane.margin>
+      </BorderPane>
       <BorderPane fx:id="menu">
          <center>
             <VBox maxHeight="370.0" maxWidth="330.0" prefWidth="385.0" spacing="5.0" styleClass="menuBox" BorderPane.alignment="CENTER">
@@ -373,7 +385,7 @@
                                     <Label styleClass="InfoLabel2" text="Game Counter" />
                                     <HBox prefHeight="200.0" prefWidth="129.0" spacing="5.0" styleClass="counterBox">
                                        <children>
-                                          <VBox prefHeight="290.0" prefWidth="125.0" spacing="8.0">
+                                          <VBox prefHeight="290.0" prefWidth="125.0" spacing="5.0">
                                              <children>
                                                 <Label fx:id="bLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="123.0" text="Banker" textFill="#281111">
                               </Label>

@@ -1,7 +1,11 @@
 lazy val `tykhe-baccarat-display` = project.in(file("."))
   .settings(sharedSettings)
   .settings(doNotPublishArtifact)
+  .settings(
+    mainClass in assembly := Some("fs2.io.fx.TestDisplay"),
+    assemblyJarName in assembly := "baccaratDisplay.jar")
   .aggregate(`fs2-console`, `fs2-patterns`, `fs2-codecs`, `fs2-reactivestreams`, `fs2-actor`, `fs2-store`, `fs2-fx`, `fs2-usb`)
+
 
 lazy val `fs2-console` = project
   .settings(crossSettings)

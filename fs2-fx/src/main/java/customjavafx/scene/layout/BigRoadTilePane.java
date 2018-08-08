@@ -158,7 +158,6 @@ public class BigRoadTilePane extends TilePane {
         }
         row = localSaveRow;
         column= localSaveColumn - 1;
-        c4 =  c3;c3 =  c2;c2 = c1;c1 = c0;c0 = 0;
         shiftedNow = true;
         if(savedColumn != -1) savedColumn--;
     }
@@ -221,7 +220,6 @@ public class BigRoadTilePane extends TilePane {
         }
         if (getCurrentPosition() >= getSizeLimit()) {
             ShiftColumnNew();
-
         }
     }
 
@@ -543,9 +541,7 @@ public class BigRoadTilePane extends TilePane {
                 }
             }
         }else {
-            //Last Element is in First Row
             if(c2 > 0) {
-                //You compare you
                 if((c1+1) == (c2+1)) {
                     bigEyeRoadList.add(new BigEyeRoadLabel(BigEyeRoadResult.RED));
 
