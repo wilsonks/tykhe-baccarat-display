@@ -300,16 +300,16 @@ class DisplayHandler(
               tWin = false
               gameBox.requestFocus()
 
-            case KeyCode.END | KeyCode.NUMPAD1       => bWin = !bWin
-            case KeyCode.DOWN | KeyCode.NUMPAD2      => pWin = !pWin
+            case KeyCode.END | KeyCode.NUMPAD1       => pWin = !pWin
+            case KeyCode.DOWN | KeyCode.NUMPAD2      => bWin = !bWin
             case KeyCode.PAGE_DOWN | KeyCode.NUMPAD3 => tWin = !tWin
 
             case KeyCode.UP | KeyCode.NUMPAD8      => natural = !natural
             case KeyCode.PAGE_UP | KeyCode.NUMPAD9 => natural = !natural
 
-            case KeyCode.LEFT | KeyCode.NUMPAD4  => bPair = !bPair
+            case KeyCode.LEFT | KeyCode.NUMPAD4  => pPair = !pPair
             case KeyCode.RIGHT | KeyCode.NUMPAD6 => bothPair = !bothPair
-            case KeyCode.CLEAR | KeyCode.NUMPAD5 => pPair = !pPair
+            case KeyCode.CLEAR | KeyCode.NUMPAD5 => bPair = !bPair
             case KeyCode.MULTIPLY =>
               infoOn = !infoOn
               if (infoOn) info.toFront()
