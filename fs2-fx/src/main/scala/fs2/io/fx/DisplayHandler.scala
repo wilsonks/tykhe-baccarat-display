@@ -2,7 +2,6 @@ package fs2.io.fx
 
 import customjavafx.scene.control._
 import customjavafx.scene.layout._
-import fs2.io.fx.syntax._
 import javafx.animation._
 import javafx.beans.value.{ChangeListener, ObservableValue}
 import javafx.collections.ObservableList
@@ -58,7 +57,7 @@ class DisplayHandler(
   val bigEyeRoad: BigEyeRoadTilePane,
   val smallRoad: SmallRoadTilePane,
   val cockroachRoad: CockroachRoadTilePane,
-  val bigRoad: BigRoadTilePane)(implicit display: Display, echo: Port[String, Echo.Transition]) {
+  val bigRoad: BigRoadTilePane)(implicit display: Display) {
 
   beadRoad.Initialize(8, 14)
   bigRoad.Initialize(6, 49)
@@ -368,9 +367,7 @@ class DisplayHandler(
     }
   )
 
-  display.root.iconifiedProperty().values.subscribe(i => if (i) echo.cancel() else echo.restart())
   display.root.setOnCloseRequest(_ => {
-    echo.cancel() // stop service
     display.exit()
   })
 

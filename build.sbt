@@ -1,9 +1,6 @@
 lazy val `tykhe-baccarat-display` = project.in(file("."))
   .settings(sharedSettings)
   .settings(doNotPublishArtifact)
-  .settings(
-    mainClass in assembly := Some("fs2.io.fx.TestDisplay"),
-    assemblyJarName in assembly := "baccaratDisplay.jar")
   .aggregate(`fs2-console`, `fs2-patterns`, `fs2-codecs`, `fs2-reactivestreams`, `fs2-actor`, `fs2-store`, `fs2-fx`, `fs2-usb`)
 
 
@@ -45,6 +42,9 @@ lazy val `fs2-fx` = project
   .settings(libraryDependencies += "org.reactfx" % "reactfx" % "2.0-M5")
   .settings(libraryDependencies += "org.scalafx" %% "scalafxml-core-sfx8" % "0.4")
   .settings(libraryDependencies += "com.jfoenix" % "jfoenix" % "8.0.4" % "test")
+  .settings(
+    mainClass in assembly := Some("fs2.io.fx.TestDisplay"),
+    assemblyJarName in assembly := "baccaratDisplay.jar")
   .dependsOn(`fs2-console` % "test")
   .dependsOn(`fs2-patterns` % "test")
 
