@@ -42,6 +42,8 @@ lazy val `fs2-fx` = project
   .settings(libraryDependencies += "org.reactfx" % "reactfx" % "2.0-M5")
   .settings(libraryDependencies += "org.scalafx" %% "scalafxml-core-sfx8" % "0.4")
   .settings(libraryDependencies += "com.jfoenix" % "jfoenix" % "8.0.4" % "test")
+  .settings(libraryDependencies += "com.github.pathikrit" %% "better-files" % "3.6.0")
+  .settings(libraryDependencies += "com.github.pureconfig" %% "pureconfig" % "0.9.1")
   .settings(
     mainClass in assembly := Some("fs2.io.fx.TestDisplay"),
     assemblyJarName in assembly := "baccaratDisplay.jar")

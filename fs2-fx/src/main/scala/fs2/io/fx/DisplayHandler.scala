@@ -57,7 +57,7 @@ class DisplayHandler(
   val bigEyeRoad: BigEyeRoadTilePane,
   val smallRoad: SmallRoadTilePane,
   val cockroachRoad: CockroachRoadTilePane,
-  val bigRoad: BigRoadTilePane)(implicit display: Display) {
+  val bigRoad: BigRoadTilePane)(implicit display: Display, writer: Host[Menu, Unit], startMenu: Menu) {
 
   beadRoad.Initialize(8, 14)
   bigRoad.Initialize(6, 49)
@@ -72,6 +72,14 @@ class DisplayHandler(
   tieBetMax.textProperty().bindBidirectional(tTieBetMax.textProperty())
   pairBetMin.textProperty().bindBidirectional(tPairBetMin.textProperty())
   pairBetMax.textProperty().bindBidirectional(tPairBetMax.textProperty())
+
+  tableNumber.setText(startMenu.name)
+  handBetMin.setText(startMenu.handBetMin)
+  handBetMax.setText(startMenu.handBetMax)
+  tieBetMin.setText(startMenu.tieBetMin)
+  tieBetMax.setText(startMenu.tieBetMax)
+  pairBetMin.setText(startMenu.pairBetMin)
+  pairBetMax.setText(startMenu.pairBetMax)
 
   beadRoad.getCountProperty
     .addListener(new ChangeListener[Number] {
@@ -230,6 +238,19 @@ class DisplayHandler(
         lList(mIndex).requestFocus()
       }
 
+      def saveMenuToDisk(): Unit = {
+        val task = writer.request(
+          Menu(
+            tableNumber.getText,
+            handBetMin.getText,
+            handBetMax.getText,
+            tieBetMin.getText,
+            tieBetMax.getText,
+            pairBetMin.getText,
+            pairBetMax.getText))
+        task.run()
+      }
+
       if (java.awt.Toolkit.getDefaultToolkit.getLockingKeyState(java.awt.event.KeyEvent.VK_NUM_LOCK)) {
         menu.toFront()
         focusSame()
@@ -326,6 +347,7 @@ class DisplayHandler(
               } else {
                 menu.toBack()
                 gameBox.requestFocus()
+                saveMenuToDisk
               }
 
             case _ => println(t)
@@ -339,6 +361,7 @@ class DisplayHandler(
                 else {
                   menu.toBack()
                   gameBox.requestFocus()
+                  saveMenuToDisk
                 }
               case KeyCode.ENTER =>
                 tList(mIndex).requestFocus()
@@ -371,4 +394,7 @@ class DisplayHandler(
     display.exit()
   })
 
+  // collect map to save and run task
+//  val task = writer.request(???)
+//  task.run()
 }
