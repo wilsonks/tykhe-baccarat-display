@@ -116,16 +116,16 @@ object Display {
     resolver: ControllerDependencyResolver = NoDependencyResolver,
     resources: Option[ResourceBundle] = None,
     modality: Modality = Modality.NONE,
-    style: StageStyle = StageStyle.DECORATED,
-    title: String = "",
+    style: StageStyle = StageStyle.UNDECORATED,
+    title: String = "Baccarat",
     cursor: Cursor = Cursor.DEFAULT,
     position: Position = Position(),
     bounds: Bounds = Bounds(),
     resizable: Boolean = true,
     maximized: Boolean = false,
     iconified: Boolean = false,
-    fullscreen: Boolean = false,
-    alwaysOnTop: Boolean = false,
+    fullscreen: Boolean = true,
+    alwaysOnTop: Boolean = true,
     autoShow: Boolean = true) {
 
     def init(stage: Stage): Unit = {

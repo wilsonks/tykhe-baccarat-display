@@ -45,7 +45,7 @@ lazy val `fs2-fx` = project
   .settings(libraryDependencies += "com.github.pathikrit" %% "better-files" % "3.6.0")
   .settings(libraryDependencies += "com.github.pureconfig" %% "pureconfig" % "0.9.1")
   .settings(
-    mainClass in assembly := Some("fs2.io.fx.TestDisplay"),
+    mainClass in assembly := Some("fs2.io.fx.Terminal"),
     assemblyJarName in assembly := "baccaratDisplay.jar")
   .dependsOn(`fs2-console` % "test")
   .dependsOn(`fs2-patterns` % "test")

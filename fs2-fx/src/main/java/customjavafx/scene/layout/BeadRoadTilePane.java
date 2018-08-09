@@ -416,10 +416,10 @@ public class BeadRoadTilePane extends TilePane {
     }
 
     public String LastWinAudio() {
-        if (isCurrentWinRed()) return "../../../sounds/banker.mp3";
-        else if (isCurrentWinBlue()) return "../../../sounds/player.mp3";
+        if (isCurrentWinRed()) return "/sounds/banker.mp3";
+        else if (isCurrentWinBlue()) return "/sounds/player.mp3";
         else {
-            return "../../../sounds/tie.mp3";
+            return "/sounds/tie.mp3";
         }
     }
 
