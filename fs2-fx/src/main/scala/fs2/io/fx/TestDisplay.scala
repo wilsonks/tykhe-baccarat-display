@@ -6,7 +6,7 @@ import cats.effect.IO
 import com.typesafe.config.ConfigFactory
 import fs2.io.fx.Display.{Bounds, Dimension}
 
-object TestDisplay extends App {
+object Terminal extends App {
 
   implicit def show[A]: Show[A] = Show.fromToString[A]
 
@@ -19,11 +19,9 @@ object TestDisplay extends App {
         startMenu <- IO[Menu] {
           // read previous state from file
           if (databaseFile.exists) {
-            println("Exists")
             databaseFile.readDeserialized[Menu]
 
           } else {
-            println("Does not Exists")
             databaseFile.createIfNotExists(asDirectory = false, createParents = true)
             databaseFile.writeSerialized(Menu("222", "500", "50000", "500", "50000", "500", "5000"))
             databaseFile.readDeserialized[Menu]

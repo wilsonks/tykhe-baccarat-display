@@ -394,7 +394,4 @@ class DisplayHandler(
     display.exit()
   })
 
-  // collect map to save and run task
-//  val task = writer.request(???)
-//  task.run()
 }
