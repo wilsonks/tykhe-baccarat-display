@@ -123,9 +123,9 @@ object Display {
     bounds: Bounds = Bounds(),
     resizable: Boolean = true,
     maximized: Boolean = false,
-    iconified: Boolean = false,
-    fullscreen: Boolean = true,
-    alwaysOnTop: Boolean = true,
+    iconified: Boolean = true,
+    fullscreen: Boolean = false,
+    alwaysOnTop: Boolean = false,
     autoShow: Boolean = true) {
 
     def init(stage: Stage): Unit = {

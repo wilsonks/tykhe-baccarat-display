@@ -4,7 +4,7 @@ import better.files._
 import cats.Show
 import cats.effect.IO
 import com.typesafe.config.ConfigFactory
-import fs2.io.fx.Display.{Bounds, Dimension}
+import fs2.io.fx.Display.{Bounds, Dimension, Position}
 
 object Terminal extends App {
 
@@ -23,15 +23,18 @@ object Terminal extends App {
 
           } else {
             databaseFile.createIfNotExists(asDirectory = false, createParents = true)
-            databaseFile.writeSerialized(Menu("222", "500", "50000", "500", "50000", "500", "5000"))
+            databaseFile.writeSerialized(Menu("1", "100", "10000", "100", "10000", "500", "5000"))
             databaseFile.readDeserialized[Menu]
           }
         }
         window = Display.Window(
+          title = conf.getString("title"),
+          fullscreen = conf.getBoolean("window.fullscreen"),
+          alwaysOnTop = conf.getBoolean("window.alwaysOnTop"),
+          position = Position(Option(0.0), Option(0.0)),
           bounds = Bounds(
             width = Dimension(min = Option(1600.0), max = Option(1920.0)),
             height = Dimension(min = Option(900.0), max = Option(1080.0))),
-          fullscreen = true,
           fxml = "baccarat.fxml",
           resolver = Display.resolve(
             Display.resolveBySubType(Host[Menu, Unit](menu =>
@@ -40,8 +43,7 @@ object Terminal extends App {
                 databaseFile.writeSerialized(menu)
             })),
             Display.resolveBySubType(startMenu)
-          ),
-          alwaysOnTop = true
+          )
         )
       } yield window
     )(args)

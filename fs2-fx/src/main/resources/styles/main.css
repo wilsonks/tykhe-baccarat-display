@@ -1,4 +1,16 @@
 
+@font-face {
+    src: url('ANTQUAB.TTF');
+}
+
+@font-face {
+    src: url('ANTQUA.ttf');
+}
+
+@font-face {
+    src: url('Bauhaus.ttf');
+}
+
 .root {
 	-fx-pref-width:1920;
 	-fx-pref-height:1080;
@@ -49,17 +61,7 @@ turquoise,violet,wheat,white,whitesmoke,yellow,yellowgreen*/
 }
 
 
-@font-face {
-    src: url('../fonts/ANTQUAB.TTF');
-}
 
-@font-face {
-    src: url('../fonts/ANTQUA.ttf');
-}
-
-@font-face {
-    src: url('../fonts/Bauhaus.ttf');
-}
 
 
 
