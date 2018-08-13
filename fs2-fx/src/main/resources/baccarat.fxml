@@ -121,7 +121,7 @@
       </BorderPane>
       <VBox fx:id="gameBox" alignment="BOTTOM_CENTER" styleClass="game">
          <children>
-            <HBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="1910.0" styleClass="header" stylesheets="@styles/header.css">
+            <HBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="1923.0" styleClass="header" stylesheets="@styles/header.css">
                <children>
                   <Pane prefHeight="200.0" prefWidth="630.0">
                      <children>
@@ -172,9 +172,9 @@
                         </VBox>
                      </children>
                   </Pane>
-                  <Pane prefHeight="200.0" prefWidth="666.0">
+                  <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="666.0">
                      <children>
-                        <HBox alignment="TOP_RIGHT" prefHeight="188.0" prefWidth="649.0" spacing="10.0">
+                        <HBox alignment="TOP_RIGHT" prefHeight="188.0" prefWidth="661.0" spacing="10.0">
                            <children>
                               <VBox alignment="TOP_RIGHT" layoutX="264.0" layoutY="10.0" prefHeight="200.0" prefWidth="121.0" spacing="2.0">
                                  <children>

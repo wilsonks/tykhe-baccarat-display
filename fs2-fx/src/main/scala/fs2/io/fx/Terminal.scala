@@ -5,6 +5,7 @@ import cats.Show
 import cats.effect.IO
 import com.typesafe.config.ConfigFactory
 import fs2.io.fx.Display.{Bounds, Dimension, Position}
+import javafx.stage.StageStyle
 
 object Terminal extends App {
 
@@ -30,11 +31,18 @@ object Terminal extends App {
         window = Display.Window(
           title = conf.getString("title"),
           fullscreen = conf.getBoolean("window.fullscreen"),
+          resizable = conf.getBoolean("window.resizable"),
           alwaysOnTop = conf.getBoolean("window.alwaysOnTop"),
-          position = Position(Option(0.0), Option(0.0)),
+          style = { if (conf.getBoolean("window.decorated")) StageStyle.DECORATED else StageStyle.UNDECORATED },
+          position = Position(Option(conf.getDouble("window.positionX")), Option(conf.getDouble("window.positionY"))),
           bounds = Bounds(
-            width = Dimension(min = Option(1600.0), max = Option(1920.0)),
-            height = Dimension(min = Option(900.0), max = Option(1080.0))),
+            width = Dimension(
+              min = Option(conf.getDouble("window.width.min")),
+              max = Option(conf.getDouble("window.width.max"))),
+            height = Dimension(
+              min = Option(conf.getDouble("window.height.min")),
+              max = Option(conf.getDouble("window.height.max")))
+          ),
           fxml = "baccarat.fxml",
           resolver = Display.resolve(
             Display.resolveBySubType(Host[Menu, Unit](menu =>
