@@ -43,7 +43,7 @@ turquoise,violet,wheat,white,whitesmoke,yellow,yellowgreen*/
 }
 
 .header {
-   	-fx-pref-width:1920;
+/*   	-fx-pref-width:1920;*/
    /*	-fx-pref-height:200;*/
 }
 
@@ -817,4 +817,11 @@ turquoise,violet,wheat,white,whitesmoke,yellow,yellowgreen*/
         -fx-alignment:top-left;
     	-fx-font-family: 'Bauhaus';
     	-fx-font-size: 20;
+}
+
+.RegionLogo {
+        -fx-background-image: url("../images/logo.png");
+        -fx-background-repeat: no-repeat;
+        -fx-background-size: contain;
+        -fx-background-position: center;
 }
