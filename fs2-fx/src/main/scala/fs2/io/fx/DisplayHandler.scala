@@ -5,10 +5,10 @@ import customjavafx.scene.layout._
 import javafx.animation._
 import javafx.beans.value.{ChangeListener, ObservableValue}
 import javafx.collections.ObservableList
-import javafx.event.EventHandler
+import javafx.event.{ActionEvent, EventHandler}
 import javafx.scene.control.{Button, Label, TextField}
 import javafx.scene.input.{KeyCode, KeyEvent}
-import javafx.scene.layout.{BorderPane, VBox}
+import javafx.scene.layout.{BorderPane, Region, VBox}
 import javafx.scene.transform.Rotate
 import javafx.util.Duration
 import scalafx.scene.media.AudioClip
@@ -38,6 +38,7 @@ class DisplayHandler(
   val p2: SmallRoadLabel,
   val p3: CockroachRoadLabel,
   val lastWin: LastWinLabel,
+  val logo: Region,
   val menu: BorderPane,
   val tName: TextField,
   val tHandBetMin: TextField,
@@ -215,6 +216,21 @@ class DisplayHandler(
   lastWinAnimation.setCycleCount(2)
   lastWinAnimation.setInterpolator(Interpolator.LINEAR)
   lastWinAnimation.setAutoReverse(true)
+
+  val logoAnimation: RotateTransition = new RotateTransition(Duration.millis(5000), logo)
+  logoAnimation.setAxis(Rotate.Y_AXIS)
+  logoAnimation.setByAngle(180)
+  logoAnimation.setCycleCount(2)
+  logoAnimation.setInterpolator(Interpolator.LINEAR)
+  logoAnimation.setAutoReverse(true)
+  logoAnimation.setDelay(Duration.millis(3000))
+  logoAnimation.play()
+
+  logoAnimation.setOnFinished(new EventHandler[ActionEvent] {
+    override def handle(t: ActionEvent): Unit = {
+      logoAnimation.play()
+    }
+  })
 
   display.root.addEventHandler(
     KeyEvent.KEY_PRESSED,

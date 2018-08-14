@@ -11,6 +11,12 @@
     src: url('Bauhaus.ttf');
 }
 
+@font-face {
+    src: url('Bodonio.ttf');
+}
+
+
+
 .root {
 	-fx-pref-width:1920;
 	-fx-pref-height:1080;
@@ -561,7 +567,7 @@ turquoise,violet,wheat,white,whitesmoke,yellow,yellowgreen*/
     -fx-pref-width:200;
     -fx-pref-height:25;
     -fx-alignment:center;
-    -fx-font-family: 'Book Antiqua';
+    -fx-font-family: 'Bodonio';
     -fx-font-size: 18;
     }
 
@@ -574,7 +580,7 @@ turquoise,violet,wheat,white,whitesmoke,yellow,yellowgreen*/
     -fx-pref-width:200;
     -fx-pref-height:25;
     -fx-alignment:center;
-    -fx-font-family: 'Book Antiqua';
+    -fx-font-family: 'Bodonio';
     -fx-font-size: 18;
     }
 
@@ -589,7 +595,7 @@ turquoise,violet,wheat,white,whitesmoke,yellow,yellowgreen*/
 
     .minLabel {
     	-fx-text-fill: lightgray;
-    	-fx-font-family: 'Book Antiqua';
+    	-fx-font-family: 'Bodonio';
     	-fx-font-size: 22;
         -fx-alignment:center-right;
 
@@ -597,7 +603,7 @@ turquoise,violet,wheat,white,whitesmoke,yellow,yellowgreen*/
 
     .maxLabel {
     	-fx-text-fill: lightgray;
-    	-fx-font-family: 'Book Antiqua';
+    	-fx-font-family: 'Bodonio';
     	-fx-font-size: 22;
     	-fx-alignment:center-right;
     }
@@ -610,8 +616,8 @@ turquoise,violet,wheat,white,whitesmoke,yellow,yellowgreen*/
     	-fx-pref-width:250;
         -fx-pref-height:25;
         -fx-alignment:center;
-    	-fx-font-family: 'Book Antiqua';
-    	-fx-font-size: 26;
+    	-fx-font-family: 'Bodonio';
+    	-fx-font-size: 32;
 
     }
 
@@ -623,8 +629,8 @@ turquoise,violet,wheat,white,whitesmoke,yellow,yellowgreen*/
     	-fx-pref-width:280;
         -fx-pref-height:25;
         -fx-alignment:center-right;
-    	-fx-font-family: 'Book Antiqua';
-    	-fx-font-size: 26;
+    	-fx-font-family: 'Bodonio';
+    	-fx-font-size: 32;
 
     }
 
@@ -723,7 +729,7 @@ turquoise,violet,wheat,white,whitesmoke,yellow,yellowgreen*/
     	-fx-pref-width:130;
         -fx-pref-height:25;
         -fx-alignment:center;
-    	-fx-font-family: 'Book Antiqua';
+    	-fx-font-family: 'Bodonio';
     	-fx-font-size: 15;
 }
 
@@ -733,7 +739,7 @@ turquoise,violet,wheat,white,whitesmoke,yellow,yellowgreen*/
     	-fx-pref-width:185;
         -fx-pref-height:25;
         -fx-alignment:center;
-    	-fx-font-family: 'Book Antiqua';
+    	-fx-font-family: 'Bodonio';
     	-fx-font-size: 15;
 }
 
@@ -743,7 +749,7 @@ turquoise,violet,wheat,white,whitesmoke,yellow,yellowgreen*/
     	-fx-pref-width:153;
         -fx-pref-height:25;
         -fx-alignment:center;
-    	-fx-font-family: 'Book Antiqua';
+    	-fx-font-family: 'Bodonio';
     	-fx-font-size: 15;
 }
 
@@ -802,7 +808,7 @@ turquoise,violet,wheat,white,whitesmoke,yellow,yellowgreen*/
     -fx-pref-width:1910;
     -fx-pref-height:25;
     -fx-alignment:center;
-    -fx-font-family: 'Book Antiqua';
+    -fx-font-family: 'Bodonio';
     -fx-font-size: 12;
 
     }
