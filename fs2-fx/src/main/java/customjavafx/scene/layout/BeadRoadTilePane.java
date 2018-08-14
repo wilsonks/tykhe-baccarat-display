@@ -6,14 +6,18 @@ import customjavafx.scene.control.BeadRoadResult;
 import customjavafx.scene.control.LastWinResult;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.geometry.Orientation;
-import javafx.geometry.Pos;
+import javafx.geometry.*;
+import javafx.scene.Node;
 import javafx.scene.layout.TilePane;
+import javafx.util.Callback;
+
+import java.util.List;
 
 public class BeadRoadTilePane extends TilePane {
 
     private int column = 0;
     private int row = -1;
+
 
     private IntegerProperty count = new SimpleIntegerProperty(0);
 
@@ -460,10 +464,12 @@ public class BeadRoadTilePane extends TilePane {
         playerWinCount.setValue(0);
         bankerPairCount.setValue(0);
         playerPairCount.setValue(0);
+        naturalCount.setValue(0);
         count.setValue(0);
         column = 0;
         row = -1;
     }
+
 
     @Override
     protected void layoutChildren() {

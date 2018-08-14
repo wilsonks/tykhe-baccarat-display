@@ -29,6 +29,7 @@ class DisplayHandler(
   val tieWinCount: Label,
   val playerPairCount: Label,
   val bankerPairCount: Label,
+  val naturalCount: Label,
   val totalCount: Label,
   val b1: BigEyeRoadLabel,
   val b2: SmallRoadLabel,
@@ -154,6 +155,17 @@ class DisplayHandler(
           playerPairCount.setText(String.valueOf(t2.intValue()))
         } else {
           playerPairCount.setText("")
+        }
+      }
+    })
+
+  beadRoad.getNaturalCount
+    .addListener(new ChangeListener[Number] {
+      override def changed(observableValue: ObservableValue[_ <: Number], t1: Number, t2: Number): Unit = {
+        if (t2.intValue() > 0) {
+          naturalCount.setText(String.valueOf(t2.intValue()))
+        } else {
+          naturalCount.setText("")
         }
       }
     })

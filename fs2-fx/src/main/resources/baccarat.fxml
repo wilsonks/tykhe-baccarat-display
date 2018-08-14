@@ -164,8 +164,14 @@
                               <Insets />
                            </HBox.margin>
                         </Pane>
-                        <Pane minWidth="500.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" HBox.hgrow="ALWAYS" />
-                        <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" HBox.hgrow="ALWAYS" />
+                        <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="138.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <ImageView fitHeight="126.0" fitWidth="250.0" layoutX="13.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/logo-small.png" />
+                                 </image>
+                              </ImageView>
+                           </children></Pane>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" prefHeight="188.0" spacing="10.0" HBox.hgrow="ALWAYS">
@@ -391,12 +397,13 @@
                               </Label>
                                                 <Label fx:id="ppLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="160.0" prefHeight="32.0" prefWidth="123.0" text="Player Pair" textFill="#281111">
                               </Label>
+                                                <Label fx:id="nLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="162.0" prefHeight="32.0" prefWidth="123.0" text="Naturals" textFill="#281111" />
                                              </children>
                                              <padding>
                                                 <Insets top="4.0" />
                                              </padding>
                                           </VBox>
-                                          <VBox spacing="8.0">
+                                          <VBox spacing="2.0">
                                              <children>
                                                 <Label fx:id="bankerWinCount" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="51.0" text="" textFill="WHITE">
                               </Label>
@@ -408,9 +415,10 @@
                               </Label>
                                                 <Label fx:id="playerPairCount" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="51.0" text="" textFill="WHITE">
                               </Label>
+                                                <Label fx:id="naturalCount" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="51.0" text="" textFill="WHITE" />
                                              </children>
                                              <padding>
-                                                <Insets top="4.0" />
+                                                <Insets top="2.0" />
                                              </padding>
                                           </VBox>
                                        </children>
